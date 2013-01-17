@@ -28,13 +28,14 @@
                 </div>
             </div>
         </div><br/><br/><br/><br/>
-        <div class="span3">
-            <ul class="nav nav-tabs nav-stacked">
-                <li>
-                    <a href="#">TEST</a>
-                </li>
-            </ul>
-        </div>
+           <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li>
+                        <li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li><li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li>
+                    </ul>
+                    
+                </div></div>
         <div class="span1"></div>
         <ui:insert name="content">Default title</ui:insert>
     </body>
