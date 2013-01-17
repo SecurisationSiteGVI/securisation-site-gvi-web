@@ -36,7 +36,7 @@
                     </ul>
                     
                 </div></div>
-        <div class="span1"></div>
+        
         <ui:insert name="content">Default title</ui:insert>
     </body>
 </html>
