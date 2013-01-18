@@ -4,7 +4,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xml:lang="fr" lang="fr"
       xmlns:h="http://java.sun.com/jsf/html">
-    <head>
+    <head> ${sessionTechnicien.technicienConnected()}
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/style1.css"/>
         <link rel="stylesheet" href="css/styleb-min.css"/>
@@ -17,6 +17,7 @@
         </title>
     </head>
     <body>
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -27,18 +28,27 @@
                     </div>
                 </div>
             </div>
-        </div><br/><br/><br/><br/>
-        &nbsp;
-           <div class="row">
-                <div class="span3 bs-docs-sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav">
-                        <li><a href="#"><i class="icon-chevron-right"></i> Voir historique</a></li>
-                        <li><a href="#"><i class="icon-chevron-right"></i> Gérer les secteurs</a></li>
-                        <li><a href="#"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
-                    </ul>
-                    
-                </div></div>
-        
-        <ui:insert name="content">Default title</ui:insert>
+        </div><br/><br/>
+   
+
+            <div class="row">
+                <div class="span3">
+                    <div class="span3 bs-docs-sidebar">
+                        <ul class="nav nav-list bs-docs-sidenav">
+                            <li><a href="#"><i class="icon-chevron-right"></i> Voir historique</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i> Gérer les secteurs</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="span9">
+                    <br/>
+                    <br/>
+                    <ui:insert name="content">Default title</ui:insert>
+                </div>
+            </div>
+
     </body>
 </html>
