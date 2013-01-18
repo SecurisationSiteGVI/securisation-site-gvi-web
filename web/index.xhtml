@@ -53,16 +53,17 @@
             <h:form class="form-signin">
                 <h2 class="form-signin-heading">D'abord, connectez-vous </h2>
                 <table>
+                    <h:messages id="log" class="alert alert-error"></h:messages>
                     <tr>
                         <td><h3><h:outputText value="Login:"/></h3></td>
-                        <td><h:inputText id="placeholder" class="input-block-level" /></td>
+                        <td><h:inputText id="placeholder" value="#{sessionTechnicien.technicien.login}" class="input-block-level" /></td>
                     </tr>
                     <tr>
                         <td><h3><h:outputText value="Password:"/></h3></td>
-                        <td><h:inputText  class="input-block-level"  /></td>
+                        <td><h:inputSecret value="#{sessionTechnicien.technicien.password}" class="input-block-level"  /></td>
                     </tr>
                 </table>
-                <button  class="btn btn-large btn-primary" type="submit">Connexion</button>
+                <h:commandButton action="#{sessionTechnicien.testDeConnexion()}" class="btn btn-large btn-primary" value="Connexion"/>
             </h:form>
         </div>
     </body>
