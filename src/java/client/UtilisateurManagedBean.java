@@ -6,6 +6,9 @@ package client;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import metier.MetierFactory;
+import metier.UtilisateurService;
+import metier.entitys.Technicien;
 
 /**
  *
@@ -15,9 +18,6 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class UtilisateurManagedBean {
 
-    /**
-     * Creates a new instance of UtilisateurManagedBean
-     */
-    public UtilisateurManagedBean() {
-    }
+    
+  
 }
