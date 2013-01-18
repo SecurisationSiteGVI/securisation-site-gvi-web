@@ -56,11 +56,11 @@
                     <h:messages id="log" class="alert alert-error"></h:messages>
                     <tr>
                         <td><h3><h:outputText value="Login:"/></h3></td>
-                        <td><h:inputText id="placeholder" value="#{sessionTechnicien.technicien.login}" class="input-block-level" /></td>
+                        <td><h:inputText id="placeholder" value="#{sessionTechnicien.login}" class="input-block-level" /></td>
                     </tr>
                     <tr>
                         <td><h3><h:outputText value="Password:"/></h3></td>
-                        <td><h:inputSecret value="#{sessionTechnicien.technicien.password}" class="input-block-level"  /></td>
+                        <td><h:inputSecret value="#{sessionTechnicien.password}" class="input-block-level"  /></td>
                     </tr>
                 </table>
                 <h:commandButton action="#{sessionTechnicien.testDeConnexion()}" class="btn btn-large btn-primary" value="Connexion"/>
