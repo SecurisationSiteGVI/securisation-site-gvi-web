@@ -9,8 +9,7 @@
         <link rel="stylesheet" href="css/styleb-min.css"/>
         <link rel="stylesheet" href="css/style1-min.css"/>
         <link rel="stylesheet" href="css/styleb.css"/>       
-        <link rel="stylesheet" href="css/docs.css"/>      
-        <link href="css/google-code-prettify/prettify.css" rel="stylesheet"></link>
+       
         <style type="text/css">
             body {
                 padding-top: 40px;
@@ -20,7 +19,7 @@
             }
 
             .form-signin {
-                max-width: 400px;
+                max-width: 300px;
                 padding: 19px 29px 29px;
                 margin: 0 auto 20px;
                 background-color: #fff;
@@ -51,14 +50,20 @@
     <body>
         <div class="container">
 
-            <form class="form-signin">
+            <h:form class="form-signin">
                 <h2 class="form-signin-heading">D'abord, connectez-vous </h2>
-                <input type="text" class="input-block-level" placeholder="Login"/>
-                <input type="password" class="input-block-level" placeholder="Mot de passe"/>
-
+                <table>
+                    <tr>
+                        <td><h3><h:outputText value="Login:"/></h3></td>
+                        <td><h:inputText id="placeholder" class="input-block-level" /></td>
+                    </tr>
+                    <tr>
+                        <td><h3><h:outputText value="Password:"/></h3></td>
+                        <td><h:inputText  class="input-block-level"  /></td>
+                    </tr>
+                </table>
                 <button  class="btn btn-large btn-primary" type="submit">Connexion</button>
-            </form>
-
+            </h:form>
         </div>
     </body>
 </html>
