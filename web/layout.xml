@@ -22,17 +22,19 @@
                 <div class="container">
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">TEST</a></li>
+                            <li class="active"><a href="#">Page de démarrage</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div><br/><br/><br/><br/>
+        &nbsp;
            <div class="row">
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
-                        <li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li>
-                        <li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li><li><a href="#"><i class="icon-chevron-right"></i> TEST</a></li>
+                        <li><a href="#"><i class="icon-chevron-right"></i> Voir historique</a></li>
+                        <li><a href="#"><i class="icon-chevron-right"></i> Gérer les secteurs</a></li>
+                        <li><a href="#"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
                     </ul>
                     
                 </div></div>
