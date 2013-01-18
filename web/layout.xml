@@ -17,38 +17,32 @@
         </title>
     </head>
     <body>
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Page de démarrage</a></li>
+                            <li class="#{cSSActive.pageTechnicien}"><a href="./pageTechnicien.jsf">Page de démarrage</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div><br/><br/>
-   
-
             <div class="row">
                 <div class="span3">
                     <div class="span3 bs-docs-sidebar">
                         <ul class="nav nav-list bs-docs-sidenav">
-                            <li><a href="#"><i class="icon-chevron-right"></i> Voir historique</a></li>
+                            <li class="#{cSSActive.histrorique}"> <a href="./histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
                             <li><a href="#"><i class="icon-chevron-right"></i> Gérer les secteurs</a></li>
                             <li><a href="#"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
                         </ul>
-
                     </div>
                 </div>
-
                 <div class="span9">
                     <br/>
                     <br/>
                     <ui:insert name="content">Default title</ui:insert>
                 </div>
             </div>
-
     </body>
 </html>
