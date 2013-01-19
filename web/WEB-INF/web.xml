@@ -23,6 +23,6 @@
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
-        <location>/errorPages/404.xhtml</location>
+        <location>/errorPages/404.jsf</location>
     </error-page>
 </web-app>
