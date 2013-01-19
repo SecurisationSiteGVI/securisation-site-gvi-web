@@ -6,6 +6,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
     <head> 
         ${sessionTechnicien.technicienConnected()}
+        <link rel="SHORTCUT ICON" href="#{linkPath.pathLink}img/cle.jpg"/>
         <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
         <link rel="stylesheet" href="#{linkPath.cssStyle1}"/>
         <link rel="stylesheet" href="#{linkPath.cssStylebMin}"/>
