@@ -6,12 +6,12 @@
       xmlns:h="http://java.sun.com/jsf/html">
     <head> 
         ${sessionTechnicien.technicienConnected()}
-        <link rel="stylesheet" href="#{cssPath.cssStyle}"/>
-        <link rel="stylesheet" href="#{cssPath.cssStyle1}"/>
-        <link rel="stylesheet" href="#{cssPath.cssStylebMin}"/>
-        <link rel="stylesheet" href="#{cssPath.cssStyle1Min}"/>
-        <link rel="stylesheet" href="#{cssPath.cssStyleb}"/>       
-        <link rel="stylesheet" href="#{cssPath.cssDocs}"/>      
+        <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStylebMin}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1Min}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyleb}"/>       
+        <link rel="stylesheet" href="#{linkPath.cssDocs}"/>      
         <title>
             <ui:insert name="title">Default title</ui:insert>
         </title>
@@ -34,7 +34,7 @@
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="#{cSSActive.histrorique}"> <a href="./histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
                         <li><a href="#"><i class="icon-chevron-right"></i> Gérer les secteurs</a></li>
-                        <li><a href="./utilisateurs/listeUtilisateur.jsf"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
+                        <li class="#{cSSActive.utilisateur}"><a href="#{linkPath.pathLink}/utilisateurs/listeUtilisateur.jsf"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
                     </ul>
                 </div>
             </div>
