@@ -8,10 +8,10 @@
     </ui:define>
     <ui:define name="content">
         <ul class="nav nav-tabs">
-            <li class=" ">
+            <li class="#{cSSActive.listeUtilisateur}">
                 <a href="./listeUtilisateur.jsf">Liste des utilisateurs</a>
             </li>
-            <li class=" ">
+            <li class="#{cSSActive.ajouterUtilisateurs}">
                 <a href="./ajouterUtilisateurs.jsf">Ajouter des utilisateurs</a>
             </li>
         </ul>
