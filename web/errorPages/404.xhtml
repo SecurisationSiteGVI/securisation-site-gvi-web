@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <link rel="stylesheet" href="http://localhost:8080/securisation-site-gvi-web/css/style.css"/>
-        <link rel="stylesheet" href="http://localhost:8080/securisation-site-gvi-web/css/style1.css"/>
-        <link rel="stylesheet" href="http://localhost:8080/securisation-site-gvi-web/css/styleb-min.css"/>
-        <link rel="stylesheet" href="http://localhost:8080/securisation-site-gvi-web/css/style1-min.css"/>
-        <link rel="stylesheet" href="http://localhost:8080/securisation-site-gvi-web/css/styleb.css"/>   
+        <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStylebMin}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1Min}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyleb}"/>  
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Erreur 404</title>
     </h:head>
@@ -17,7 +17,7 @@
                     <h1>ERREUR 404</h1>
                     <p>La page demandé n'exsite pas.</p>
                     <p>
-                        <a class="btn btn-warning" href="./index.jsf">Page d'accueil</a>
+                        <a class="btn btn-warning" href="#{linkPath.pathLink}/index.jsf">Page d'accueil</a>
                     </p>
                 </div>
         </center>
