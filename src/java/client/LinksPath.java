@@ -47,7 +47,4 @@ public class LinksPath {
         return pathLink;
     }
 
-    public void setPathLink(String pathLink) {
-        this.pathLink = pathLink;
-    }
 }
