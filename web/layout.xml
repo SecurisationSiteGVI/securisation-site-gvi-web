@@ -38,9 +38,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="span9">
-                <br/>
-                <br/>
+            <br/>
+            <br/>
+            <div class="container">
                 <ui:insert name="content">Default title</ui:insert>
             </div>
         </div>
