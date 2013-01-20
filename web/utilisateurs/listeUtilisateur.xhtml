@@ -2,11 +2,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-   <ui:composition template="./layoutUtilisateur.xml">        
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutUtilisateur.xml">        
         <ui:define name="contentUtilisateur">
-       
-            <p>PZAF</p>
+            <div class="span5">
+                <h:message id="errorPageutii" showSummary="true"  for="errorPageutili" class="alert alert-error"></h:message>
+                <h:form>                  
+                    <h:dataTable  id="tableUtilisateur" value="#{utilisateurManagedBean.utilisateurByRange}" class="table table-hover" var="item">
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nom"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prenom"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Page #{utilisateurManagedBean.page+1}"/>
+                            </f:facet>
+                            <h:commandLink value="Plus"  />
+                        </h:column>
+                    </h:dataTable>
+                    <ul class="pager">
+                        <li><h:commandLink value="Précedent" action="#{utilisateurManagedBean.pagePrécédente()}"><f:ajax  render="tableUtilisateur"/></h:commandLink></li>
+                        <li><h:commandLink value="Suivant" action="#{utilisateurManagedBean.pageSuivant()}"><f:ajax   render="tableUtilisateur" /></h:commandLink></li>
+                       </ul> 
+                </h:form><p><small>Il y à actuellement #{utilisateurManagedBean.count} utilisateurs.</small></p>
+
+            </div>
+            <div class="span3">
+                <p>Filtrer par :</p>
+                <h:form>
+                    <h:selectOneMenu >
+                        <f:selectItems value="#{utilisateurManagedBean.utilisateurProperties}"/>
+                    </h:selectOneMenu>  
+
+                </h:form>
+            </div>
+
+
+
         </ui:define>
     </ui:composition>
 </html>
