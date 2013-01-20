@@ -20,7 +20,7 @@ import metier.entitys.Utilisateur;
 public class UtilisateurManagedBean {
     private Utilisateur utilisateur =new Utilisateur();
     private UtilisateurService utilisateurSrv= MetierFactory.getUtilisateurService();
-    private void addUtilisateur(){
+    public void addUtilisateur(){
         try{
            utilisateurSrv.add(utilisateur); 
            BoiteAOutils.addMessage("Ajout effectué", "l'utilisateur est bien ajouté", "sucssesUser");
