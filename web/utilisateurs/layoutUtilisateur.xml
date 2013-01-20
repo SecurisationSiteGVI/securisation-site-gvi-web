@@ -13,8 +13,10 @@
             </li>
             <li class="#{cSSActive.ajouterUtilisateurs}">
                 <a href="./ajouterUtilisateurs.jsf">Ajouter des utilisateurs</a>
-            </li>
-        </ul>
+            </li><br/>
+            
+        </ul><br/>
+            
         <ui:insert name="contentUtilisateur"> Default content</ui:insert>
     </ui:define>
 </ui:composition>
