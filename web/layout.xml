@@ -39,10 +39,11 @@
                     </ul>
                 </div>
             </div>
-            <br/>
-            <br/>
+            
             <div class="container">
+                <div class="span12">
                 <ui:insert name="content">Default title</ui:insert>
+                </div>
             </div>
         </div>
     </body>
