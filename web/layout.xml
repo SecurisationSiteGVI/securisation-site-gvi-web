@@ -4,7 +4,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xml:lang="fr" lang="fr"
       xmlns:h="http://java.sun.com/jsf/html">
-    <head> 
+    <h:head> 
         ${sessionTechnicien.technicienConnected()}
         <link rel="SHORTCUT ICON" href="#{linkPath.pathLink}/img/cle.jpg"/>
         <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
@@ -16,7 +16,7 @@
         <title>
             <ui:insert name="title">Default title</ui:insert>
         </title>
-    </head>
+    </h:head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
