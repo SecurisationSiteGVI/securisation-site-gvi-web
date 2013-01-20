@@ -2,11 +2,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutUtilisateur.xml">        
         <ui:define name="contentUtilisateur">
-       
-            <p>PZAF</p>
+            <div class="span6">
+                <f:view>
+                    <h:form>
+
+                        <h:panelGrid columns="2">
+
+                            <h:outputLabel value="Nom :" for="nom" />
+                            <h:inputText id="nom"  value="#{utilisateurManagedBean.utilisateur.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+                            <h:outputLabel value="Prenom :" for="prenom" />
+                            <h:inputText id="prenom" value="#{utilisateurManagedBean.utilisateur.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
+                            <h:outputLabel value="Ville :" for="ville" />
+                            <h:inputText id="ville" value="#{utilisateurManagedBean.utilisateur.ville}" title="Ville" />
+                            <h:outputLabel value="Code postale :" for="codePostale" />
+                            <h:inputText id="codePostale" value="#{utilisateurManagedBean.utilisateur.codePostale}" title="CodePostale" />
+                            <h:outputLabel value="Adresse :" for="adresse" />
+                            <h:inputText id="adresse" value="#{utilisateurManagedBean.utilisateur.adresse}" title="Adresse" />
+                            <h:outputLabel value="Téléphone portable :" for="telephonePortable" />
+                            <h:inputText id="telephonePortable" value="#{utilisateurManagedBean.utilisateur.telephonePortable}" title="TelephonePortable" />
+                            <h:outputLabel value="Date de naissance :" for="dateDeNaissance" />
+                            <h:inputText id="dateDeNaissance" value="#{utilisateurManagedBean.utilisateur.dateDeNaissance}" title="DateDeNaissance" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="Email :" for="email" />
+                            <h:inputText id="email" value="#{utilisateurManagedBean.utilisateur.email}" title="Email" >
+                                <f:validator validatorId="emailValidator" />
+                            </h:inputText>
+
+                            <h:outputLabel value="Téléphone fixe:" for="telephoneFixe" />
+                            <h:inputText id="telephoneFixe" value="#{utilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" />
+                        </h:panelGrid>
+                    </h:form>
+                </f:view></div>
+            <div class="span6">
+                <h:message id="sucssesUser" for="sucssesUser" class="alert alert-success"></h:message>
+                <h:message id="errorUser"  for="errorUser" class="alert alert-error"></h:message>
+                <h:message id="errorEmail"  for="email" class="alert alert-error"></h:message>
+            </div>
+
         </ui:define>
     </ui:composition>
 </html>
