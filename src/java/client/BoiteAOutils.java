@@ -42,31 +42,34 @@ public class BoiteAOutils {
         return retour;
     }
 
-    public static void addMessage(String summary) {
+    public static FacesMessage addMessage(String summary) {
         FacesContext fc = FacesContext.getCurrentInstance();
         FacesMessage fm = new FacesMessage();
         fm.setSummary(" " + summary);
-        fm.setDetail("client non connecté");
+        fm.setDetail(" ");
         fm.setSeverity(FacesMessage.SEVERITY_WARN);
         fc.addMessage("a", fm);
+        return fm;
     }
 
-    public static void addMessage(String summary, String details) {
+    public static FacesMessage addMessage(String summary, String details) {
         FacesContext fc = FacesContext.getCurrentInstance();
         FacesMessage fm = new FacesMessage();
         fm.setSummary(" " + summary);
         fm.setDetail(details);
         fm.setSeverity(FacesMessage.SEVERITY_WARN);
         fc.addMessage("a", fm);
+        return fm;
     }
 
-    public static void addMessage(String summary, String details, String id) {
+    public static FacesMessage addMessage(String summary, String details, String id) {
         FacesContext fc = FacesContext.getCurrentInstance();
         FacesMessage fm = new FacesMessage();
         fm.setSummary(" " + summary);
         fm.setDetail(details);
         fm.setSeverity(FacesMessage.SEVERITY_WARN);
         fc.addMessage(id, fm);
+        return fm;
     }
     
 }
