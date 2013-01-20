@@ -20,10 +20,12 @@ import metier.entitys.Utilisateur;
 public class UtilisateurManagedBean {
     private Utilisateur utilisateur =new Utilisateur();
     private UtilisateurService utilisateurSrv= MetierFactory.getUtilisateurService();
+    private Number number;
     public void addUtilisateur(){
         try{
            utilisateurSrv.add(utilisateur); 
            BoiteAOutils.addMessage("Ajout effectué", "l'utilisateur est bien ajouté", "sucssesUser");
+           this.utilisateur =null;
         }catch(Exception ex){
             BoiteAOutils.addMessage("Problème lors de l'ajout", "l'utilisateur n'a pas été ajouté", "errorUser");
             System.out.println(ex);
@@ -35,6 +37,14 @@ public class UtilisateurManagedBean {
 
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
+    }
+
+    public Number getNumber() {
+        return number;
+    }
+
+    public void setNumber(Number number) {
+        this.number = number;
     }
     
     
