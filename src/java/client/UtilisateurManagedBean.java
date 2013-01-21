@@ -8,12 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import metier.MetierFactory;
 import metier.UtilisateurService;
-import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 /**
  *
