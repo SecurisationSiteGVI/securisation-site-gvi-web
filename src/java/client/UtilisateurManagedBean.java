@@ -22,14 +22,15 @@ public class UtilisateurManagedBean {
 
     private Utilisateur utilisateur = new Utilisateur();
     private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
-    private Number number;
     private List<String> utilisateurProperties = new ArrayList<String>();
     private int index;
     private int nbLinge = 10;
+    private List<Utilisateur> utilisateurs = null;
 
     public UtilisateurManagedBean() {
         this.addIntoUtilisateurPropertiers();
         this.index = 0;
+        this.utilisateurs = this.utilisateurSrv.getAllByRange(0, nbLinge);
     }
 
     private void addIntoUtilisateurPropertiers() {
@@ -83,8 +84,6 @@ public class UtilisateurManagedBean {
         } else {
             this.index = this.index - nbLinge;
         }
-
-
     }
 
     public Long getCount() {
@@ -99,22 +98,7 @@ public class UtilisateurManagedBean {
         this.utilisateur = utilisateur;
     }
 
-    public Number getNumber() {
-        return number;
-    }
-
-    public void setNumber(Number number) {
-        this.number = number;
-    }
-
     public List<Utilisateur> getUtilisateurs() {
-        List<Utilisateur> utilisateurs = null;
-        try {
-            utilisateurs = utilisateurSrv.getAll();
-        } catch (Exception ex) {
-            System.out.println(ex);
-            BoiteAOutils.addMessage("Impossible de recuperer la liste", " veuillez reessayer ulterieurement ", "errorListeUtilisateur");
-        }
         return utilisateurs;
 
     }
@@ -141,5 +125,9 @@ public class UtilisateurManagedBean {
 
     public void setNbLinge(int nbLinge) {
         this.nbLinge = nbLinge;
+    }
+
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
     }
 }
