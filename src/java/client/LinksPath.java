@@ -12,34 +12,38 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean(name="linkPath")
 public class LinksPath {
-    private String protocol ="http://";
-    private String host ="localhost:8080";
-    private String applicationName = "securisation-site-gvi-web";
-    private String repertoire ="css";
-    private String path = this.protocol+this.host+"/"+this.applicationName+"/"+this.repertoire;
-    private String pathLink= this.protocol+this.host+"/"+this.applicationName;
+    private static String protocol ="http://";
+    private static  String host ="localhost:8080";
+    private static  String applicationName = "securisation-site-gvi-web";
+    private static  String repertoire ="css";
+    private static  String path = LinksPath.protocol+LinksPath.host+"/"+LinksPath.applicationName+"/"+LinksPath.repertoire;
+    private static   String pathLink= LinksPath.protocol+LinksPath.host+"/"+LinksPath.applicationName;
+    public static String getTechnicienNonConnecte(){
+        String error = LinksPath.pathLink +"/errorPages/pageTechnicienNonConnect.jsf";
+        return error;
+    }
     public String getCssStyle(){
-        String style = this.path+"/style.css";
+        String style = LinksPath.path+"/style.css";
         return style;
     }
     public String getCssStyle1(){
-        String style = this.path+"/style1.css";
+        String style = LinksPath.path+"/style1.css";
         return style;
     }
     public String getCssStylebMin(){
-        String style = this.path+"/styleb-min.css";
+        String style = LinksPath.path+"/styleb-min.css";
         return style;
     }
     public String getCssStyle1Min(){
-        String style = this.path+"/style1-min.css";
+        String style = LinksPath.path+"/style1-min.css";
         return style;
     }
     public String getCssStyleb(){
-        String style = this.path+"/styleb.css";
+        String style = LinksPath.path+"/styleb.css";
         return style;
     }
     public String getCssDocs(){
-        String style = this.path+"/docs.css";
+        String style = LinksPath.path+"/docs.css";
         return style;
     }
 
