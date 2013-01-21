@@ -41,7 +41,7 @@
             </div>
             
             <div class="container">
-                <div class="span12">
+                <div class="span11">
                 <ui:insert name="content">Default title</ui:insert>
                 </div>
             </div>
