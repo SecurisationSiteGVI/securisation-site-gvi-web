@@ -44,7 +44,7 @@ public class SessionTechnicien {
             technicien = (Technicien) session.getAttribute("personne");
         } else {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("pageTechnicienNonConnect.jsf");
+                FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getTechnicienNonConnecte());
             } catch (IOException ex) {
                 Logger.getLogger(SessionTechnicien.class.getName()).log(Level.SEVERE, null, ex);
             }
