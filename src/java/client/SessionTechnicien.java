@@ -64,6 +64,7 @@ public class SessionTechnicien {
     }
 
     public String getLogin() {
+        this.login="damienChes";
         return login;
     }
 
@@ -72,6 +73,7 @@ public class SessionTechnicien {
     }
 
     public String getPassword() {
+        this.password = "damien";
         return password;
     }
 
