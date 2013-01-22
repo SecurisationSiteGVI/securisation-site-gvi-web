@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import metier.MetierFactory;
 import metier.UtilisateurService;
 import metier.entitys.Utilisateur;
@@ -17,7 +18,7 @@ import metier.entitys.Utilisateur;
  * @author damien
  */
 @ManagedBean(name = "utilisateurManagedBean")
-@ApplicationScoped
+@RequestScoped
 public class UtilisateurManagedBean {
 
     private Utilisateur utilisateur = new Utilisateur();
@@ -106,7 +107,6 @@ public class UtilisateurManagedBean {
 
     public List<Utilisateur> getUtilisateurs() {
         if (this.choixCB.equals(" ")) {
-
             this.utilisateur = null;
             this.utilisateurs = this.utilisateurSrv.getAllByRange(index, nbLinge);
         } else if (this.choixCB.equals("Nom")) {
