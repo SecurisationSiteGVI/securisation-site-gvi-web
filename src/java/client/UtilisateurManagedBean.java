@@ -18,7 +18,7 @@ import metier.entitys.Utilisateur;
  * @author damien
  */
 @ManagedBean(name = "utilisateurManagedBean")
-@RequestScoped
+@ApplicationScoped
 public class UtilisateurManagedBean {
 
     private Utilisateur utilisateur = new Utilisateur();
@@ -29,6 +29,17 @@ public class UtilisateurManagedBean {
     private List<Utilisateur> utilisateurs = null;
     private String choixCB;
     private String textFilter;
+    private Utilisateur idUtilisateur;
+
+    public void removeUtilisateur() {
+        if (getIdUtilisateur() != null) {
+            
+            this.utilisateurSrv.remove(getIdUtilisateur());
+        }else{
+            BoiteAOutils.addMessage("Erreur", " impossible de recuperer l'id ");
+        }
+
+    }
 
     public void filtrer() {
         System.out.println("FILTER");
@@ -175,4 +186,14 @@ public class UtilisateurManagedBean {
     public void setChoixCB(String choixCB) {
         this.choixCB = choixCB;
     }
+
+    public Utilisateur getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(Utilisateur idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
+
+    
 }
