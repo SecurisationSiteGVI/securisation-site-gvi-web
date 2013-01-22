@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <table class="table table-striped">
-                                        <h:form>
+             
                                             <tr>
                                                 <td>Nom :</td>
                                                 <td>#{item.nom}</td>
@@ -75,7 +75,7 @@
                                             <tr>
                                                 <td>Ville :</td>
                                                 <td>#{item.ville}</td>
-                                            </tr></h:form>
+                                            </tr>
                                         <tr>
                                             <td></td>
                                             <td>
@@ -104,7 +104,7 @@
                             <f:selectItems value="#{utilisateurManagedBean.utilisateurProperties}"/>
                         </h:selectOneMenu>  &nbsp;
                         <h:inputText value="#{utilisateurManagedBean.textFilter}"/>&nbsp;
-                        <h:commandButton class="btn btn-primary" value="Filtrer" >
+                        <h:commandButton class="btn btn-primary" value="Filtrer" action="#{utilisateurManagedBean.filtrer()}">
                         </h:commandButton>
                     </h:form>
                 </h:form><p><small>Il y à actuellement #{utilisateurManagedBean.count} utilisateurs.</small></p>
