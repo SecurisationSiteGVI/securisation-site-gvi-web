@@ -42,6 +42,7 @@ public class UtilisateurManagedBean {
     }
 
     public void filtrer() {
+        this.index=0;
         System.out.println("FILTER");
     }
 
