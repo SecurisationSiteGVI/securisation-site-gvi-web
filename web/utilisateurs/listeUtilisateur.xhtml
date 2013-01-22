@@ -6,10 +6,10 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutUtilisateur.xml">        
         <ui:define name="contentUtilisateur">
-            <div class="span5">
-                <h:message id="errorPageutii" showSummary="true"  for="errorPageutili" class="alert alert-error"></h:message>
+            <div class=" ">
+                <!--<h:message id="errorPageutii" showSummary="true"  for="errorPageutili" class="alert alert-error"></h:message>-->
                 <h:form>                  
-                    <h:dataTable  id="tableUtilisateur" value="#{utilisateurManagedBean.utilisateurByRange}" class="table table-striped" var="item">
+                    <h:dataTable  id="tableUtilisateur" value="#{utilisateurManagedBean.utilisateurs}" class="table table-striped" var="item">
 
                         <h:column>
                             <f:facet name="header">
@@ -27,16 +27,13 @@
                             <f:facet name="header">
                                 <h:outputText value="Page #{utilisateurManagedBean.page+1}"/>
                             </f:facet>
-                            <a  data-toggle="modal" href="##{item.hashCode()}" >Plus</a>
-                        </h:column>
-                        <h:column transient="true">
-                            <div class="modal hide fade" id="#{item.hashCode()}">
+                            <a  data-toggle="modal" href="##{item.hashCode()}" >Plus</a> <div class="modal hide fade" id="#{item.hashCode()}">
                                 <div class="modal-header">
                                     <a class="close" data-dismiss="modal">×</a>
                                     <h3>Détails de l'utilisateur.</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-striped ">
+                                    <table class="table table-striped">
                                         <tr>
                                             <td>Nom :</td>
                                             <td>#{item.nom}</td>
@@ -85,26 +82,23 @@
                                 </div>
                             </div>
                         </h:column>
+
                     </h:dataTable>
                     <ul class="pager">
                         <li><h:commandLink value="Précedent" action="#{utilisateurManagedBean.pagePrécédente()}"><f:ajax  render="tableUtilisateur"/></h:commandLink></li>
-                        <li><h:commandLink value="Suivant" action="#{utilisateurManagedBean.pageSuivant()}"><f:ajax   render="tableUtilisateur" /></h:commandLink></li>
-                    </ul> 
-                </h:form><p><small>Il y à actuellement #{utilisateurManagedBean.count} utilisateurs.</small></p>
-
-            </div>
-            <div class="span3">
-                <p>Filtrer par :</p>
-                <h:form>
-                    <h:selectOneMenu >
+                        <li><h:commandLink value="Suivant" action="#{utilisateurManagedBean.pageSuivant()}"><f:ajax render="tableUtilisateur"  /></h:commandLink></li>
+                    </ul>  
+                        <p>Filtrer par :</p>
+                        <h:form>
+                    <h:selectOneMenu value="#{utilisateurManagedBean.choixCB}">
                         <f:selectItems value="#{utilisateurManagedBean.utilisateurProperties}"/>
-                    </h:selectOneMenu>  
-
-                </h:form>
+                    </h:selectOneMenu>  &nbsp;
+                    <h:inputText value="#{utilisateurManagedBean.textFilter}"/>&nbsp;
+                    <h:commandButton class="btn btn-primary" value="Filtrer" >
+                    </h:commandButton>
+                    </h:form>
+                </h:form><p><small>Il y à actuellement #{utilisateurManagedBean.count} utilisateurs.</small></p>
             </div>
-
-
-
         </ui:define>
     </ui:composition>
 </html>
