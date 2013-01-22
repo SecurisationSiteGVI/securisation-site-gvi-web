@@ -35,8 +35,8 @@
                                 <f:convertNumber for="telephonePortable"  pattern="##########"/>  
                             </h:inputText>
                             <h:outputLabel value="Téléphone fixe:" for="telephoneFixe" />
-                            <h:inputText id="phone" value="#{utilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
-                                <f:convertNumber for="phone"  pattern="##########"/>  
+                            <h:inputText id="telephoneFixe" value="#{utilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
+                                <f:convertNumber for="telephoneFixe"  pattern="##########"/>  
                                 <!-- <f:validator validatorId="phoneNumberValidator" />-->
                             </h:inputText>
                             <h:outputText value=" "/>
@@ -48,7 +48,7 @@
                 <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
                 <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
                 <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
-                <h:message id="errorphone" showSummary="true"  for="phone" class="alert alert-error"></h:message>
+                <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message>
             </div>
 
         </ui:define>
