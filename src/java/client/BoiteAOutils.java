@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-
 /**
  *
  * @author damien
@@ -71,5 +70,4 @@ public class BoiteAOutils {
         fc.addMessage(id, fm);
         return fm;
     }
-    
 }

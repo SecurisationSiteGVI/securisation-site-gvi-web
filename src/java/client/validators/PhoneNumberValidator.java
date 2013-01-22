@@ -17,10 +17,11 @@ import javax.faces.validator.ValidatorException;
 /**
  *
  * @author damien
- */@FacesValidator(value="phoneNumberValidator")
-public class PhoneNumberValidator implements Validator{
+ */
+@FacesValidator(value = "phoneNumberValidator")
+public class PhoneNumberValidator implements Validator {
 
-   private static final String PHONE_PATTERN = "^0[0-68]([-. ]?\\d{2}){4}[-. ]?$";
+    private static final String PHONE_PATTERN = "^0[0-68]([-. ]?\\d{2}){4}[-. ]?$";
     private Pattern pattern;
     private Matcher matcher;
 
@@ -33,10 +34,9 @@ public class PhoneNumberValidator implements Validator{
         System.out.println(value);
         matcher = pattern.matcher(value.toString());
         if (!matcher.matches()) {
-            FacesMessage msg =BoiteAOutils.addMessage("Impossible de valider le numéro", " le format n'est pas correct","phone");
+            FacesMessage msg = BoiteAOutils.addMessage("Impossible de valider le numéro", " le format n'est pas correct", "phone");
             throw new ValidatorException(msg);
 
         }
     }
-    
 }

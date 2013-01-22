@@ -23,12 +23,14 @@ import metier.entitys.Technicien;
 @ManagedBean
 @SessionScoped
 public class SessionTechnicien {
+
     private Technicien technicien = new Technicien();
-    private String login=new String();
-    private String password=new String();
+    private String login = new String();
+    private String password = new String();
     private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
+
     public void testDeConnexion() throws IOException {
-       this.technicien= this.utilisateurSrv.verifificationConnexion(this.getLogin(), this.getPassword());
+        this.technicien = this.utilisateurSrv.verifificationConnexion(this.getLogin(), this.getPassword());
         if (this.getTechnicien() == null) {
             BoiteAOutils.addMessage("Votre login ou votre mot de passe est mauveais ", "probléme de connexion", "log");
         } else {
@@ -37,7 +39,8 @@ public class SessionTechnicien {
             FacesContext.getCurrentInstance().getExternalContext().redirect("pageTechnicien.jsf");
         }
     }
-    public void technicienConnected(){
+
+    public void technicienConnected() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Technicien technicien = null;
         if (session.getAttribute("technicien") != null) {
@@ -49,8 +52,9 @@ public class SessionTechnicien {
                 Logger.getLogger(SessionTechnicien.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
+
     public Technicien getTechnicien() {
         return technicien;
     }

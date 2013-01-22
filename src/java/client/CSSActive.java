@@ -19,27 +19,30 @@ public class CSSActive {
     private String active = "active";
     private String url;
     private String pageTechnicien = " ";
-    private String histrorique=" ";
-    private String utilisateur =" ";
+    private String histrorique = " ";
+    private String utilisateur = " ";
     private String listeUtilisateur = " ";
-    private String ajouterUtilisateurs =" ";
+    private String ajouterUtilisateurs = " ";
+
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
         this.url = url.substring(1);
-        if("pageTechnicien.xhtml".equals(url)){
+        if ("pageTechnicien.xhtml".equals(url)) {
             this.pageTechnicien = "active";
-        }if("histrorique.xhtml".equals(url)){
+        }
+        if ("histrorique.xhtml".equals(url)) {
             this.histrorique = "active";
-        }if("utilisateurs/ajouterUtilisateurs.xhtml".equals(url)){
-            this.utilisateur = "active";
-            this.ajouterUtilisateurs="active";
         }
-        if("utilisateurs/listeUtilisateur.xhtml".equals(url)){
+        if ("utilisateurs/ajouterUtilisateurs.xhtml".equals(url)) {
             this.utilisateur = "active";
-            this.listeUtilisateur="active";
+            this.ajouterUtilisateurs = "active";
         }
-       
+        if ("utilisateurs/listeUtilisateur.xhtml".equals(url)) {
+            this.utilisateur = "active";
+            this.listeUtilisateur = "active";
+        }
+
     }
 
     public String getUrl() {

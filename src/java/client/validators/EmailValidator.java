@@ -35,7 +35,7 @@ public class EmailValidator implements Validator {
     public void validate(FacesContext fc, UIComponent uic, Object value) throws ValidatorException {
         matcher = pattern.matcher(value.toString());
         if (!matcher.matches()) {
-            FacesMessage msg =BoiteAOutils.addMessage("Impossible de valider l'email", " le format esf n'est pas correct", "email");
+            FacesMessage msg = BoiteAOutils.addMessage("Impossible de valider l'email", " le format esf n'est pas correct", "email");
             throw new ValidatorException(msg);
 
         }

@@ -88,14 +88,14 @@
                         <li><h:commandLink value="Précedent" action="#{utilisateurManagedBean.pagePrécédente()}"><f:ajax  render="tableUtilisateur"/></h:commandLink></li>
                         <li><h:commandLink value="Suivant" action="#{utilisateurManagedBean.pageSuivant()}"><f:ajax render="tableUtilisateur"  /></h:commandLink></li>
                     </ul>  
-                        <p>Filtrer par :</p>
-                        <h:form>
-                    <h:selectOneMenu value="#{utilisateurManagedBean.choixCB}">
-                        <f:selectItems value="#{utilisateurManagedBean.utilisateurProperties}"/>
-                    </h:selectOneMenu>  &nbsp;
-                    <h:inputText value="#{utilisateurManagedBean.textFilter}"/>&nbsp;
-                    <h:commandButton class="btn btn-primary" value="Filtrer" >
-                    </h:commandButton>
+                    <p>Filtrer par :</p>
+                    <h:form>
+                        <h:selectOneMenu value="#{utilisateurManagedBean.choixCB}">
+                            <f:selectItems value="#{utilisateurManagedBean.utilisateurProperties}"/>
+                        </h:selectOneMenu>  &nbsp;
+                        <h:inputText value="#{utilisateurManagedBean.textFilter}"/>&nbsp;
+                        <h:commandButton class="btn btn-primary" value="Filtrer" >
+                        </h:commandButton>
                     </h:form>
                 </h:form><p><small>Il y à actuellement #{utilisateurManagedBean.count} utilisateurs.</small></p>
             </div>

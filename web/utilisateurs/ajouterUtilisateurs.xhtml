@@ -32,12 +32,12 @@
                             </h:inputText>
                             <h:outputLabel value="Téléphone portable :" for="telephonePortable" />
                             <h:inputText id="telephonePortable" value="#{utilisateurManagedBean.utilisateur.telephonePortable}" title="TelephonePortable" >
-                            <f:convertNumber for="telephonePortable"  pattern="##########"/>  
+                                <f:convertNumber for="telephonePortable"  pattern="##########"/>  
                             </h:inputText>
                             <h:outputLabel value="Téléphone fixe:" for="telephoneFixe" />
                             <h:inputText id="phone" value="#{utilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
                                 <f:convertNumber for="phone"  pattern="##########"/>  
-                               <!-- <f:validator validatorId="phoneNumberValidator" />-->
+                                <!-- <f:validator validatorId="phoneNumberValidator" />-->
                             </h:inputText>
                             <h:outputText value=" "/>
                             <h:commandButton value="Crée" action="#{utilisateurManagedBean.addUtilisateur()}" class="btn btn-primary"/>
