@@ -128,8 +128,6 @@ public class UtilisateurManagedBean {
             this.utilisateur = null;
             this.utilisateurs = this.utilisateurSrv.getByEmail(textFilter, index, nbLinge);
         }
-        System.out.print("choixCB " + choixCB);
-        System.out.print("Text filter " + textFilter);
         return utilisateurs;
 
     }
