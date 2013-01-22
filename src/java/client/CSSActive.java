@@ -27,7 +27,6 @@ public class CSSActive {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
         this.url = url.substring(1);
-        System.out.println(this.url);
         if("pageTechnicien.xhtml".equals(url)){
             this.pageTechnicien = "active";
         }if("histrorique.xhtml".equals(url)){
