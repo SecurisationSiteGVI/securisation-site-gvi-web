@@ -126,7 +126,7 @@ public class UtilisateurManagedBean {
         } else if (this.choixCB.equals("Prénom")) {
             this.utilisateur = null;
             this.utilisateurs = this.utilisateurSrv.getByPrenom(textFilter, index, nbLinge);
-        } else if (this.choixCB.equals("Ville")) {//
+        } else if (this.choixCB.equals("Ville")) {
             this.utilisateur = null;
             this.utilisateurs = this.utilisateurSrv.getByVille(textFilter, index, nbLinge);
         } else if (this.choixCB.equals("Code postale")) {
