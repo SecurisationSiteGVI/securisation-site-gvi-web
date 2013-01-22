@@ -26,21 +26,27 @@ public class UtilisateurManagedBean {
     private int index;
     private int nbLinge = 10;
     private List<Utilisateur> utilisateurs = null;
-
+    private String choixCB;
+    private String textFilter ;
+    
+    public void filtrer(){
+        System.out.println("FILTER");
+    }
     public UtilisateurManagedBean() {
         this.addIntoUtilisateurPropertiers();
         this.index = 0;
         this.utilisateurs = this.utilisateurSrv.getAllByRange(0, nbLinge);
+        this.choixCB=" ";
     }
 
     private void addIntoUtilisateurPropertiers() {
+        getUtilisateurProperties().add(" ");
         getUtilisateurProperties().add("Nom");
         getUtilisateurProperties().add("Prénom");
         getUtilisateurProperties().add("Ville");
         getUtilisateurProperties().add("Code postale");
         getUtilisateurProperties().add("Adresse");
-        getUtilisateurProperties().add("homme");
-        getUtilisateurProperties().add("email");
+        getUtilisateurProperties().add("Email");
     }
 
     public void addUtilisateur() {
@@ -75,7 +81,6 @@ public class UtilisateurManagedBean {
 
     public void pageSuivant() {
         this.index = this.index + nbLinge;
-
     }
 
     public void pagePrécédente() {
@@ -99,6 +104,34 @@ public class UtilisateurManagedBean {
     }
 
     public List<Utilisateur> getUtilisateurs() {
+        if(this.choixCB.equals(" ")){
+            
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getAllByRange(index, nbLinge);
+        }else if(this.choixCB.equals("Nom")){
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByNom(textFilter, index, nbLinge);
+        }
+        else if(this.choixCB.equals("Prénom")){
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByPrenom(textFilter, index, nbLinge);
+        }
+        else if(this.choixCB.equals("Ville")){//
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByVille(textFilter, index, nbLinge);
+        }else if(this.choixCB.equals("Code postale")){
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByCodePostale(Integer.parseInt(textFilter), index, nbLinge);
+        }
+        else if(this.choixCB.equals("Adresse")){
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByAdresse(textFilter, index, nbLinge);
+        }else if(this.choixCB.equals("Email")){
+            this.utilisateur=null;
+            this.utilisateurs = this.utilisateurSrv.getByEmail(textFilter, index, nbLinge);
+        }
+        System.out.print("choixCB "+choixCB);
+        System.out.print("Text filter "+textFilter);
         return utilisateurs;
 
     }
@@ -129,5 +162,21 @@ public class UtilisateurManagedBean {
 
     public void setUtilisateurs(List<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
+    }
+
+    public String getTextFilter() {
+        return textFilter;
+    }
+
+    public void setTextFilter(String textFilter) {
+        this.textFilter = textFilter;
+    }
+
+    public String getChoixCB() {
+        return choixCB;
+    }
+
+    public void setChoixCB(String choixCB) {
+        this.choixCB = choixCB;
     }
 }
