@@ -49,6 +49,10 @@ public class CSSActive {
             this.listeBadges = "active";
             this.gererBadges = "active";
         }
+        if ("badge/ajouterBadge.xhtml".equals(url)) {
+            this.listeBadges = "active";
+            this.ajouterBadge = "active";
+        }
 
     }
 
