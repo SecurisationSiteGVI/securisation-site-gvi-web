@@ -25,37 +25,37 @@ public class LinksPath {
         return error;
     }
 
-    public String getCssStyle() {
+    public static String getCssStyle() {
         String style = LinksPath.path + "/style.css";
         return style;
     }
 
-    public String getCssStyle1() {
+    public static String getCssStyle1() {
         String style = LinksPath.path + "/style1.css";
         return style;
     }
 
-    public String getCssStylebMin() {
+    public static String getCssStylebMin() {
         String style = LinksPath.path + "/styleb-min.css";
         return style;
     }
 
-    public String getCssStyle1Min() {
+    public static String getCssStyle1Min() {
         String style = LinksPath.path + "/style1-min.css";
         return style;
     }
 
-    public String getCssStyleb() {
+    public static String getCssStyleb() {
         String style = LinksPath.path + "/styleb.css";
         return style;
     }
 
-    public String getCssDocs() {
+    public static String getCssDocs() {
         String style = LinksPath.path + "/docs.css";
         return style;
     }
 
-    public String getPathLink() {
+    public static String getPathLink() {
         return pathLink;
     }
 }
