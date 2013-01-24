@@ -23,7 +23,10 @@ public class CSSActive {
     private String utilisateur = " ";
     private String listeUtilisateur = " ";
     private String ajouterUtilisateurs = " ";
-
+    private String gererBadges=" ";
+    private String listeBadges =" ";
+    private String ajouterBadge = " ";
+    
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -41,6 +44,10 @@ public class CSSActive {
         if ("utilisateurs/listeUtilisateur.xhtml".equals(url)) {
             this.utilisateur = "active";
             this.listeUtilisateur = "active";
+        }
+        if ("badge/listeBadges.xhtml".equals(url)) {
+            this.listeBadges = "active";
+            this.gererBadges = "active";
         }
 
     }
@@ -91,5 +98,37 @@ public class CSSActive {
 
     public void setAjouterUtilisateurs(String ajouterUtilisateurs) {
         this.ajouterUtilisateurs = ajouterUtilisateurs;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public String getGererBadges() {
+        return gererBadges;
+    }
+
+    public void setGererBadges(String gererBadges) {
+        this.gererBadges = gererBadges;
+    }
+
+    public String getListeBadges() {
+        return listeBadges;
+    }
+
+    public void setListeBadges(String listeBadges) {
+        this.listeBadges = listeBadges;
+    }
+
+    public String getAjouterBadge() {
+        return ajouterBadge;
+    }
+
+    public void setAjouterBadge(String ajouterBadge) {
+        this.ajouterBadge = ajouterBadge;
     }
 }
