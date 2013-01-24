@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="../layout.xml">       
+        <ui:define name="title">
+            Gerer les badges
+        </ui:define>
+        <ui:define name="content">
+            <ul class="nav nav-tabs">
+                <li class=" ">
+                    <a href="#{linkPath.pathLink}/badge/listeBadges.jsf">Liste des badges</a>
+                </li>
+                <li class=" ">
+                    <a href="#">Ajouter un badge</a>
+                </li><br/>
+
+            </ul><br/>
+
+            <ui:insert name="contentBadge"> Default content</ui:insert>
+        </ui:define>
+    </ui:composition>
+</html>
