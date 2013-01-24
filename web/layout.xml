@@ -34,7 +34,7 @@
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="#{cSSActive.histrorique}"> <a href="#{linkPath.pathLink}/histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
-                        <li><a href="#"><i class="icon-chevron-right"></i> Gérer les badges</a></li>
+                        <li class="#{cSSActive.gererBadges}"><a href="#{linkPath.pathLink}/badge/listeBadges.jsf"><i class="icon-chevron-right"></i> Gérer les badges</a></li>
                         <li class="#{cSSActive.utilisateur}"><a href="#{linkPath.pathLink}/utilisateurs/listeUtilisateur.jsf"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
                     </ul>
                 </div>
