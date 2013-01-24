@@ -6,13 +6,20 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutBadge.xml">        
         <ui:define name="contentBadge">
-            <div class="span4">
-
+            <div class="span3">
+            <f:view>
+                <h:form>
+                    <h:dataTable value="#{listBadgesManagedBean.badges}" class="table tab-hover" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Numero"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </f:view>
             </div>
-            <div class="span4">
-
-            </div>
-
         </ui:define>
     </ui:composition>
 </html>
