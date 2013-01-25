@@ -10,30 +10,58 @@
                 <f:view>
                     <h:form>
                         <h3><h:outputText value="Badge pas attribué"/></h3>
-                        <h:dataTable value="#{attributionBadgeManagedBean.badges}" var="item">
+                        <h:dataTable value="#{attributionBadgeManagedBean.badges}" class="table table-striped" var="item">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Numero"/>
                                 </f:facet>
                                 <h:outputText value="#{item.numero}"/>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Séléctionner"  >
+                                <f:setPropertyActionListener value="#{item}" target="#{attributionBadgeManagedBean.badgeSelectionne}"/>
+                            </h:commandLink>
+                            </h:column>
+                            
                         </h:dataTable>
                     </h:form>
                 </f:view>
             </div>
-            <div class="span2">
+            <div class="span3">
                 <f:view>
                     <h:form>
                         <h3><h:outputText value="Utilisateur sans badge"/></h3>
-                        <h:dataTable value="#{attributionBadgeManagedBean.utilisateurs}" var="item">
+                        <h:dataTable id="attributionUtilisateur" class="table table-striped" value="#{attributionBadgeManagedBean.utilisateurs}" var="item">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
                                 <h:outputText value="#{item.toString()}"/>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="page #{attributionBadgeManagedBean.page+1}"/>
+                                </f:facet>
+                                <h:commandLink value="Séléctionner"  >
+                                    <f:setPropertyActionListener value="#{item}" target="#{attributionBadgeManagedBean.utilisateurSelectionne}"/>
+                            </h:commandLink>
+                            </h:column>
                         </h:dataTable>
+                        <ul class="pager">
+                        <li><h:commandLink value="Précedent" action="#{attributionBadgeManagedBean.pagePrécédente()}"><f:ajax  render="attributionUtilisateur"/></h:commandLink></li>
+                        <li><h:commandLink value="Suivant" action="#{attributionBadgeManagedBean.pageSuivant()}"><f:ajax render="attributionUtilisateur"  /></h:commandLink></li>
+                    </ul>
+                        
                     </h:form>
+                    <h:form>
+                        <p>Filtrer par nom :</p><br/>
+                        <h:inputText value="#{attributionBadgeManagedBean.textFilter}"/>
+                        <h:commandButton value="Filtrer" action="#{attributionBadgeManagedBean.filtrer()}"></h:commandButton>
+                    </h:form>  
+                      
                 </f:view>
             </div>
             

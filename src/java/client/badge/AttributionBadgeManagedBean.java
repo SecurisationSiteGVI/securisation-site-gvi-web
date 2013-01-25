@@ -4,7 +4,9 @@
  */
 package client.badge;
 
+import client.BoiteAOutils;
 import java.util.List;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import metier.AttributionUtilisateurBadgeService;
@@ -18,7 +20,7 @@ import metier.entitys.Utilisateur;
  * @author damien
  */
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public class AttributionBadgeManagedBean {
 
     private AttributionUtilisateurBadge attributionUtilisateurBadge = new AttributionUtilisateurBadge();
@@ -27,11 +29,20 @@ public class AttributionBadgeManagedBean {
     private List<Utilisateur> utilisateurs;
     private int indexBadge;
     private int indexUtilisateur;
-    private int nbResult=10;
+    private int nbResult = 10;
+    private Badge badgeSelectionne;
+    private String textFilter =new String();
+    private Utilisateur utilisateurSelectionne;
+
+    public void filtrer() {
+        this.indexUtilisateur = 0;
+
+    }
+
     public AttributionBadgeManagedBean() {
-        this.indexBadge=0;
+        this.indexBadge = 0;
         this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(this.indexBadge, this.nbResult);
-        this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(this.indexUtilisateur, this.nbResult);
+
     }
 
     public AttributionUtilisateurBadge getAttributionUtilisateurBadge() {
@@ -46,12 +57,42 @@ public class AttributionBadgeManagedBean {
         return badges;
     }
 
+    public void pagePrécédente() {
+        if (this.indexUtilisateur <= nbResult - 1) {
+            BoiteAOutils.addMessage("Impossible d'éffectuer", "Vous éte déjà sur la premiere page", "errorPageutili");
+        } else {
+            this.indexUtilisateur = this.indexUtilisateur - nbResult;
+        }
+    }
+
+    public void pageSuivant() {
+        this.indexUtilisateur = this.indexUtilisateur + nbResult;
+    }
+
+    public void selectionBadge() {
+    }
+
+    public void selectionUtilisateur() {
+    }
+
     public void setBadges(List<Badge> badges) {
         this.badges = badges;
     }
 
     public List<Utilisateur> getUtilisateurs() {
+        if (this.textFilter.length()>=1) {
+             this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(this.textFilter, this.indexUtilisateur, this.nbResult);
+        } else {
+           this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(this.indexUtilisateur, this.nbResult);
+        }
+
         return utilisateurs;
+    }
+
+    public int getPage() {
+        int page = indexUtilisateur / nbResult;
+        return page;
+
     }
 
     public void setUtilisateurs(List<Utilisateur> utilisateurs) {
@@ -82,5 +123,27 @@ public class AttributionBadgeManagedBean {
         this.nbResult = nbResult;
     }
 
-    
+    public Badge getBadgeSelectionne() {
+        return badgeSelectionne;
+    }
+
+    public void setBadgeSelectionne(Badge badgeSelectionne) {
+        this.badgeSelectionne = badgeSelectionne;
+    }
+
+    public Utilisateur getUtilisateurSelectionne() {
+        return utilisateurSelectionne;
+    }
+
+    public void setUtilisateurSelectionne(Utilisateur utilisateurSelectionne) {
+        this.utilisateurSelectionne = utilisateurSelectionne;
+    }
+
+    public String getTextFilter() {
+        return textFilter;
+    }
+
+    public void setTextFilter(String textFilter) {
+        this.textFilter = textFilter;
+    }
 }

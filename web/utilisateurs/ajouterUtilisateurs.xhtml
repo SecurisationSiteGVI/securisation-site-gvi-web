@@ -58,8 +58,10 @@
                             <h:inputText value="#{addUtilisateurManagedBean.password}"/>
                             <h:outputText value="confirmation :"/>
                             <h:inputText value="#{addUtilisateurManagedBean.password2}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton value="Ajouter technicien" action="#{addUtilisateurManagedBean.addTechnicien()}" class="btn btn-primary"/>
                         </h:panelGrid>
-                        <h:commandButton value="Ajouter technicien" action="#{addUtilisateurManagedBean.addTechnicien()}" class="btn btn-primary"/>
+                        
                     </div>
                 </h:form>
             </f:view>
