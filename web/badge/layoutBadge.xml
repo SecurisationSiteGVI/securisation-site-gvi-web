@@ -13,7 +13,11 @@
                 </li>
                 <li class="#{cSSActive.ajouterBadge}">
                     <a href="#{linkPath.pathLink}/badge/ajouterBadge.jsf">Ajouter un badge</a>
-                </li><br/>
+                </li>
+                <li class="#{cSSActive.atributionBadge}">
+                    <a href="#{linkPath.pathLink}/badge/attributionBadge.jsf">Attribution badge</a>
+                </li>
+                <br/>
 
             </ul><br/>
 
