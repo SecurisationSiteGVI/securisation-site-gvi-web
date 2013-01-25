@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import metier.MetierFactory;
 import metier.UtilisateurService;
+import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
@@ -30,19 +31,20 @@ public class UtilisateurManagedBean {
     private String choixCB;
     private String textFilter;
     private Utilisateur idUtilisateur;
-
+    private Utilisateur utilisateurUpdate;
+    
     public void removeUtilisateur() {
         if (getIdUtilisateur() != null) {
-            
+
             this.utilisateurSrv.remove(getIdUtilisateur());
-        }else{
+        } else {
             BoiteAOutils.addMessage("Erreur", " impossible de recuperer l'id ");
         }
 
     }
 
     public void filtrer() {
-        this.index=0;
+        this.index = 0;
         System.out.println("FILTER");
     }
 
@@ -148,6 +150,11 @@ public class UtilisateurManagedBean {
         return utilisateurProperties;
     }
 
+    public void updateUtilisateur() {
+        System.out.println(utilisateurUpdate);
+        this.utilisateurSrv.update(utilisateurUpdate);
+    }
+
     public void setUtilisateurProperties(List<String> utilisateurProperties) {
         this.utilisateurProperties = utilisateurProperties;
     }
@@ -196,5 +203,11 @@ public class UtilisateurManagedBean {
         this.idUtilisateur = idUtilisateur;
     }
 
-    
+    public Utilisateur getUtilisateurUpdate() {
+        return utilisateurUpdate;
+    }
+
+    public void setUtilisateurUpdate(Utilisateur utilisateurUpdate) {
+        this.utilisateurUpdate = utilisateurUpdate;
+    }
 }
