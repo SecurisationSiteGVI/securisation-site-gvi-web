@@ -53,7 +53,7 @@ public class CSSActive {
             this.gererBadges = "active";
             this.ajouterBadge = "active";
         }//
-        if ("badge/atributionBadge.xhtml".equals(url)) {
+        if ("badge/attributionBadge.xhtml".equals(url)) {
             this.gererBadges = "active";
             this.atributionBadge = "active";
         }

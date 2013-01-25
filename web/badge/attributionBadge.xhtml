@@ -6,20 +6,37 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutBadge.xml">        
         <ui:define name="contentBadge">
-            <div class="span4">
+            <div class="span2">
                 <f:view>
                     <h:form>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Numéro :" for="numero" />
-                          
-                            <h:inputText id="numero" value="#{addBadgeManagedBean.badge.numero}" title="Numero" required="true" requiredMessage="Le numéro est requis"/>
-                            <h:outputText value=" "></h:outputText>
-                            <h:commandButton value="Crée" class="btn btn-primary" action="#{addBadgeManagedBean.addBadge()}"/>
-                        </h:panelGrid>
-                        
+                        <h3><h:outputText value="Badge pas attribué"/></h3>
+                        <h:dataTable value="#{attributionBadgeManagedBean.badges}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Numero"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numero}"/>
+                            </h:column>
+                        </h:dataTable>
                     </h:form>
                 </f:view>
             </div>
+            <div class="span2">
+                <f:view>
+                    <h:form>
+                        <h3><h:outputText value="Utilisateur sans badge"/></h3>
+                        <h:dataTable value="#{attributionBadgeManagedBean.utilisateurs}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </div>
+            
             <div class="span4">
                 <h:message id="succesAddBadge" showSummary="true"  for="succesAddBadge" class="alert alert-success"></h:message>
                 <h:message id="errorAddBadge" showSummary="true"  for="errorAddBadge" class="alert alert-success"></h:message>
