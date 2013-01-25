@@ -22,10 +22,19 @@
             <div class="navbar-inner">
                 <div class="container">
                     <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="#{cSSActive.pageTechnicien}"><a href="#{linkPath.pathLink}/pageTechnicien.jsf">Page de démarrage</a></li>
-                        </ul>
+                        
+                        <ul class="nav pull-right" >
+                            <li >
+                                    <a>Connecté en tant que ${sessionTechnicien.technicienToString}</a>
+                            </li>
+                            <li >
+                                <h:form>
+                                    <h:commandLink value="Déconnexion" class="navbar-text pull-right" action="#{sessionTechnicien.disconnect}"/>
+                                </h:form>
+                            </li>
+                       </ul>
                     </div>
+                    
                 </div>
             </div>
         </div><br/><br/>
