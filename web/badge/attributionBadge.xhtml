@@ -21,7 +21,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#"/>
                                 </f:facet>
-                                <h:commandLink value="Séléctionner"  >
+                                <h:commandLink value="Séléctionner" action="#{attributionBadgeManagedBean.selectionBadge()}" >
                                 <f:setPropertyActionListener value="#{item}" target="#{attributionBadgeManagedBean.badgeSelectionne}"/>
                             </h:commandLink>
                             </h:column>
@@ -45,7 +45,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="page #{attributionBadgeManagedBean.page+1}"/>
                                 </f:facet>
-                                <h:commandLink value="Séléctionner"  >
+                                <h:commandLink value="Séléctionner" action="#{attributionBadgeManagedBean.selectionUtilisateur()}" >
                                     <f:setPropertyActionListener value="#{item}" target="#{attributionBadgeManagedBean.utilisateurSelectionne}"/>
                             </h:commandLink>
                             </h:column>
@@ -66,8 +66,27 @@
             </div>
             
             <div class="span4">
+                
+                
                 <h:message id="succesAddBadge" showSummary="true"  for="succesAddBadge" class="alert alert-success"></h:message>
                 <h:message id="errorAddBadge" showSummary="true"  for="errorAddBadge" class="alert alert-success"></h:message>
+                
+                <f:view>
+                    <h:form>
+                        <h3><h:outputText value="Votre séléction"/></h3>
+                        <h:dataTable id="attributionUtilisateur" class="table table-striped" value="#{attributionBadgeManagedBean.selection}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                            
+                        </h:dataTable>
+                        <h:commandButton value="Attribuer badge" class="btn btn-primary" action="#{attributionBadgeManagedBean.attribuer()}"/>
+                    </h:form>
+                    
+                </f:view>
             </div>
         </ui:define>
     </ui:composition>

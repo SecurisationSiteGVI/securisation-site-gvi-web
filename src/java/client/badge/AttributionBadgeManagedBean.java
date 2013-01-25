@@ -5,7 +5,10 @@
 package client.badge;
 
 import client.BoiteAOutils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -31,8 +34,9 @@ public class AttributionBadgeManagedBean {
     private int indexUtilisateur;
     private int nbResult = 10;
     private Badge badgeSelectionne;
-    private String textFilter =new String();
+    private String textFilter = new String();
     private Utilisateur utilisateurSelectionne;
+    private List<Object> selection= new ArrayList<Object>();
 
     public void filtrer() {
         this.indexUtilisateur = 0;
@@ -42,7 +46,7 @@ public class AttributionBadgeManagedBean {
     public AttributionBadgeManagedBean() {
         this.indexBadge = 0;
         this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(this.indexBadge, this.nbResult);
-
+        
     }
 
     public AttributionUtilisateurBadge getAttributionUtilisateurBadge() {
@@ -70,9 +74,58 @@ public class AttributionBadgeManagedBean {
     }
 
     public void selectionBadge() {
+        boolean trouve = false;
+        int pos= 0;
+        for(int i= 0 ; i<selection.size() ; i++){
+            if(selection.get(i) instanceof Badge){
+                trouve=true;
+                pos = i;
+            }
+        }if(trouve == true){
+            this.selection.remove(pos);
+            this.selection.add(pos, this.badgeSelectionne);
+        }else{
+           this.selection.add(this.badgeSelectionne); 
+        }
+    }
+    public void attribuer(){
+        Utilisateur utilisateur=null;
+        Badge badge=null;
+        for(int i =0 ; i <this.selection.size();i++){
+            if (this.selection.get(i) instanceof Badge){
+               badge = (Badge) this.selection.get(i);
+            }else if(this.selection.get(i) instanceof Utilisateur){
+                utilisateur = (Utilisateur) this.selection.get(i);
+            }
+        }
+        if(utilisateur!= null){
+            if(badge!=null){
+                AttributionUtilisateurBadge b = new AttributionUtilisateurBadge();
+                b.setBadge(badge);
+                b.setUtilisateur(utilisateur);
+                try {
+                    this.attributionUtilisateurBadgeSrv.add(b);
+                } catch (Exception ex) {
+                    Logger.getLogger(AttributionBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     public void selectionUtilisateur() {
+        boolean trouve = false;
+        int pos= 0;
+        for(int i= 0 ; i<selection.size() ; i++){
+            if(selection.get(i) instanceof Utilisateur){
+                trouve=true;
+                pos = i;
+            }
+        }if(trouve == true){
+            this.selection.remove(pos);
+            this.selection.add(pos, this.utilisateurSelectionne);
+        }else{
+           this.selection.add(this.utilisateurSelectionne); 
+        }
     }
 
     public void setBadges(List<Badge> badges) {
@@ -80,10 +133,10 @@ public class AttributionBadgeManagedBean {
     }
 
     public List<Utilisateur> getUtilisateurs() {
-        if (this.textFilter.length()>=1) {
-             this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(this.textFilter, this.indexUtilisateur, this.nbResult);
+        if (this.textFilter.length() >= 1) {
+            this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(this.textFilter, this.indexUtilisateur, this.nbResult);
         } else {
-           this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(this.indexUtilisateur, this.nbResult);
+            this.utilisateurs = this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(this.indexUtilisateur, this.nbResult);
         }
 
         return utilisateurs;
@@ -145,5 +198,13 @@ public class AttributionBadgeManagedBean {
 
     public void setTextFilter(String textFilter) {
         this.textFilter = textFilter;
+    }
+
+    public List<Object> getSelection() {
+        return selection;
+    }
+
+    public void setSelection(List<Object> selection) {
+        this.selection = selection;
     }
 }

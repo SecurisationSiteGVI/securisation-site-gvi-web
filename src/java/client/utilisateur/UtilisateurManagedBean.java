@@ -2,13 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package client.utilisateur;
 
+import client.BoiteAOutils;
+import client.LinksPath;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import metier.MetierFactory;
 import metier.UtilisateurService;
 import metier.entitys.Technicien;
@@ -32,7 +39,7 @@ public class UtilisateurManagedBean {
     private String textFilter;
     private Utilisateur idUtilisateur;
     private Utilisateur utilisateurUpdate;
-    
+
     public void removeUtilisateur() {
         if (getIdUtilisateur() != null) {
 
@@ -153,6 +160,17 @@ public class UtilisateurManagedBean {
     public void updateUtilisateur() {
         System.out.println(utilisateurUpdate);
         this.utilisateurSrv.update(utilisateurUpdate);
+    }
+
+    public void modifier() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        session.setAttribute("modification", this.utilisateurUpdate);
+//        try {
+//          
+//        //FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getPathLinkStatic()+"/utilisateur/modifUtilisateur.jsf");
+//        } catch (IOException ex) {
+//            Logger.getLogger(UtilisateurManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void setUtilisateurProperties(List<String> utilisateurProperties) {

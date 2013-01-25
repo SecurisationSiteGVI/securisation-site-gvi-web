@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutUtilisateur.xml">        
+        <ui:define name="contentUtilisateur">
+          
+            <f:view>
+                <h:form> <div class="span4">
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Nom :" for="nom" />
+                            <h:inputText id="nom"  value="#{modificationUtilisateurManagedBean.utilisateur.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+                            <h:outputLabel value="Prenom :" for="prenom" />
+                            <h:inputText id="prenom" value="#{modificationUtilisateurManagedBean.utilisateur.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
+                            <h:outputLabel value="Sexe :" for="sexe" />
+                            <h:selectOneRadio value="#{modificationUtilisateurManagedBean.utilisateur.homme}">
+                                <f:selectItem itemValue="true" itemLabel="Homme" />
+                                <f:selectItem itemValue="false" itemLabel="Femme" />
+                            </h:selectOneRadio>
+                            <h:outputLabel value="Ville :" for="ville" />
+                            <h:inputText id="ville" value="#{modificationUtilisateurManagedBean.utilisateur.ville}" title="Ville" />
+                            <h:outputLabel value="Code postale :" for="codePostale" />
+                            <h:inputText id="codePostale" value="#{modificationUtilisateurManagedBean.utilisateur.codePostale}" title="CodePostale" />
+                            <h:outputLabel value="Adresse :" for="adresse" />
+                            <h:inputText id="adresse" value="#{modificationUtilisateurManagedBean.utilisateur.adresse}" title="Adresse" />
+                            <h:outputLabel value="Date de naissance :" for="dateDeNaissance" />
+                            <h:inputText id="dateDeNaissance" value="#{modificationUtilisateurManagedBean.utilisateur.dateDeNaissance}" title="DateDeNaissance" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="Email :" for="email" />
+                            <h:inputText id="email" value="#{modificationUtilisateurManagedBean.utilisateur.email}" title="Email" >
+                                <f:validator validatorId="emailValidator" />
+                            </h:inputText>
+                            <h:outputLabel value="Téléphone portable :" for="telephonePortable" />
+                            <h:inputText id="telephonePortable" value="#{modificationUtilisateurManagedBean.utilisateur.telephonePortable}" title="TelephonePortable" >
+                                <f:convertNumber for="telephonePortable"  pattern="##########"/>  
+                            </h:inputText>
+                            <h:outputLabel value="Téléphone fixe:" for="telephoneFixe" />
+                            <h:inputText id="telephoneFixe" value="#{modificationUtilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
+                                <f:convertNumber for="telephoneFixe"  pattern="##########"/>  
+                                <!-- <f:validator validatorId="phoneNumberValidator" />-->
+                            </h:inputText>
+                            <h:outputText value=" "/>
+                            <h:commandButton value="Modifier"  class="btn btn-primary"/>
+                        </h:panelGrid>
+                    </div>
+                    <div class="span4">
+                        <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
+                        <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
+                        <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
+                        <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message>
+                        
+                        
+                    </div>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>

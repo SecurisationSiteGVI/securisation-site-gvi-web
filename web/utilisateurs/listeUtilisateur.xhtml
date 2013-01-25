@@ -86,6 +86,16 @@
                                                 </h:commandButton>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <h:commandButton value="Modifier l'utilisateur" class="btn btn-warning" action="#{utilisateurManagedBean.modifier()}">
+                                                    <f:setPropertyActionListener value="#{item}" target="#{utilisateurManagedBean.utilisateurUpdate}"/>
+                                                </h:commandButton>
+                                            </td>
+                                        </tr>
                                     </table>
 
                                 </div>
