@@ -28,6 +28,7 @@ public class SessionTechnicien {
     private String login = new String();
     private String password = new String();
     private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
+    private String technicienToString;
 
     public void testDeConnexion() throws IOException {
         this.technicien = this.utilisateurSrv.verifificationConnexion(this.getLogin(), this.getPassword());
@@ -36,7 +37,7 @@ public class SessionTechnicien {
         } else {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             session.setAttribute("technicien", this.getTechnicien());
-            FacesContext.getCurrentInstance().getExternalContext().redirect("pageTechnicien.jsf");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("histrorique.jsf");
         }
     }
 
@@ -44,7 +45,7 @@ public class SessionTechnicien {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Technicien technicien = null;
         if (session.getAttribute("technicien") != null) {
-            technicien = (Technicien) session.getAttribute("personne");
+            technicien = (Technicien) session.getAttribute("technicien");
         } else {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getTechnicienNonConnecte());
@@ -59,12 +60,30 @@ public class SessionTechnicien {
         return technicien;
     }
 
+    public String getTechnicienToString() {
+
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        Technicien technicien = null;
+        if (session.getAttribute("technicien") != null) {
+            technicien = (Technicien) session.getAttribute("technicien");
+            technicienToString = technicien.toString();
+        }
+        return technicienToString;
+    }
+
     public void setTechnicien(Technicien technicien) {
         this.technicien = technicien;
     }
 
+    public String disconnect() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        Technicien personne = (Technicien) session.getAttribute("technicien");
+        session.setAttribute("technicien", null);
+        return "index.jsf";
+    }
+
     public String getLogin() {
-        this.login="damienChes";
+        this.login = "damienChes";
         return login;
     }
 
