@@ -162,15 +162,10 @@ public class UtilisateurManagedBean {
         this.utilisateurSrv.update(utilisateurUpdate);
     }
 
-    public void modifier() {
+    public String modifier() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
         session.setAttribute("modification", this.utilisateurUpdate);
-//        try {
-//          
-//        //FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getPathLinkStatic()+"/utilisateur/modifUtilisateur.jsf");
-//        } catch (IOException ex) {
-//            Logger.getLogger(UtilisateurManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        return "modifUtilisateur.jsf";
     }
 
     public void setUtilisateurProperties(List<String> utilisateurProperties) {

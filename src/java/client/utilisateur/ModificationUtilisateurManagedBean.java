@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import metier.MetierFactory;
+import metier.UtilisateurService;
 import metier.entitys.Utilisateur;
 
 /**
@@ -20,6 +22,7 @@ import metier.entitys.Utilisateur;
 public class ModificationUtilisateurManagedBean {
 
     private Utilisateur utilisateur=new Utilisateur();
+    private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
     public ModificationUtilisateurManagedBean() {
         
     }
@@ -37,5 +40,9 @@ public class ModificationUtilisateurManagedBean {
 
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
+    }
+    public void updateUtilisateur(){
+        this.utilisateurSrv.update(utilisateur);
+        
     }
 }
