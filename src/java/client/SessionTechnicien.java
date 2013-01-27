@@ -79,7 +79,7 @@ public class SessionTechnicien {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Technicien personne = (Technicien) session.getAttribute("technicien");
         session.setAttribute("technicien", null);
-        return "index.jsf";
+        return "./index.jsf";
     }
 
     public String getLogin() {
