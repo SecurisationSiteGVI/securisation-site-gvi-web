@@ -41,10 +41,9 @@
                             <h:outputLabel value="Téléphone fixe:" for="telephoneFixe" />
                             <h:inputText id="telephoneFixe" value="#{modificationUtilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
                                 <f:convertNumber for="telephoneFixe"  pattern="##########"/>  
-                                <!-- <f:validator validatorId="phoneNumberValidator" />-->
                             </h:inputText>
                             <h:outputText value=" "/>
-                            <h:commandButton value="Modifier"  class="btn btn-primary"/>
+                            <h:commandButton value="Modifier" action="#{modificationUtilisateurManagedBean.updateUtilisateur()}" class="btn btn-primary"/>
                         </h:panelGrid>
                     </div>
                     <div class="span4">
