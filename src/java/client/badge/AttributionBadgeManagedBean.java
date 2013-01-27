@@ -87,7 +87,8 @@ public class AttributionBadgeManagedBean {
         }else{
            this.selection.add(this.badgeSelectionne); 
         }
-    }
+    }//errorAddBadge
+    //succesAddBadge
     public void attribuer(){
         Utilisateur utilisateur=null;
         Badge badge=null;
@@ -105,10 +106,18 @@ public class AttributionBadgeManagedBean {
                 b.setUtilisateur(utilisateur);
                 try {
                     this.attributionUtilisateurBadgeSrv.add(b);
+                    this.selection.remove(badge);
+                    this.selection.remove(utilisateur);
+                    BoiteAOutils.addMessage("Succes", "Le badge à bien été atribué", "succesAddBadge");
                 } catch (Exception ex) {
+                    BoiteAOutils.addMessage("Erreur", "Impossible d'attribuer le badge", "errorAddBadge");
                     Logger.getLogger(AttributionBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }else{
+                BoiteAOutils.addMessage("Erreur", "Impossible de trouvé l'objet badge", "errorAddBadge");
             }
+        }else{
+            BoiteAOutils.addMessage("Erreur", "Impossible de trouvé l'objet utilisateur", "errorAddBadge");
         }
     }
 
