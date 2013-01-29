@@ -37,6 +37,7 @@ public class CSSActive {
     private String gererCamera=" ";
     private String gererDetecteurIntrusion =" ";
     private String gererPosition=" ";
+    private String visionageCamera=" ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -93,6 +94,10 @@ public class CSSActive {
         if ("appareils/gererPosition.xhtml".equals(url)) {
             this.gererAppareil = "active";
             this.gererPosition = "active";
+        }
+         if ("video/visionageCamera.xhtml".equals(url)) {
+            this.video = "active";
+            this.visionageCamera = "active";
         }
     }
 
@@ -264,5 +269,19 @@ public class CSSActive {
 
     public void setGererPosition(String gererPosition) {
         this.gererPosition = gererPosition;
+    }
+
+    /**
+     * @return the visionageCamera
+     */
+    public String getVisionageCamera() {
+        return visionageCamera;
+    }
+
+    /**
+     * @param visionageCamera the visionageCamera to set
+     */
+    public void setVisionageCamera(String visionageCamera) {
+        this.visionageCamera = visionageCamera;
     }
 }
