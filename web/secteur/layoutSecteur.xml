@@ -8,6 +8,9 @@
         </ui:define>
         <ui:define name="content">
             <ul class="nav nav-tabs">
+                <li class="#{cSSActive.listSecteur}">
+                    <a href="#{linkPath.pathLink}/secteur/listSecteurs.jsf">Liste des secteurs</a>
+                </li>
                 <li class="#{cSSActive.ajouterSecteur}">
                     <a href="#{linkPath.pathLink}/secteur/ajouterSecteur.jsf">Ajouter un secteur</a>
                 </li>
