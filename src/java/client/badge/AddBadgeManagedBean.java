@@ -19,7 +19,6 @@ import metier.entitys.Badge;
  * @author damien
  */
 @ManagedBean
-
 public class AddBadgeManagedBean {
 
     private Badge badge = new Badge();
