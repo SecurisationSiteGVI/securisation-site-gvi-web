@@ -27,6 +27,8 @@ public class CSSActive {
     private String listeBadges = " ";
     private String ajouterBadge = " ";
     private String atributionBadge =" ";
+    private String gererSecteur=" ";
+    private String ajouterSecteur = " ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -52,10 +54,14 @@ public class CSSActive {
         if ("badge/ajouterBadge.xhtml".equals(url)) {
             this.gererBadges = "active";
             this.ajouterBadge = "active";
-        }//
+        }
         if ("badge/attributionBadge.xhtml".equals(url)) {
             this.gererBadges = "active";
             this.atributionBadge = "active";
+        }
+        if ("secteur/ajouterSecteur.xhtml".equals(url)) {
+            this.ajouterSecteur = "active";
+            this.gererSecteur = "active";
         }
     }
 
@@ -145,5 +151,23 @@ public class CSSActive {
 
     public void setAtributionBadge(String atributionBadge) {
         this.atributionBadge = atributionBadge;
+    }
+
+  
+
+    public String getAjouterSecteur() {
+        return ajouterSecteur;
+    }
+
+    public void setAjouterSecteur(String ajouterSecteur) {
+        this.ajouterSecteur = ajouterSecteur;
+    }
+
+    public String getGererSecteur() {
+        return gererSecteur;
+    }
+
+    public void setGererSecteur(String gererSecteur) {
+        this.gererSecteur = gererSecteur;
     }
 }
