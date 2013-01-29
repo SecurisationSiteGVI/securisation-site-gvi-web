@@ -47,12 +47,11 @@
                         </h:panelGrid>
                     </div>
                     <div class="span4">
+                        <h:outputText value="#{modificationUtilisateurManagedBean.string}"/>&nbsp;<h:commandLink value="#{modificationUtilisateurManagedBean.textOfOutputTextRemove}"  action="#{modificationUtilisateurManagedBean.removeBadgeFromUtilisateur()}"/>
                         <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
                         <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
                         <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
                         <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message>
-                        
-                        
                     </div>
                 </h:form>
             </f:view>
