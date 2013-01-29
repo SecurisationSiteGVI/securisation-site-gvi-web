@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutVideo.xml">        
+        <ui:define name="contentVideo">
+            <div class="span4">
+                <img src="#{cameraHEDEN.cameraHEDEN}"></img>
+            </div>
+            <div class="span4">
+                 <table>
+            <tr>
+                <td></td>
+                <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
+                <td></td>
+                <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
+                <td></td>
+            </tr>    
+        </table>
+        <img src="videostram.cgi"/>
+                <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
+                <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
+            </div>
+           
+        </ui:define>
+    </ui:composition>
+</html>
