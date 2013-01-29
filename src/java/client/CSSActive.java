@@ -30,6 +30,13 @@ public class CSSActive {
     private String gererSecteur=" ";
     private String ajouterSecteur = " ";
     private String modificationUtilisateur=" ";
+    private String listSecteur=" ";
+    private String gererAppareil=" ";
+    private String gererLecteurBadge=" ";
+    private String video=" ";
+    private String gererCamera=" ";
+    private String gererDetecteurIntrusion =" ";
+    private String gererPosition=" ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -67,6 +74,25 @@ public class CSSActive {
         if ("secteur/ajouterSecteur.xhtml".equals(url)) {
             this.ajouterSecteur = "active";
             this.gererSecteur = "active";
+        }
+        if ("secteur/listSecteurs.xhtml".equals(url)) {
+            this.listSecteur = "active";
+            this.gererSecteur = "active";
+        }if ("appareils/gererLecteurBadge.xhtml".equals(url)) {
+            this.gererAppareil = "active";
+            this.gererLecteurBadge = "active";
+        }
+        if ("appareils/gererCamera.xhtml".equals(url)) {
+            this.gererAppareil = "active";
+            this.gererCamera = "active";
+        }
+        if ("appareils/gererDetecteurIntrusion.xhtml".equals(url)) {
+            this.gererAppareil = "active";
+            this.gererDetecteurIntrusion = "active";
+        }
+        if ("appareils/gererPosition.xhtml".equals(url)) {
+            this.gererAppareil = "active";
+            this.gererPosition = "active";
         }
     }
 
@@ -182,5 +208,61 @@ public class CSSActive {
 
     public void setModificationUtilisateur(String modificationUtilisateur) {
         this.modificationUtilisateur = modificationUtilisateur;
+    }
+
+    public String getListSecteur() {
+        return listSecteur;
+    }
+
+    public void setListSecteur(String listSecteur) {
+        this.listSecteur = listSecteur;
+    }
+
+    public String getGererAppareil() {
+        return gererAppareil;
+    }
+
+    public void setGererAppareil(String gererAppareil) {
+        this.gererAppareil = gererAppareil;
+    }
+
+    public String getGererLecteurBadge() {
+        return gererLecteurBadge;
+    }
+
+    public void setGererLecteurBadge(String gererLecteurBadge) {
+        this.gererLecteurBadge = gererLecteurBadge;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getGererCamera() {
+        return gererCamera;
+    }
+
+    public void setGererCamera(String gererCamera) {
+        this.gererCamera = gererCamera;
+    }
+
+    public String getGererDetecteurIntrusion() {
+        return gererDetecteurIntrusion;
+    }
+
+    public void setGererDetecteurIntrusion(String gererDetecteurIntrusion) {
+        this.gererDetecteurIntrusion = gererDetecteurIntrusion;
+    }
+
+    public String getGererPosition() {
+        return gererPosition;
+    }
+
+    public void setGererPosition(String gererPosition) {
+        this.gererPosition = gererPosition;
     }
 }
