@@ -37,9 +37,9 @@
                     
                 </div>
             </div>
-        </div><br/><br/>
+        </div><br/><br/> <div class="container-fluid">
         <div class="row">
-            <div class="span3">
+            
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="#{cSSActive.histrorique}"> <a href="#{linkPath.pathLink}/histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
@@ -50,9 +50,9 @@
                          <li class="#{cSSActive.gererAppareil}"><a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf"><i class="icon-chevron-right"></i> Gérer les appareils</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="container">
-                <div class="span11">
+
+           
+                <div class="span9">
                     <ui:insert name="content">Default title</ui:insert>
                 </div>
             </div>
