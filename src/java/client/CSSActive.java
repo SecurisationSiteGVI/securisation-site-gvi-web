@@ -29,6 +29,7 @@ public class CSSActive {
     private String atributionBadge =" ";
     private String gererSecteur=" ";
     private String ajouterSecteur = " ";
+    private String modificationUtilisateur=" ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -44,6 +45,10 @@ public class CSSActive {
             this.ajouterUtilisateurs = "active";
         }
         if ("utilisateurs/listeUtilisateur.xhtml".equals(url)) {
+            this.utilisateur = "active";
+            this.listeUtilisateur = "active";
+        }
+        if ("utilisateurs/modifUtilisateur.xhtml".equals(url)) {
             this.utilisateur = "active";
             this.listeUtilisateur = "active";
         }
@@ -169,5 +174,13 @@ public class CSSActive {
 
     public void setGererSecteur(String gererSecteur) {
         this.gererSecteur = gererSecteur;
+    }
+
+    public String getModificationUtilisateur() {
+        return modificationUtilisateur;
+    }
+
+    public void setModificationUtilisateur(String modificationUtilisateur) {
+        this.modificationUtilisateur = modificationUtilisateur;
     }
 }
