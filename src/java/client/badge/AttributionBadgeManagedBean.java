@@ -87,8 +87,7 @@ public class AttributionBadgeManagedBean {
         }else{
            this.selection.add(this.badgeSelectionne); 
         }
-    }//errorAddBadge
-    //succesAddBadge
+    }
     public void attribuer(){
         Utilisateur utilisateur=null;
         Badge badge=null;
