@@ -75,11 +75,17 @@ public class SessionTechnicien {
         this.technicien = technicien;
     }
 
-    public String disconnect() {
+    public void disconnect() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Technicien personne = (Technicien) session.getAttribute("technicien");
         session.setAttribute("technicien", null);
-        return "./index.jsf";
+        String ret = LinksPath.getPathLinkStatic()+"/index.jsf";
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getPathLinkStatic()+"/index.jsf");
+        } catch (IOException ex) {
+            Logger.getLogger(SessionTechnicien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public String getLogin() {
