@@ -11,13 +11,13 @@
                 <li class="#{cSSActive.gererLecteurBadge}">
                     <a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf">Gérer les lecteurs de badge</a>
                 </li>
-                <li class=" ">
+                <li class="#{cSSActive.gererCamera}">
                     <a href="#{linkPath.pathLink}/appareils/gererCamera.jsf">Gérer les caméras</a>
                 </li>
-                <li class=" ">
+                <li class="#{cSSActive.gererDetecteurIntrusion}">
                     <a href="#{linkPath.pathLink}/appareils/gererDetecteurIntrusion.jsf" >Gérer les détecteurs intrusion</a>
                 </li>
-                <li class=" ">
+                <li class="#{cSSActive.gererPosition}">
                     <a href="#{linkPath.pathLink}/appareils/gererPosition.jsf">Gérer les positions</a>
                 </li>
             </ul>
