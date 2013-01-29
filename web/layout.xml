@@ -43,13 +43,14 @@
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="#{cSSActive.histrorique}"> <a href="#{linkPath.pathLink}/histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
+                        <li class="#{cSSActive.video}"><a href="#{linkPath.pathLink}/secteur/ajouterSecteur.jsf"><i class="icon-chevron-right"></i> Voir vidéo</a></li>
                         <li class="#{cSSActive.gererBadges}"><a href="#{linkPath.pathLink}/badge/listeBadges.jsf"><i class="icon-chevron-right"></i> Gérer les badges</a></li>
                         <li class="#{cSSActive.utilisateur}"><a href="#{linkPath.pathLink}/utilisateurs/listeUtilisateur.jsf"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
                          <li class="#{cSSActive.gererSecteur}"><a href="#{linkPath.pathLink}/secteur/ajouterSecteur.jsf"><i class="icon-chevron-right"></i> Gérer les secteur</a></li>
+                         <li class="#{cSSActive.gererAppareil}"><a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf"><i class="icon-chevron-right"></i> Gérer les appareils</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="container">
                 <div class="span11">
                     <ui:insert name="content">Default title</ui:insert>
