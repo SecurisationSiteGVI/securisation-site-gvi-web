@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import metier.MetierFactory;
@@ -26,7 +27,7 @@ import metier.entitys.Utilisateur;
  * @author damien
  */
 @ManagedBean(name = "utilisateurManagedBean")
-@ApplicationScoped
+@ViewScoped//@ApplicationScoped
 public class UtilisateurManagedBean {
 
     private Utilisateur utilisateur = new Utilisateur();
