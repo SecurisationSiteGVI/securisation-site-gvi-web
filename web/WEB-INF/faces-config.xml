@@ -5,3 +5,7 @@
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
 </faces-config>
 
+<converter>
+	<converter-id>PositionConverter</converter-id>
+	<converter-class>client.converters.PositionConverter</converter-class>
+</converter>
