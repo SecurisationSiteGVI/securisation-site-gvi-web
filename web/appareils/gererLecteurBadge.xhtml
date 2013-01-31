@@ -33,7 +33,39 @@
 
             </div>
             <div class="span4">
-                
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{lecteurBadgeManagedBean.borneAccess}" class="table tab-hover" var="item">
+                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Position"/>
+                                </f:facet>
+                                <h:outputText value="#{item.position}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Entré"/>
+                                </f:facet>
+                                <h:outputText value="#{item.entrer==true?'Entré':'Sortie'}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer" action="#{lecteurBadgeManagedBean.removeLecteur()}">
+                                    <f:setPropertyActionListener value="#{item}" target="#{lecteurBadgeManagedBean.borneAccesSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+       
             </div>
         </ui:define>
     </ui:composition>
