@@ -54,7 +54,7 @@ function auto()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=6', true);
+    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 
