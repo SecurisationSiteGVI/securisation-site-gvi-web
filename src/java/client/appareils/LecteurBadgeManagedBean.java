@@ -23,7 +23,7 @@ import metier.entitys.Position;
 @ManagedBean
 @RequestScoped
 public class LecteurBadgeManagedBean {
-    //succesLecteurBadge 
+     
     private BorneAccesService borneAccesSrv = MetierFactory.getBorneAccesService();
     private BorneAcces borneAcces = new BorneAcces();
     public LecteurBadgeManagedBean() {
