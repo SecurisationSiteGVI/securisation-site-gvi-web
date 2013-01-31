@@ -28,7 +28,7 @@ public class CSSActive {
     private String ajouterBadge = " ";
     private String atributionBadge =" ";
     private String gererSecteur=" ";
-    private String ajouterSecteur = " ";
+    private String gererSecteur2 = " ";
     private String modificationUtilisateur=" ";
     private String listSecteur=" ";
     private String gererAppareil=" ";
@@ -72,8 +72,8 @@ public class CSSActive {
             this.gererBadges = "active";
             this.atributionBadge = "active";
         }
-        if ("secteur/ajouterSecteur.xhtml".equals(url)) {
-            this.ajouterSecteur = "active";
+        if ("secteur/gererSecteur.xhtml".equals(url)) {
+            this.gererSecteur2 = "active";
             this.gererSecteur = "active";
         }
         if ("secteur/listSecteurs.xhtml".equals(url)) {
@@ -192,11 +192,11 @@ public class CSSActive {
   
 
     public String getAjouterSecteur() {
-        return ajouterSecteur;
+        return gererSecteur;
     }
 
     public void setAjouterSecteur(String ajouterSecteur) {
-        this.ajouterSecteur = ajouterSecteur;
+        this.gererSecteur = ajouterSecteur;
     }
 
     public String getGererSecteur() {
@@ -283,5 +283,13 @@ public class CSSActive {
      */
     public void setVisionageCamera(String visionageCamera) {
         this.visionageCamera = visionageCamera;
+    }
+
+    public String getGererSecteur2() {
+        return gererSecteur2;
+    }
+
+    public void setGererSecteur2(String gererSecteur2) {
+        this.gererSecteur2 = gererSecteur2;
     }
 }
