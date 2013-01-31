@@ -7,7 +7,23 @@
     <ui:composition template="./layoutAppareil.xml">        
         <ui:define name="contentAppareil">
             <div class="span4">
-                
+                <f:view>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputLabel value="Position:" for="position" />
+                            <h:selectOneMenu id="position" value="#{lecteurBadgeManagedBean.borneAcces.position}" title="Position" required="true" requiredMessage="The Position field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Nom:" for="nom" />
+                            <h:inputText id="nom" value="#{lecteurBadgeManagedBean.borneAcces.nom}" title="Nom" />
+                            <h:outputLabel value="Entrer:" for="entrer" />
+                            <h:inputText id="entrer" value="#{lecteurBadgeManagedBean.borneAcces.entrer}" title="Entrer" required="true" requiredMessage="The Entrer field is required."/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
 
             </div>
             <div class="span4">
