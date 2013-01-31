@@ -6,20 +6,26 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutAppareil.xml">        
         <ui:define name="contentAppareil">
+            <h:message id="succesAddSecteur" showSummary="true" for="succesLecteurBadge" class="alert alert-success"></h:message>
+            <h:message id="errorAddSecteur" showSummary="true"  for="errorLecteurBadge" class="alert alert-error"></h:message><br/><br/>
             <div class="span4">
                 <f:view>
                     <h:form>
                         <h:panelGrid columns="2">
-                            
-                            <h:outputLabel value="Position:" for="position" />
-                            <h:selectOneMenu id="position" value="#{lecteurBadgeManagedBean.borneAcces.position}" title="Position" required="true" requiredMessage="The Position field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
+
+                            <h:outputLabel value="Position : " for="position" />
+                            <h:selectOneMenu id="position" value="#{lecteurBadgeManagedBean.borneAcces.position}" title="Position" required="true" converter="PositionConverter" requiredMessage="La position est requise.">
+                                <f:selectItems value="#{lecteurBadgeManagedBean.positions}"/>
                             </h:selectOneMenu>
-                            <h:outputLabel value="Nom:" for="nom" />
+                            <h:outputLabel value="Nom : " for="nom" />
                             <h:inputText id="nom" value="#{lecteurBadgeManagedBean.borneAcces.nom}" title="Nom" />
-                            <h:outputLabel value="Entrer:" for="entrer" />
-                            <h:inputText id="entrer" value="#{lecteurBadgeManagedBean.borneAcces.entrer}" title="Entrer" required="true" requiredMessage="The Entrer field is required."/>
+                            <h:outputLabel value=""  />
+                            <h:selectOneRadio value="#{lecteurBadgeManagedBean.borneAcces.entrer}">
+                                <f:selectItem itemValue="true" itemLabel="Entré" />
+                                <f:selectItem itemValue="false" itemLabel="Sortie" />
+                            </h:selectOneRadio>
+                             <h:outputLabel value=" "  />
+                             <h:commandButton class="btn btn-primary" action="#{lecteurBadgeManagedBean.addLecteurBadge()}" value="Crée" />
                         </h:panelGrid>
                     </h:form>
                 </f:view>
@@ -27,8 +33,7 @@
 
             </div>
             <div class="span4">
-                <h:message id="succesAddSecteur" showSummary="true"  for="succesLecteurBadge" class="alert alert-success"></h:message>
-                <h:message id="errorAddSecteur" showSummary="true"  for="errorLecteurBadge" class="alert alert-error"></h:message>
+                
             </div>
         </ui:define>
     </ui:composition>
