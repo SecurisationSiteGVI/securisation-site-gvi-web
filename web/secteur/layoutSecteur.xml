@@ -11,8 +11,8 @@
                 <li class="#{cSSActive.listSecteur}">
                     <a href="#{linkPath.pathLink}/secteur/listSecteurs.jsf">Liste des secteurs</a>
                 </li>
-                <li class="#{cSSActive.ajouterSecteur}">
-                    <a href="#{linkPath.pathLink}/secteur/ajouterSecteur.jsf">Ajouter un secteur</a>
+                <li class="#{cSSActive.gererSecteur2}">
+                    <a href="#{linkPath.pathLink}/secteur/gererSecteur.jsf">Gérer les secteurs</a>
                 </li>
             </ul>
             <br/>
