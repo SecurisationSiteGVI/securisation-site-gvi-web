@@ -32,7 +32,7 @@ public class LecteurBadgeManagedBean {
         try {
             this.borneAccesSrv.add(borneAcces);
             this.borneAcces = null;
-            BoiteAOutils.addMessage("Succes", " lecteur de badge bien crée.", "errorLecteurBadge");
+            BoiteAOutils.addMessage("Succes", " lecteur de badge bien crée.", "succesLecteurBadge");
         } catch (Exception ex) {
             BoiteAOutils.addMessage("Erreur", " impossible d'ajouter le lecteur de badge.", "errorLecteurBadge");
             Logger.getLogger(LecteurBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
