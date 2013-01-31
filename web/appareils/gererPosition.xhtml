@@ -6,13 +6,26 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutAppareil.xml">        
         <ui:define name="contentAppareil">
+             <h:message id="succesPosition" showSummary="true"  for="succesPosition" class="alert alert-success"></h:message>
+                <h:message id="errorPosition" showSummary="true"  for="errorPosition" class="alert alert-error"></h:message>
+                <br/><br/>
             <div class="span4">
-                
-
+                <f:view>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Longitude : " for="longitude" />
+                            <h:inputText id="longitude" value="#{gererPositionManagedBean.position.longitude}" title="Longitude" required="true" requiredMessage="La longitude est requise."/>
+                            <h:outputLabel value="Latitude : " for="latitude" />
+                            <h:inputText id="latitude" value="#{gererPositionManagedBean.position.latitude}" title="Latitude" required="true" requiredMessage="La latitude est requise."/>
+                            <h:outputLabel value=" " />
+                            <h:commandButton value="Crée" class="btn btn-primary" action="#{gererPositionManagedBean.addPosition()}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
             </div>
             <div class="span4">
-                <h:message id="succesAddSecteur" showSummary="true"  for="succesPosition" class="alert alert-success"></h:message>
-                <h:message id="errorAddSecteur" showSummary="true"  for="errorPosition" class="alert alert-error"></h:message>
+               
+                
             </div>
         </ui:define>
     </ui:composition>
