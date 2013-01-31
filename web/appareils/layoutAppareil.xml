@@ -9,7 +9,7 @@
         <ui:define name="content">
             <ul class="nav nav-tabs">
                 <li class="#{cSSActive.gererLecteurBadge}">
-                    <a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf">Gérer les lecteurs de badge</a>
+                    <a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf">Gérer les bornes d'acces</a>
                 </li>
                 <li class="#{cSSActive.gererCamera}">
                     <a href="#{linkPath.pathLink}/appareils/gererCamera.jsf">Gérer les caméras</a>
