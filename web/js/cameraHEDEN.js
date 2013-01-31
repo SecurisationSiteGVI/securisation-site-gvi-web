@@ -60,16 +60,47 @@ function auto()
 
 }
 
+function stop()
+{
+    http = createRequestObject();
+    
+    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
+    http.onreadystatechange = handleAJAXReturn;
+    http.send(null);
+
+}
+
+function allumeLED()
+{
+    
+    http = createRequestObject();
+    
+    http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=1&user=admin&pwd=marvin', true);
+    http.onreadystatechange = handleAJAXReturn;
+    http.send(null);
+}
+
+    
+
+function eteindreLED()
+{
+    http = createRequestObject();
+    
+    http.open('POST', 'http://172.16.79.214//set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
+    http.onreadystatechange = handleAJAXReturn;
+    http.send(null);
+}
+    
 function handleAJAXReturn()
 {
-    //alert('handleAJAXReturn');
-    if (http.readyState == 4)
+//alert('handleAJAXReturn');
+if (http.readyState == 4)
+{
+    if (http.status == 200)
     {
-        if (http.status == 200)
-        {
-            document.getElementById('resultat').innerHTML = http.responseText;
-        }
-
+        document.getElementById('resultat').innerHTML = http.responseText;
     }
+
+}
 }
 
