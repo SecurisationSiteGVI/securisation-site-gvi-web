@@ -23,9 +23,11 @@ import metier.entitys.Position;
 @ManagedBean
 @RequestScoped
 public class LecteurBadgeManagedBean {
-    //succesLecteurBadge 
+     
     private BorneAccesService borneAccesSrv = MetierFactory.getBorneAccesService();
     private BorneAcces borneAcces = new BorneAcces();
+    private BorneAcces borneAccesSelected;
+    
     public LecteurBadgeManagedBean() {
     }
     public void addLecteurBadge(){
@@ -38,11 +40,27 @@ public class LecteurBadgeManagedBean {
             Logger.getLogger(LecteurBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public void removeLecteur(){
+        try {
+            this.borneAccesSrv.remove(this.borneAccesSelected);
+            BoiteAOutils.addMessage("Succes", " lecteur de badge est bien supprimé.", "succesLecteurBadge");
+        } catch (Exception ex) {
+            BoiteAOutils.addMessage("Erreur", " impossible de supprimer le lecteur de badge.", "errorLecteurBadge");
+            Logger.getLogger(LecteurBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public BorneAcces getBorneAcces() {
         return borneAcces;
     }
-
+    public List<BorneAcces> getBorneAccess(){
+        List<BorneAcces> borneAcceses = null;
+        try {
+            borneAcceses = this.borneAccesSrv.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(LecteurBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return borneAcceses;
+    }
     public List<Position> getPositions(){
         PositionService positionSrv = MetierFactory.getPositionService();
         List<Position> positions = null;
@@ -56,5 +74,13 @@ public class LecteurBadgeManagedBean {
     }
     public void setBorneAcces(BorneAcces borneAcces) {
         this.borneAcces = borneAcces;
+    }
+
+    public BorneAcces getBorneAccesSelected() {
+        return borneAccesSelected;
+    }
+
+    public void setBorneAccesSelected(BorneAcces borneAccesSelected) {
+        this.borneAccesSelected = borneAccesSelected;
     }
 }
