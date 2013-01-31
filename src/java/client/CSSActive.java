@@ -30,7 +30,7 @@ public class CSSActive {
     private String gererSecteur=" ";
     private String gererSecteur2 = " ";
     private String modificationUtilisateur=" ";
-    private String listSecteur=" ";
+    private String attributionSecteur=" ";
     private String gererAppareil=" ";
     private String gererLecteurBadge=" ";
     private String video=" ";
@@ -77,7 +77,7 @@ public class CSSActive {
             this.gererSecteur = "active";
         }
         if ("secteur/listSecteurs.xhtml".equals(url)) {
-            this.listSecteur = "active";
+            this.attributionSecteur = "active";
             this.gererSecteur = "active";
         }if ("appareils/gererLecteurBadge.xhtml".equals(url)) {
             this.gererAppareil = "active";
@@ -215,13 +215,7 @@ public class CSSActive {
         this.modificationUtilisateur = modificationUtilisateur;
     }
 
-    public String getListSecteur() {
-        return listSecteur;
-    }
-
-    public void setListSecteur(String listSecteur) {
-        this.listSecteur = listSecteur;
-    }
+    
 
     public String getGererAppareil() {
         return gererAppareil;
@@ -291,5 +285,13 @@ public class CSSActive {
 
     public void setGererSecteur2(String gererSecteur2) {
         this.gererSecteur2 = gererSecteur2;
+    }
+
+    public String getAttributionSecteur() {
+        return attributionSecteur;
+    }
+
+    public void setAttributionSecteur(String attributionSecteur) {
+        this.attributionSecteur = attributionSecteur;
     }
 }
