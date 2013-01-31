@@ -86,7 +86,7 @@ function eteindreLED()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=1&user=admin&pwd=marvin', true);
+    http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 }
