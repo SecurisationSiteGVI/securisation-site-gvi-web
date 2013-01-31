@@ -24,7 +24,35 @@
                 </f:view>
             </div>
             <div class="span4">
-               
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{gererPositionManagedBean.positions}" var="item">
+                            
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Longitude"/>
+                                </f:facet>
+                                <h:outputText value="#{item.longitude}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Latitude"/>
+                                </f:facet>
+                                <h:outputText value="#{item.latitude}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer" >
+                                    <f:setPropertyActionListener value="#{item}" target="#{gererPositionManagedBean.positionSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
                 
             </div>
         </ui:define>
