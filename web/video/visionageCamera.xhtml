@@ -10,28 +10,33 @@
                 <img src="#{cameraHEDEN.cameraHEDEN}"></img>
             </div>
             <div class="span4">
-                 <table>
-            <tr>
-                <td></td>
-                <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
-                <td></td>
-                <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
-            </tr>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
+                        <td></td>
+                        <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
-                <td></td>
-            </tr>    
-        </table>
+                    <tr>
+                        <td></td>
+                        <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/auto.png" /></a></td>
+                        <td></td>
+                    </tr>   
+                </table>
                 <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
                 <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
             </div>
-           
+
         </ui:define>
     </ui:composition>
 </html>
