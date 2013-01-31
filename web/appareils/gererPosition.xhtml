@@ -9,7 +9,7 @@
              <h:message id="succesPosition" showSummary="true"  for="succesPosition" class="alert alert-success"></h:message>
                 <h:message id="errorPosition" showSummary="true"  for="errorPosition" class="alert alert-error"></h:message>
                 <br/><br/>
-            <div class="span4">
+            <div class="span4"><br/>
                 <f:view>
                     <h:form>
                         <h:panelGrid columns="2">
@@ -26,8 +26,7 @@
             <div class="span4">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <h:dataTable value="#{gererPositionManagedBean.positions}" var="item">
+                        <h:dataTable value="#{gererPositionManagedBean.positions}" class="table tab-hover" var="item">
                             
                             <h:column>
                                 <f:facet name="header">
@@ -45,15 +44,13 @@
                                 <f:facet name="header">
                                     <h:outputText value="#"/>
                                 </f:facet>
-                                <h:commandLink value="Supprimer" >
+                                <h:commandLink value="Supprimer" action="#{gererPositionManagedBean.removePosition()}">
                                     <f:setPropertyActionListener value="#{item}" target="#{gererPositionManagedBean.positionSelected}"/>
                                 </h:commandLink>
                             </h:column>
                         </h:dataTable>
                     </h:form>
                 </f:view>
-
-                
             </div>
         </ui:define>
     </ui:composition>
