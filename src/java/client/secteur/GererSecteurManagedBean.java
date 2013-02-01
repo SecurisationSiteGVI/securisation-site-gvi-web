@@ -5,23 +5,13 @@
 package client.secteur;
 
 import client.BoiteAOutils;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import metier.AttributionSecteurBorneAccesService;
-import metier.AttributionSecteurCameraService;
-import metier.AttributionSecteurDetecteurIntrusionService;
 import metier.MetierFactory;
 import metier.SecteurService;
-import metier.entitys.AttributionSecteurBorneAcces;
-import metier.entitys.AttributionSecteurCamera;
-import metier.entitys.AttributionSecteurDetecteurIntrusion;
-import metier.entitys.BorneAcces;
-import metier.entitys.Camera;
-import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Secteur;
 
 /**
