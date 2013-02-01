@@ -89,18 +89,31 @@ function eteindreLED()
     http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
+    
+    
+ }
+
+function photo()
+{
+
+    http = createRequestObject();
+    
+    http.open('POST', 'http://172.16.79.214/snapshot.cgi?user=admin&pwd=marvin', true);
+    http.onreadystatechange = handleAJAXReturn;
+    http.send(null);
+    
 }
     
 function handleAJAXReturn()
 {
-//alert('handleAJAXReturn');
-if (http.readyState == 4)
-{
-    if (http.status == 200)
+    //alert('handleAJAXReturn');
+    if (http.readyState == 4)
     {
-        document.getElementById('resultat').innerHTML = http.responseText;
-    }
+        if (http.status == 200)
+        {
+            document.getElementById('resultat').innerHTML = http.responseText;
+        }
 
-}
+    }
 }
 
