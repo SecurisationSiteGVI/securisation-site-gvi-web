@@ -21,6 +21,10 @@
                             </h:selectOneMenu>
                             <h:outputLabel value="Nom : " for="nom" />
                             <h:inputText id="nom" value="#{cameraManagedBean.camera.nom}" title="Nom" required="true" requiredMessage="Le nom est requis."/>
+                            <h:outputLabel value="Ip : " for="ip" />
+                            <h:inputText id="ip" value="#{cameraManagedBean.camera.ip}" title="Ip" required="true" requiredMessage="L' ip est requis."/>
+                            <h:outputLabel value="type : " for="type" />
+                            <h:inputText id="type" value="#{cameraManagedBean.camera.type}" title="type" required="true" requiredMessage="Le type est requis."/>
                             <h:outputLabel value=" " />
                             <h:commandButton value="Crée" action="#{cameraManagedBean.addCamera()}" class="btn btn-primary"/>
                         </h:panelGrid>
