@@ -37,15 +37,16 @@ public class AttributionBadgeManagedBean {
     private String textFilter = new String();
     private Utilisateur utilisateurSelectionne;
     private List<Object> selection= new ArrayList<Object>();
-
+    private String textFilterNumero=new String();
     public void filtrer() {
         this.indexUtilisateur = 0;
-
     }
-
+    public void filtrerBadge(){
+        this.indexBadge = 0;
+    }
     public AttributionBadgeManagedBean() {
         this.indexBadge = 0;
-        this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(this.indexBadge, this.nbResult);
+        
         
     }
 
@@ -58,6 +59,11 @@ public class AttributionBadgeManagedBean {
     }
 
     public List<Badge> getBadges() {
+        if (this.getTextFilterNumero().length() >= 1) {
+            this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssignByNumero(Integer.parseInt(this.getTextFilterNumero()), this.indexBadge, nbResult);
+        } else {
+            this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(this.indexBadge, this.nbResult);
+        }       
         return badges;
     }
 
@@ -214,5 +220,13 @@ public class AttributionBadgeManagedBean {
 
     public void setSelection(List<Object> selection) {
         this.selection = selection;
+    }
+
+    public String getTextFilterNumero() {
+        return textFilterNumero;
+    }
+
+    public void setTextFilterNumero(String textFilterNumero) {
+        this.textFilterNumero = textFilterNumero;
     }
 }

@@ -6,22 +6,61 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutSecteur.xml">        
         <ui:define name="contentSecteur">
+            <h:message id="succesAttributionSecteur" showSummary="true"  for="succesAttributionSecteur" class="alert alert-success"></h:message>
+                <h:message id="errorAttributionSecteur" showSummary="true"  for="errorAttributionSecteur" class="alert alert-error"></h:message><br/><br/>
             <div class="span4">
-                <f:view>
+                <h:form>
+                    <h:selectOneMenu value="#{attributionSecteurManagedBean.secteurSelected}">
+                        <f:selectItems value="#{attributionSecteurManagedBean.secteurs}"/>
+                    </h:selectOneMenu>
+                    
+                </h:form>
+               <f:view>
                     <h:form>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Nom : " for="nom" />
-                            <h:inputText id="nom"  title="Nom" required="true" requiredMessage="Le champ nom est requis."/>
-                            <h:outputLabel value=" "  />
-                            <h:commandButton value="Crée"  class="btn btn-primary"/>
-                        </h:panelGrid>
+                        <h:dataTable value="#{attributionSecteurManagedBean.appareilsBySecteur}" class="table tab-hover" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer"  >
+                                    <!--f:setPropertyActionListener /-->
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
                     </h:form>
                 </f:view>
 
             </div>
             <div class="span4">
-                <h:message id="succesAddSecteur" showSummary="true"  for="succesAddSecteur" class="alert alert-success"></h:message>
-                <h:message id="errorAddSecteur" showSummary="true"  for="errorAddSecteur" class="alert alert-error"></h:message>
+                <legend>Sélectionné votre borne d'accès</legend>
+                <h:form>
+                <h:selectOneMenu >
+                    <f:selectItems value="#{attributionSecteurManagedBean.borneAcceses}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Ajouter" class="btn btn-primary" />
+                </h:form>
+                <br/>
+                <legend>Sélectionné votre caméra</legend>
+                <h:form>
+                <h:selectOneMenu >
+                    <f:selectItems value="#{attributionSecteurManagedBean.cameras}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Ajouter" class="btn btn-primary" />
+                </h:form>
+                <br/>
+                <legend>Sélectionné votre détecteur d'intrusion</legend>
+                <h:form>
+                <h:selectOneMenu >
+                    <f:selectItems value="#{attributionSecteurManagedBean.detecteurIntrusions}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Ajouter" class="btn btn-primary" />
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

@@ -76,7 +76,7 @@ public class CSSActive {
             this.gererSecteur2 = "active";
             this.gererSecteur = "active";
         }
-        if ("secteur/listSecteurs.xhtml".equals(url)) {
+        if ("secteur/attributionSecteur.xhtml".equals(url)) {
             this.attributionSecteur = "active";
             this.gererSecteur = "active";
         }if ("appareils/gererLecteurBadge.xhtml".equals(url)) {
