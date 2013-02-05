@@ -60,15 +60,6 @@ function auto()
 
 }
 
-function stop()
-{
-    http = createRequestObject();
-    
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
-
-}
 
 function allumeLED()
 {
@@ -98,9 +89,11 @@ function photo()
 
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/snapshot.cgi?user=admin&pwd=marvin', true);
-    http.onreadystatechange = handleAJAXReturn;
+    http.open('POST', 'http://172.16.79.214/snapshot.jpg?user=admin&pwd=marvin', true);
+    http.onreadystatechange = handleAJAXReturn();
     http.send(null);
+    
+    
     
 }
     
