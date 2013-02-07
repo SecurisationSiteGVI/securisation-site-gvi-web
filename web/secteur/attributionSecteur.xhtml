@@ -10,7 +10,8 @@
                 <h:message id="errorAttributionSecteur" showSummary="true"  for="errorAttributionSecteur" class="alert alert-error"></h:message><br/><br/>
             <div class="span4">
                 <h:form>
-                    <h:selectOneMenu value="#{attributionSecteurManagedBean.secteurSelected}">
+                    <h:selectOneMenu value="#{attributionSecteurManagedBean.secteurSelected}" converter="SecteurConverter" valueChangeListener="#{attributionSecteurManagedBean.setDynamicSecteurSelected}"
+                                      onchange="submit()">
                         <f:selectItems value="#{attributionSecteurManagedBean.secteurs}"/>
                     </h:selectOneMenu>
                     
@@ -40,10 +41,10 @@
             <div class="span4">
                 <legend>Sélectionné votre borne d'accès</legend>
                 <h:form>
-                <h:selectOneMenu >
+                    <h:selectOneMenu converter="BorneAccesConverter" value="#{attributionSecteurManagedBean.borneAccesSelected}">
                     <f:selectItems value="#{attributionSecteurManagedBean.borneAcceses}"/>
                 </h:selectOneMenu>
-                <h:commandButton value="Ajouter" class="btn btn-primary" />
+                    <h:commandButton value="Ajouter" action="#{attributionSecteurManagedBean.attribuerBorne()}" class="btn btn-primary" />
                 </h:form>
                 <br/>
                 <legend>Sélectionné votre caméra</legend>
