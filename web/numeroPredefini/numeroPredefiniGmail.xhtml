@@ -39,6 +39,14 @@
                                 </f:facet>
                                 <h:outputText value="#{item.tel}"/>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=" "/>
+                                </f:facet>
+                                <h:commandLink value="Ajouter" action="#{numeroPredefiniManagedBean.ajouterUnNumeroGmail()}">
+                                    <f:setPropertyActionListener value="#{item}" target="#{numeroPredefiniManagedBean.numeroSelected}"/>
+                                </h:commandLink>
+                            </h:column>
                         </h:dataTable>
                         <ul class="pager">
                             <li><h:commandLink value="Précedent" action="#{numeroPredefiniManagedBean.pagePrécédente()}"><f:ajax  render="numeroPredefiniList"/></h:commandLink></li>

@@ -40,6 +40,7 @@ public class CSSActive {
     private String visionageCamera=" ";
     private String gererNumeroPredefini = " ";
     private String numeroPredefiniGmail = " ";
+    private String gererNumeros = " ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -104,6 +105,10 @@ public class CSSActive {
          if ("numeroPredefini/numeroPredefiniGmail.xhtml".equals(url)) {
             this.gererNumeroPredefini = "active";
             this.numeroPredefiniGmail = "active";
+        }
+         if ("numeroPredefini/gererNumeros.xhtml".equals(url)) {
+            this.gererNumeroPredefini = "active";
+            this.gererNumeros = "active";
         }
     }
 
@@ -315,5 +320,13 @@ public class CSSActive {
 
     public void setNumeroPredefiniGmail(String numeroPredefiniGmail) {
         this.numeroPredefiniGmail = numeroPredefiniGmail;
+    }
+
+    public String getGererNumeros() {
+        return gererNumeros;
+    }
+
+    public void setGererNumeros(String gererNumeros) {
+        this.gererNumeros = gererNumeros;
     }
 }
