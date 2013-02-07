@@ -105,12 +105,9 @@ public class NumeroPredefiniManagedBean {
             for (int i = index; i < (this.nbResult+this.index); i++) {
                 
                 
-//                if (this.contacts.size() >=i){
+                if (this.contacts.size() - 1 >=i){
                     this.contactsPagination.add(this.contacts.get(i));
-//                }else{Contact c = new Contact(" ", " ", " ");
-//                    this.contactsPagination.add(c);
-//                    
-//                }
+                }
             }
         }
 
