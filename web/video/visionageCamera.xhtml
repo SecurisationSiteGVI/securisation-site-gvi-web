@@ -10,15 +10,29 @@
                 <img src="#{cameraHEDEN.cameraHEDEN}"></img>
             </div>
             <div class="span4">
-                <table>
+                <h:form>
+                <h:selectOneMenu >
+                    <f:selectItems value="#{cameraManagedBean.cameras}"/>
+                </h:selectOneMenu>  &nbsp;
+                
+                </h:form>
+                <table border="5">
+
+
+
+
                     <tr>
                         <td></td>
                         <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
                         <td></td>
+                        <td></td>
+
                     </tr>
+
+
                     <tr>
                         <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
-                        <td> <h:form><h:commandLink  action="#{enregistrementManagedBean.enregistrer()}"><img src="#{linkPath.pathLink}/img/camera/photo.png"/> </h:commandLink></h:form></td>
+                        <td><a onclick="photo(); return false;"><img src="#{linkPath.pathLink}/img/camera/photo.png"/></a> </td>
                         <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
                     </tr>
 
@@ -38,6 +52,8 @@
                         <td><a onclick="allumeLED(); return false;"><img src="#{linkPath.pathLink}/img/camera/LED1.png" /></a></td>
                         <td><a onclick="eteindreLED()(); return false;"><img src="#{linkPath.pathLink}/img/camera/LED2.png"/></a> </td>
                     </tr> 
+
+
 
                 </table>
                 <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
