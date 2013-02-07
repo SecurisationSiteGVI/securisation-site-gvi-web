@@ -11,5 +11,9 @@
         <converter-id>BorneAccesConverter</converter-id>
         <converter-class>client.converters.BorneAccesConverter</converter-class>
     </converter>
+    <converter>
+        <converter-id>CameraConverter</converter-id>
+        <converter-class>client.converters.CameraConverter</converter-class>
+    </converter>
 </faces-config>
 
