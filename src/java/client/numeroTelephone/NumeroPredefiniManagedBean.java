@@ -10,16 +10,16 @@ import client.google.GoogleContacts;
 import com.google.gdata.util.ServiceException;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.security.sasl.AuthenticationException;
+import metier.MetierFactory;
+import metier.NumeroPredefinisService;
+import metier.entitys.NumeroPredefinis;
 
 /**
  *
@@ -35,14 +35,29 @@ public class NumeroPredefiniManagedBean {
     private List<Contact> contactsPagination = new ArrayList<Contact>();
     private int index;
     private int nbResult = 10;
-//succesNumero  errorNumero
+    private Contact numeroSelected;
+    
+    
+    private NumeroPredefinisService numeroPredefinisSrv = MetierFactory.getNumeroPredefinisService();
     public NumeroPredefiniManagedBean() {
         this.index = 0;
     }
-
+    
+ 
+    public void ajouterUnNumeroGmail(){
+        if(this.numeroSelected!=null){
+            try {
+                this.numeroPredefinisSrv.ajouterUnNumero(numeroSelected.getTel());
+                BoiteAOutils.addMessage("Succes", " numéro bien ajouté.", "succesNumero");
+            } catch (Exception ex) {
+                BoiteAOutils.addMessage("Erreur", " imossible d'ajouter le numéro", "errorNumero");
+                Logger.getLogger(NumeroPredefiniManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     public void pagePrécédente() {
         if (this.index <= nbResult - 1) {
-            BoiteAOutils.addMessage("Impossible d'éffectuer", "Vous éte déjà sur la premiere page", "errorNumero");
+            BoiteAOutils.addMessage("Erreur", " vous éte déjà sur la premiere page", "errorNumero");
         } else {
             this.index = this.index - nbResult;
             addToConctactPagination(this.index, this.nbResult);
@@ -89,7 +104,13 @@ public class NumeroPredefiniManagedBean {
             }
             for (int i = index; i < (this.nbResult+this.index); i++) {
                 
-                this.contactsPagination.add(this.contacts.get(i));
+                
+//                if (this.contacts.size() >=i){
+                    this.contactsPagination.add(this.contacts.get(i));
+//                }else{Contact c = new Contact(" ", " ", " ");
+//                    this.contactsPagination.add(c);
+//                    
+//                }
             }
         }
 
@@ -136,4 +157,16 @@ public class NumeroPredefiniManagedBean {
     public void setContactsPagination(List<Contact> contactsPagination) {
         this.contactsPagination = contactsPagination;
     }
+
+    public Contact getNumeroSelected() {
+        return numeroSelected;
+    }
+
+    public void setNumeroSelected(Contact numeroSelected) {
+        this.numeroSelected = numeroSelected;
+    }
+
+   
+
+    
 }
