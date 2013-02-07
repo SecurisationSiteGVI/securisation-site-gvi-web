@@ -15,5 +15,9 @@
         <converter-id>CameraConverter</converter-id>
         <converter-class>client.converters.CameraConverter</converter-class>
     </converter>
+     <converter>
+        <converter-id>SecteurConverter</converter-id>
+        <converter-class>client.converters.SecteurConverter</converter-class>
+    </converter>
 </faces-config>
 
