@@ -21,7 +21,7 @@ public class CameraHEDEN {
     }
 
     /**
-     * @return the test
+     * @return Marvin
      */
     public String getCameraHEDEN() {
         return ipCameraHeden;
