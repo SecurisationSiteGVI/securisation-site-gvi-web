@@ -19,7 +19,6 @@ import javax.faces.bean.ViewScoped;
 import javax.security.sasl.AuthenticationException;
 import metier.MetierFactory;
 import metier.NumeroPredefinisService;
-import metier.entitys.NumeroPredefinis;
 
 /**
  *
