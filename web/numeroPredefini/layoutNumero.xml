@@ -9,9 +9,11 @@
         <ui:define name="content">
             <ul class="nav nav-tabs">
                 <li class="#{cSSActive.numeroPredefiniGmail}">
-                    <a href="#{linkPath.pathLink}/secteur/numeroPredefini.jsf">Ajouté un numero avec son adresse Gmail</a>
+                    <a href="#{linkPath.pathLink}/numeroPredefini/numeroPredefiniGmail.jsf">Ajouté un numero avec son adresse Gmail</a>
                 </li>
-                
+                <li class="#{cSSActive.gererNumeros}">
+                    <a href="#{linkPath.pathLink}/numeroPredefini/gererNumeros.jsf">Gérer les numéros prédéfinis</a>
+                </li>
             </ul>
             <br/>
             <ui:insert name="contentNumero"> Default content</ui:insert>
