@@ -17,7 +17,7 @@ function createRequestObject()
 function haut()
 {
     http = createRequestObject();
-
+    
     http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
@@ -89,7 +89,6 @@ function eteindreLED()
     http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
-    
     
  }
 
