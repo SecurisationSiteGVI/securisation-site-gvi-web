@@ -93,16 +93,7 @@ function eteindreLED()
     
  }
 
-function photo()
-{
 
-    http = createRequestObject();
-    
-    http.open('POST', 'http://172.16.79.214/snapshot.cgi?user=admin&pwd=marvin', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
-    
-}
     
 function handleAJAXReturn()
 {
