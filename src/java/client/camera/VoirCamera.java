@@ -39,7 +39,7 @@ public class VoirCamera {
     /**
      * @return the valeurCB
      */
-    public Camera getValeurCB() {
+        public Camera getValeurCB() {
         return valeurCB;
     }
 
