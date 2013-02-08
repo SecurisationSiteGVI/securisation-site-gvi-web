@@ -49,6 +49,7 @@
                          <li class="#{cSSActive.gererSecteur}"><a href="#{linkPath.pathLink}/secteur/gererSecteur.jsf"><i class="icon-chevron-right"></i> Gérer les secteur</a></li>
                          <li class="#{cSSActive.gererAppareil}"><a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf"><i class="icon-chevron-right"></i> Gérer les appareils</a></li>
                          <li class="#{cSSActive.gererNumeroPredefini}"><a href="#{linkPath.pathLink}/numeroPredefini/numeroPredefiniGmail.jsf"><i class="icon-chevron-right"></i> Gérer les numéros prédéfinis</a></li>
+                         <li class="#{cSSActive.gererAuthorisationAcces}"><a href="#{linkPath.pathLink}/authorisationAcces/authorisationAcces.jsf"><i class="icon-chevron-right"></i> Gérer les authorisation d'acces</a></li>
                     </ul>
                 </div>
 
