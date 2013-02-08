@@ -7,11 +7,11 @@
     <ui:composition template="./layoutVideo.xml">        
         <ui:define name="contentVideo"> 
             <div class="span4">
-                <h:graphicImage id="vi" value="#{voirCamera.queryCurrent}"></h:graphicImage>
+                <h:graphicImage id="vi" value="#{visionageCameraHEDEN.queryCurrent}"></h:graphicImage>
             </div>
             <div class="span4">
                 <h:form>
-                    <h:selectOneMenu value="#{voirCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{voirCamera.cameraSelected}" onchange="submit()" >
+                    <h:selectOneMenu value="#{visionageCameraHEDEN.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCameraHEDEN.cameraSelected}" onchange="submit()" >
                         
                     <f:selectItems  value="#{cameraManagedBean.cameras}" />
                 </h:selectOneMenu>  &nbsp;
@@ -19,7 +19,7 @@
                 </h:form> 
                 
                 <script type="text/javascript">
-                    var ip ="#{voirCamera.selectedCamera.ip}";
+                    var ip ="#{visionageCameraHEDEN.selectedCamera.ip}";
                 </script>
                 <table border="0">
                    <tr>
@@ -55,7 +55,7 @@
                 <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
             </div>
             <script>
-                #{voirCamera.ipCurentCamera}
+                #{visionageCameraHEDEN.ipCurentCamera}
             </script>
         </ui:define>
     </ui:composition>
