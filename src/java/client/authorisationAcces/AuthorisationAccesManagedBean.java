@@ -236,9 +236,12 @@ public class AuthorisationAccesManagedBean {
                 this.objects.add(this.secteurSelected);
             }
         } else {
-            BoiteAOutils.addMessage("Erreur", " vous ne pouvez pas attribuer un objet déjà attribuer.", "errorAuthorisationAcces");
+            this.detacherSecteurFormUtilisateur();
         }
 
+    }
+    public void detacherSecteurFormUtilisateur(){
+        this.authorisationAccesSrv.detacherSecteurFromUtilisateur(this.secteurSelected.getSecteur(), this.utilisateurSelected);
     }
 
     public void setSecteurs(List<Secteur> secteurs) {
