@@ -39,6 +39,8 @@ public class CSSActive {
     private String gererNumeroPredefini = " ";
     private String numeroPredefiniGmail = " ";
     private String gererNumeros = " ";
+    private String gererAuthorisationAcces=" ";
+    private String authorisationAcces=" ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -107,6 +109,10 @@ public class CSSActive {
          if ("numeroPredefini/gererNumeros.xhtml".equals(url)) {
             this.gererNumeroPredefini = "active";
             this.gererNumeros = "active";
+        }
+         if ("authorisationAcces/authorisationAcces.xhtml".equals(url)) {
+            this.gererAuthorisationAcces = "active";
+            this.authorisationAcces = "active";
         }
     }
 
@@ -326,5 +332,21 @@ public class CSSActive {
 
     public void setGererNumeros(String gererNumeros) {
         this.gererNumeros = gererNumeros;
+    }
+
+    public String getGererAuthorisationAcces() {
+        return gererAuthorisationAcces;
+    }
+
+    public void setGererAuthorisationAcces(String gererAuthorisationAcces) {
+        this.gererAuthorisationAcces = gererAuthorisationAcces;
+    }
+
+    public String getAuthorisationAcces() {
+        return authorisationAcces;
+    }
+
+    public void setAuthorisationAcces(String authorisationAcces) {
+        this.authorisationAcces = authorisationAcces;
     }
 }
