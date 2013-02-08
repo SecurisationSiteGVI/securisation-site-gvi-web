@@ -5,10 +5,15 @@ package client.camera;
  * and open the template in the editor.
  */
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.HttpSession;
 import metier.entitys.Camera;
+import physique.io.CameraDriver;
 
 /**
  *
@@ -18,8 +23,6 @@ import metier.entitys.Camera;
 @ViewScoped
 public class VoirCamera {
     private String queryCurrent;
-    private String protocol = "http://";
-    private String sufixHeden = "/videostream.cgi?user=admin&pwd=marvin&resolution=32";
     private Camera valeurCB;
     
     public VoirCamera() {
@@ -29,10 +32,17 @@ public class VoirCamera {
     public void cameraSelected(ValueChangeEvent evt){
         System.out.println("Caméra changed");
         Camera c = (Camera) evt.getNewValue();
-        System.out.println(c.toString());
-        String query = this.protocol + c.getIp() + this.sufixHeden;
-        this.queryCurrent = query;
+        CameraDriver drv = physique.io.PhysiqueIOFactory.getCameraDrivers(c);
         
+        String query = "";
+        try {
+            query = drv.getVideo();
+        } catch (Exception ex) {
+            Logger.getLogger(VoirCamera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.queryCurrent = query;
+         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+            session.setAttribute("camera", c.getIp());
     }
 
     /**
