@@ -23,7 +23,7 @@ import physique.io.CameraDriver;
 @ViewScoped
 public class VoirCamera {
     private String queryCurrent;
-    private Camera valeurCB;
+    private Camera selectedCamera;
     
     public VoirCamera() {
     }
@@ -49,14 +49,14 @@ public class VoirCamera {
      * @return the valeurCB
      */
         public Camera getValeurCB() {
-        return valeurCB;
+        return selectedCamera;
     }
 
     /**
      * @param valeurCB the valeurCB to set
      */
     public void setValeurCB(Camera valeurCB) {
-        this.valeurCB = valeurCB;
+        this.selectedCamera = valeurCB;
     }
 
     /**
