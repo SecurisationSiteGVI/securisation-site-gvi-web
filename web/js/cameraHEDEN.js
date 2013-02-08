@@ -14,13 +14,17 @@ function createRequestObject()
     return http;
 }
 
+
+
 function haut()
 {
+    
     http = createRequestObject();
     
     http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
+    
 }
 
 function bas()
@@ -80,8 +84,6 @@ function allumeLED()
     http.send(null);
 }
 
-    
-
 function eteindreLED()
 {
     http = createRequestObject();
@@ -92,8 +94,6 @@ function eteindreLED()
     
  }
 
-
-    
 function handleAJAXReturn()
 {
     //alert('handleAJAXReturn');
@@ -103,7 +103,6 @@ function handleAJAXReturn()
         {
             document.getElementById('resultat').innerHTML = http.responseText;
         }
-
     }
 }
 
