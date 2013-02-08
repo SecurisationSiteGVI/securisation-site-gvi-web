@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import metier.AttributionUtilisateurBadgeService;
 import metier.MetierFactory;
 import metier.entitys.AttributionUtilisateurBadge;

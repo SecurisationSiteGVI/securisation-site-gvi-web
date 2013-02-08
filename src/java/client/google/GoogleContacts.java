@@ -8,10 +8,7 @@ import com.google.gdata.client.Query;
 import com.google.gdata.client.contacts.ContactsService;
 import com.google.gdata.data.contacts.ContactEntry;
 import com.google.gdata.data.contacts.ContactFeed;
-import com.google.gdata.data.contacts.GroupMembershipInfo;
 import com.google.gdata.data.extensions.Email;
-import com.google.gdata.data.extensions.ExtendedProperty;
-import com.google.gdata.data.extensions.Im;
 import com.google.gdata.data.extensions.PhoneNumber;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
@@ -31,7 +28,7 @@ public class GoogleContacts {
         List<Contact> contacts = new ArrayList<Contact>();
         ContactsService myService = new ContactsService("securisation-site-gvi-web");
         myService.setUserCredentials(email, password);
-        URL feedUrl = new URL("https://www.google.com/m8/feeds/contacts/default/full/");//
+        URL feedUrl = new URL("https://www.google.com/m8/feeds/contacts/default/full/");
         Query myQuery = new Query(feedUrl);
         myQuery.setStartIndex(-1);
         myQuery.setMaxResults(100);

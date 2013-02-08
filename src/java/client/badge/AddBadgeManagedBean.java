@@ -8,8 +8,6 @@ import client.BoiteAOutils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import metier.BadgeService;
 import metier.MetierFactory;
 import metier.entitys.Badge;

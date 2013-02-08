@@ -6,7 +6,6 @@ package client.camera;
  */
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ValueChangeEvent;
 import metier.entitys.Camera;

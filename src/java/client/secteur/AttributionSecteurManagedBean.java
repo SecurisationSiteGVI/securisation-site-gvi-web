@@ -45,7 +45,9 @@ public class AttributionSecteurManagedBean {
     private AttributionSecteurDetecteurIntrusionService attributionSecteurDetecteurIntrusionSrv = MetierFactory.getAttributionSecteurDetecteurIntrusionService();
     private Secteur secteurSelected;
     private BorneAcces borneAccesSelected;
-
+    private Object objetSelected;
+    private Camera cameraSelected;
+    private DetecteurIntrusion detecteurIntrusionSelected;
     public List<Secteur> getSecteurs() {
         List<Secteur> secteurs = null;
         try {
@@ -58,6 +60,24 @@ public class AttributionSecteurManagedBean {
 
     public void attribuerBorne() {
         this.attributionSecteurBorneAccesSrv.attribuerBorneAcces(this.secteurSelected, this.borneAccesSelected);
+    }
+    public void attribuerCamera(){
+        this.attributionSecteurCameraSrv.attribuerCamera(this.secteurSelected, this.cameraSelected);
+    }
+    public void attribuerDetecteurIntrusion(){
+        this.attributionSecteurDetecteurIntrusionSrv.attribuerDetecteurIntrusion(this.secteurSelected, this.detecteurIntrusionSelected);
+    }
+    public void desattibuer(){
+        if(getObjetSelected() instanceof BorneAcces){
+            BorneAcces n = (BorneAcces) getObjetSelected();
+            this.attributionSecteurBorneAccesSrv.desattribuerBorneAcces(this.secteurSelected, n);
+        }else if(this.getObjetSelected() instanceof Camera){
+            Camera c = (Camera) this.getObjetSelected();
+            this.attributionSecteurCameraSrv.desattribuerCamera(this.secteurSelected, c);
+        }else if(this.getObjetSelected() instanceof DetecteurIntrusion){
+            DetecteurIntrusion d= (DetecteurIntrusion) this.getObjetSelected();
+            this.attributionSecteurDetecteurIntrusionSrv.desattribuerDetecteurIntrusion(this.secteurSelected, d);
+        }
     }
 
     public void setDynamicSecteurSelected(ValueChangeEvent evt) {
@@ -146,5 +166,29 @@ public class AttributionSecteurManagedBean {
 
     public void setBorneAccesSelected(BorneAcces borneAccesSelected) {
         this.borneAccesSelected = borneAccesSelected;
+    }
+
+    public Object getObjetSelected() {
+        return objetSelected;
+    }
+
+    public void setObjetSelected(Object objetSelected) {
+        this.objetSelected = objetSelected;
+    }
+
+    public Camera getCameraSelected() {
+        return cameraSelected;
+    }
+
+    public void setCameraSelected(Camera cameraSelected) {
+        this.cameraSelected = cameraSelected;
+    }
+
+    public DetecteurIntrusion getDetecteurIntrusionSelected() {
+        return detecteurIntrusionSelected;
+    }
+
+    public void setDetecteurIntrusionSelected(DetecteurIntrusion detecteurIntrusionSelected) {
+        this.detecteurIntrusionSelected = detecteurIntrusionSelected;
     }
 }

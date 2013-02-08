@@ -19,5 +19,9 @@
         <converter-id>SecteurConverter</converter-id>
         <converter-class>client.converters.SecteurConverter</converter-class>
     </converter>
+    <converter>
+        <converter-id>DetecteurIntrusionConverter</converter-id>
+        <converter-class>client.converters.DetecteurIntrusionConverter</converter-class>
+    </converter>
 </faces-config>
 

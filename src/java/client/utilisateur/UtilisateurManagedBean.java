@@ -5,21 +5,14 @@
 package client.utilisateur;
 
 import client.BoiteAOutils;
-import client.LinksPath;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import metier.MetierFactory;
 import metier.UtilisateurService;
-import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
