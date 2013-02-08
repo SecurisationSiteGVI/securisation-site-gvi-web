@@ -11,12 +11,16 @@
             </div>
             <div class="span4">
                 <h:form>
-                    <h:selectOneMenu value="#{voirCamera.valeurCB}" converter="CameraConverter" valueChangeListener="#{voirCamera.cameraSelected}" onchange="submit()" >
+                    <h:selectOneMenu value="#{voirCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{voirCamera.cameraSelected}" onchange="submit()" >
                         
                     <f:selectItems  value="#{cameraManagedBean.cameras}" />
                 </h:selectOneMenu>  &nbsp;
                 
-                </h:form>
+                </h:form> 
+                
+                <script type="text/javascript">
+                    var ip ="#{voirCamera.selectedCamera.ip}";
+                </script>
                 <table border="0">
                    <tr>
                         <td></td>
