@@ -14,20 +14,24 @@ function createRequestObject()
     return http;
 }
 
+
+
 function haut()
 {
+    
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
+    
 }
 
 function bas()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=2&onestep=1', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=2&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 }
@@ -36,7 +40,7 @@ function gauche()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=4&onestep=1', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=4&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 }
@@ -45,7 +49,7 @@ function droite()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=6&onestep=1', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=6&onestep=1', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 }
@@ -54,7 +58,7 @@ function auto()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 
@@ -64,7 +68,7 @@ function stop()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
+    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 
@@ -75,25 +79,21 @@ function allumeLED()
     
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=1&user=admin&pwd=marvin', true);
+    http.open('POST', 'http://'+ip+'/set_misc.cgi?led_mode=1&user=admin&pwd=marvin', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
 }
-
-    
 
 function eteindreLED()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://172.16.79.214/set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
+    http.open('POST', 'http://'+ip+'/set_misc.cgi?led_mode=2&user=admin&pwd=marvin', true);
     http.onreadystatechange = handleAJAXReturn;
     http.send(null);
     
  }
 
-
-    
 function handleAJAXReturn()
 {
     //alert('handleAJAXReturn');
@@ -103,7 +103,6 @@ function handleAJAXReturn()
         {
             document.getElementById('resultat').innerHTML = http.responseText;
         }
-
     }
 }
 

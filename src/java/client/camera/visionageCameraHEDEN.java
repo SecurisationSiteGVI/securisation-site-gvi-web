@@ -21,11 +21,11 @@ import physique.io.CameraDriver;
  */
 @ManagedBean
 @ViewScoped
-public class VoirCamera {
+public class visionageCameraHEDEN {
     private String queryCurrent;
     private Camera selectedCamera;
     
-    public VoirCamera() {
+    public visionageCameraHEDEN() {
     }
 
   
@@ -38,7 +38,7 @@ public class VoirCamera {
         try {
             query = drv.getVideo();
         } catch (Exception ex) {
-            Logger.getLogger(VoirCamera.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(visionageCameraHEDEN.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.queryCurrent = query;
          HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
