@@ -46,18 +46,6 @@ public class VoirCamera {
     }
 
     /**
-     * @return the valeurCB
-     */
-        public Camera getValeurCB() {
-        return selectedCamera;
-    }
-
-    /**
-     * @param valeurCB the valeurCB to set
-     */
-    public void setValeurCB(Camera valeurCB) {
-        this.selectedCamera = valeurCB;
-    }
 
     /**
      * @return the ipCurentCamera
@@ -85,5 +73,19 @@ public class VoirCamera {
      */
     public void setQueryCurrent(String queryCurrent) {
         this.queryCurrent = queryCurrent;
+    }
+
+    /**
+     * @return the selectedCamera
+     */
+    public Camera getSelectedCamera() {
+        return selectedCamera;
+    }
+
+    /**
+     * @param selectedCamera the selectedCamera to set
+     */
+    public void setSelectedCamera(Camera selectedCamera) {
+        this.selectedCamera = selectedCamera;
     }
 }
