@@ -19,6 +19,7 @@ import metier.UtilisateurService;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Secteur;
 import metier.entitys.Utilisateur;
+import physique.data.AuthorisationAccesServiceORM;
 
 /**
  *
@@ -63,20 +64,17 @@ public class AuthorisationAccesManagedBean {
     }
 
     public List<SecteurIsAttribuer> getSecteurWithUtilisateurSelected() {
+
         List<Secteur> secteurs = null;
         List<SecteurIsAttribuer> secteurIsAttribuers = new ArrayList<SecteurIsAttribuer>();
-        try {
-            secteurs = this.secteurSrv.getAll();
-        } catch (Exception ex) {
-            Logger.getLogger(AuthorisationAccesManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (int i = 0; i < secteurs.size(); i++) {
-            SecteurIsAttribuer s = new SecteurIsAttribuer();
-            s.setSecteur(secteurs.get(i));
-            s.setAtribuer(false);
-            secteurIsAttribuers.add(i, s);
-        }
         if (this.utilisateurSelected != null) {
+            List<Secteur> secteursIsUse = authorisationAccesSrv.getSecteurNotAssignByUtilisateur(this.utilisateurSelected);
+            for (int i = 0; i < secteursIsUse.size(); i++) {
+                SecteurIsAttribuer a = new SecteurIsAttribuer();
+                a.setAtribuer(false);
+                a.setSecteur(secteursIsUse.get(i));
+                secteurIsAttribuers.add(a);
+            }
             AuthorisationAcces authorisationAcces = null;
             try {
                 authorisationAcces = this.authorisationAccesSrv.getByUtilisateur(this.utilisateurSelected);
@@ -84,30 +82,33 @@ public class AuthorisationAccesManagedBean {
                 Logger.getLogger(AuthorisationAccesManagedBean.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (authorisationAcces != null) {
-                if (authorisationAcces.getSecteurs() != null) {
-                    List<Secteur> secteurByUtilisateur = authorisationAcces.getSecteurs();
-                    for (int i = 0; i < secteurByUtilisateur.size(); i++) {
-                        Long id = secteurByUtilisateur.get(i).getId();
-                        for (int j = 0; j < secteurs.size(); j++) {
-                            if (secteurs.get(j).getId().equals(id)) {
-                                secteurIsAttribuers.get(i).setAtribuer(true);
-                            }
-                        }
-                    }
+                for (int i = 0; i < authorisationAcces.getSecteurs().size(); i++) {
+                    SecteurIsAttribuer a = new SecteurIsAttribuer();
+                    a.setAtribuer(true);
+                    a.setSecteur(authorisationAcces.getSecteurs().get(i));
+                    secteurIsAttribuers.add(a);
                 }
 
                 if (authorisationAcces.getHeureFermeture() != null) {
                     this.setHeureFermetre(String.valueOf(authorisationAcces.getHeureFermeture().getHours()));
                     this.setMinutesFermeture(String.valueOf(authorisationAcces.getHeureFermeture().getMinutes()));
+                } else {
+                    this.setHeureFermetre(String.valueOf(0));
+                    this.setMinutesFermeture(String.valueOf(0));
                 }
                 if (authorisationAcces.getHeureOuverture() != null) {
                     this.setHeureOuverture(String.valueOf(authorisationAcces.getHeureOuverture().getHours()));
                     this.setMinutesOuverture(String.valueOf(authorisationAcces.getHeureOuverture().getMinutes()));
+                } else {
+                    this.setHeureOuverture(String.valueOf(0));
+                    this.setMinutesOuverture(String.valueOf(0));
                 }
-
             }
 
+
         }
+
+
         return secteurIsAttribuers;
     }
 
@@ -120,13 +121,13 @@ public class AuthorisationAccesManagedBean {
     }
 
     public void authoriser() {
-        AuthorisationAcces authorisationAcces =null;
+        AuthorisationAcces authorisationAcces = null;
         boolean neww = false;
         try {
-            if(this.authorisationAccesSrv.getByUtilisateur(utilisateurSelected)==null){
-                 authorisationAcces = new AuthorisationAcces();
-                 neww = true;
-            }else{
+            if (this.authorisationAccesSrv.getByUtilisateur(utilisateurSelected) == null) {
+                authorisationAcces = new AuthorisationAcces();
+                neww = true;
+            } else {
                 authorisationAcces = this.authorisationAccesSrv.getByUtilisateur(this.getUtilisateurSelected());
             }
         } catch (Exception ex) {
@@ -136,7 +137,7 @@ public class AuthorisationAccesManagedBean {
         if (this.heureFermetre.isEmpty() && this.minutesFermeture.isEmpty()) {
             fermeture.setHours(0);
             fermeture.setMinutes(0);
-        }else{
+        } else {
             fermeture.setHours(Integer.parseInt(this.heureFermetre));
             fermeture.setMinutes(Integer.parseInt(this.minutesFermeture));
         }
@@ -144,36 +145,36 @@ public class AuthorisationAccesManagedBean {
         if (this.heureOuverture.isEmpty() && this.minutesOuverture.isEmpty()) {
             ouverture.setHours(0);
             ouverture.setMinutes(0);
-        }else{
+        } else {
             ouverture.setHours(Integer.parseInt(this.heureOuverture));
             ouverture.setMinutes(Integer.parseInt(this.minutesOuverture));
         }
         List<Secteur> secteurs = new ArrayList<Secteur>();
-        for(int i=0;i<objects.size();i++){
-            if(objects.get(i) instanceof SecteurIsAttribuer ){
-                SecteurIsAttribuer ie= (SecteurIsAttribuer) objects.get(i);
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i) instanceof SecteurIsAttribuer) {
+                SecteurIsAttribuer ie = (SecteurIsAttribuer) objects.get(i);
                 secteurs.add(ie.getSecteur());
                 objects.remove(i);
             }
         }
-        if(!secteurs.isEmpty()){
-            if(authorisationAcces.getSecteurs()==null){
+        if (!secteurs.isEmpty()) {
+            if (authorisationAcces.getSecteurs() == null) {
                 List<Secteur> q = new ArrayList<Secteur>();
                 q.addAll(secteurs);
                 authorisationAcces.setSecteurs(q);
             }
-            
+
         }
         authorisationAcces.setHeureFermeture(fermeture);
         authorisationAcces.setHeureOuverture(ouverture);
         authorisationAcces.setUtilisateur(utilisateurSelected);
-        if(neww){
+        if (neww) {
             try {
                 this.authorisationAccesSrv.add(authorisationAcces);
             } catch (Exception ex) {
                 Logger.getLogger(AuthorisationAccesManagedBean.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             try {
                 this.authorisationAccesSrv.update(authorisationAcces);
             } catch (Exception ex) {
@@ -219,28 +220,44 @@ public class AuthorisationAccesManagedBean {
         return secteurs;
     }
 
+//    public void selectionnerSecteur() {
+//        boolean trouve = false;
+//        int pos = 0;
+//        for (int i = 0; i < objects.size(); i++) {
+//            if (objects.get(i) instanceof Secteur) {
+//                trouve = true;
+//                pos = i;
+//            }
+//        }
+//        if (this.secteurSelected.isAtribuer() == false) {
+//            if (trouve == true) {
+//                this.objects.remove(pos);
+//                this.objects.add(pos, this.secteurSelected);
+//            } else {
+//                this.objects.add(this.secteurSelected);
+//            }
+//        } else {
+//            this.detacherSecteurFormUtilisateur();
+//        }
+//
+//    }
     public void selectionnerSecteur() {
-        boolean trouve = false;
-        int pos = 0;
-        for (int i = 0; i < objects.size(); i++) {
-            if (objects.get(i) instanceof Secteur) {
-                trouve = true;
-                pos = i;
-            }
-        }
-        if (this.secteurSelected.isAtribuer() == false) {
-            if (trouve == true) {
-                this.objects.remove(pos);
-                this.objects.add(pos, this.secteurSelected);
+        if (this.utilisateurSelected != null) {
+            if (this.secteurSelected.isAtribuer()) {
+                this.detacherSecteurFormUtilisateur();
             } else {
-                this.objects.add(this.secteurSelected);
+                this.attacherSecteurFromUtilisateur();
             }
         } else {
-            this.detacherSecteurFormUtilisateur();
+            BoiteAOutils.addMessage("Erreur", " veuiller selectionner d'abord l'utilsateur", "errorAuthorisationAcces");
         }
-
     }
-    public void detacherSecteurFormUtilisateur(){
+
+    public void attacherSecteurFromUtilisateur() {
+        this.authorisationAccesSrv.atacherSecteurFromUtilisateur(this.secteurSelected.getSecteur(), this.utilisateurSelected);
+    }
+
+    public void detacherSecteurFormUtilisateur() {
         this.authorisationAccesSrv.detacherSecteurFromUtilisateur(this.secteurSelected.getSecteur(), this.utilisateurSelected);
     }
 
