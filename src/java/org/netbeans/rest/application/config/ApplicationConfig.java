@@ -29,8 +29,8 @@ public class ApplicationConfig extends Application {
         resources.add(serviceWebREST.AttributionSecteurBorneAccesFacadeREST.class);
         resources.add(serviceWebREST.PositionFacadeREST.class);
         resources.add(serviceWebREST.BadgeFacadeREST.class);
-        resources.add(serviceWebREST.TechnicienFacadeREST.class);
         resources.add(serviceWebREST.AccesFacadeREST.class);
+        resources.add(serviceWebREST.TechnicienFacadeREST.class);
         resources.add(serviceWebREST.AdministrateurFacadeREST.class);
         resources.add(serviceWebREST.NumeroPredefinisFacadeREST.class);
         resources.add(serviceWebREST.AttributionUtilisateurBadgeFacadeREST.class);
