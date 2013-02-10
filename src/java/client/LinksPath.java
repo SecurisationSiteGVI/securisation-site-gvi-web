@@ -5,6 +5,7 @@
 package client;
 
 import javax.faces.bean.ManagedBean;
+import org.netbeans.rest.application.config.ApplicationConfig;
 
 /**
  *
