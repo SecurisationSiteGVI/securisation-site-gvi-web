@@ -13,13 +13,13 @@
             <f:view>
                 <h:form>
                     <legend><h:outputText value="Historique récent"/></legend>
-                    <h:dataTable value="#{historiqueManagedBean.evenements}" class="table table-bordered" var="item">
+                    <h:dataTable value="#{historiqueManagedBean.evenements}" class="table table-hover" var="item">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Date"/>
+                                <h:outputText value=" "/>
                             </f:facet>
-                            <h:outputText value="#{item.dateEvt}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            <h:outputText value="#{item.toString()}">
+                                
                             </h:outputText>
                         </h:column>
                     </h:dataTable>
