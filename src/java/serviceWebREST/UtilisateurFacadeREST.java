@@ -17,6 +17,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import metier.MetierFactory;
 import metier.UtilisateurService;
+import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
@@ -25,11 +26,23 @@ import metier.entitys.Utilisateur;
  */
 @Path("utilisateur")
 public class UtilisateurFacadeREST {
-    private UtilisateurService utilisateurSrv =MetierFactory.getUtilisateurService();
+
+    private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
+
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(Utilisateur entity) {
+
+        System.out.println("create");
         this.utilisateurSrv.add(entity);
+    }
+
+    @POST
+    @Path("verificationConnexion")
+    @Consumes({"application/xml", "application/json"})
+    public Technicien verificationConnexion(Technicien entity) {
+        Technicien t = this.utilisateurSrv.verifificationConnexion(entity.getLogin(), entity.getPassword());
+        return t;
     }
 
     @PUT
@@ -43,15 +56,16 @@ public class UtilisateurFacadeREST {
     public void remove(@PathParam("id") Long id) {
         Utilisateur u = new Utilisateur();
         u.setId(id);
+        System.out.println(id + " delete");
         this.utilisateurSrv.remove(u);
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Utilisateur find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Utilisateur find(@PathParam("id") Long id) {
+        return this.utilisateurSrv.getAll().get(25);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})
@@ -72,5 +86,4 @@ public class UtilisateurFacadeREST {
     public String countREST() {
         return String.valueOf(this.utilisateurSrv.count());
     }
- 
 }
