@@ -5,8 +5,6 @@
 package serviceWebREST;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -32,7 +30,6 @@ public class UtilisateurFacadeREST {
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(Utilisateur entity) {
-
         System.out.println("create");
         this.utilisateurSrv.add(entity);
     }
@@ -54,12 +51,20 @@ public class UtilisateurFacadeREST {
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
-        Utilisateur u = new Utilisateur();
-        u.setId(id);
+        Utilisateur u = this.utilisateurSrv.getById(id);
         System.out.println(id + " delete");
         this.utilisateurSrv.remove(u);
     }
 
+    
+    @POST
+    @Path("loginIsUse")
+    @Consumes({"application/xml", "application/json"})
+    public String loginIsUse(Technicien technicien) {
+        System.out.println("LOGIN PARAM : "+technicien.getLogin());
+         return String.valueOf(this.utilisateurSrv.loginIsUtilise(technicien.getLogin()));
+    }
+    
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
