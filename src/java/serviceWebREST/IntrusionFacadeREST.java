@@ -61,12 +61,12 @@ public class IntrusionFacadeREST {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Intrusion find(@PathParam("id") Long id) {
-//        return this.evenementSrv.getByIntrusion();
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Intrusion find(@PathParam("id") Long id) {
+        return (Intrusion) this.evenementSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

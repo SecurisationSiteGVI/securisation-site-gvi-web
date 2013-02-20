@@ -5,8 +5,6 @@
 package serviceWebREST;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -47,12 +45,12 @@ public class AttributionSecteurBorneAccesFacadeREST  {
         this.attributionSecteurBorneAccesSrv.add(a);
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public AttributionSecteurBorneAcces find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public AttributionSecteurBorneAcces find(@PathParam("id") Long id) {
+        return this.attributionSecteurBorneAccesSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,7 +23,7 @@ import metier.entitys.NumeroPredefinis;
  *
  * @author damien
  */
-//@javax.ejb.Stateless
+
 @Path("numeropredefinis")
 public class NumeroPredefinisFacadeREST {
     private NumeroPredefinisService numeroPredefinis = MetierFactory.getNumeroPredefinisService();
@@ -62,12 +60,12 @@ public class NumeroPredefinisFacadeREST {
        
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public NumeroPredefinis find(@PathParam("id") Long id) {
-//        return this.numeroPredefinis.ge;
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public NumeroPredefinis find(@PathParam("id") Long id) {
+        return this.numeroPredefinis.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

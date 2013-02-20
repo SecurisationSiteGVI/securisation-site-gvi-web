@@ -61,12 +61,12 @@ public class BadgeFacadeREST {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Badge find(@PathParam("id") Long id) {
-//        return this.badgeSrv.get;
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Badge find(@PathParam("id") Long id) {
+        return this.badgeSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

@@ -61,13 +61,13 @@ public class PositionFacadeREST {
             Logger.getLogger(PositionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Position find(@PathParam("id") Long id) {
-//        return this.positionSrv.;
-//    }
+
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Position find(@PathParam("id") Long id) {
+        return this.positionSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

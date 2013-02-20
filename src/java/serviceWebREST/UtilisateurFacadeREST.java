@@ -69,7 +69,7 @@ public class UtilisateurFacadeREST {
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
     public Utilisateur find(@PathParam("id") Long id) {
-        return this.utilisateurSrv.getAll().get(25);
+        return this.utilisateurSrv.getById(id);
     }
 
     @GET

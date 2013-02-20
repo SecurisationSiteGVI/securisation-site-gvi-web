@@ -47,13 +47,13 @@ public class TechnicienFacadeREST {
         u.setId(id);
         this.utilisateurSrv.remove(u);
     }
-//
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Technicien find(@PathParam("id") Long id) {
-//        return this.utilisateurSrv.getBy;
-//    }
+
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Technicien find(@PathParam("id") Long id) {
+        return (Technicien) this.utilisateurSrv.getById(id);
+    }
 
     @GET
     @Path("loginIsUse/{login}")

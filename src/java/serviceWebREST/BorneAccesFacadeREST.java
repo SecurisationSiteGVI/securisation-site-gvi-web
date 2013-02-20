@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -61,12 +59,12 @@ public class BorneAccesFacadeREST{
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public BorneAcces find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public BorneAcces find(@PathParam("id") Long id) {
+        return this.borneAccesSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

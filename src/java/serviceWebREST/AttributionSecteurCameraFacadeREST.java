@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,7 +23,7 @@ import metier.entitys.AttributionSecteurCamera;
  *
  * @author damien
  */
-//@javax.ejb.Stateless
+
 @Path("attributionsecteurcamera")
 public class AttributionSecteurCameraFacadeREST {
     
@@ -62,12 +60,12 @@ public class AttributionSecteurCameraFacadeREST {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public AttributionSecteurCamera find(@PathParam("id") Long id) {
-//        this.attributionSecteurCameraSr
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public AttributionSecteurCamera find(@PathParam("id") Long id) {
+       return this.attributionSecteurCameraSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

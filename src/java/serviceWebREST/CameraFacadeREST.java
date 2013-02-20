@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -60,13 +58,13 @@ public class CameraFacadeREST  {
             Logger.getLogger(CameraFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Camera find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Camera find(@PathParam("id") Long id) {
+        return this.cameraSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

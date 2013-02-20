@@ -60,13 +60,13 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST  {
             Logger.getLogger(AttributionSecteurDetecteurIntrusionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public AttributionSecteurDetecteurIntrusion find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public AttributionSecteurDetecteurIntrusion find(@PathParam("id") Long id) {
+        return this.attributionSecteurDetecteurIntrusionSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

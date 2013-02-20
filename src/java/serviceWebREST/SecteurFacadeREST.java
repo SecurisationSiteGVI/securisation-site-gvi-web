@@ -61,12 +61,12 @@ public class SecteurFacadeREST  {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Secteur find(@PathParam("id") Long id) {
-//        return this.secteurSrv.get;
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Secteur find(@PathParam("id") Long id) {
+        return this.secteurSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

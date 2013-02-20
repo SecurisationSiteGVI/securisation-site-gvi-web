@@ -7,7 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -60,12 +59,12 @@ public class AttributionUtilisateurBadgeFacadeREST  {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public AttributionUtilisateurBadge find(@PathParam("id") Long id) {
-//        return this.attributionUtilisateurBadgeSrv.get
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public AttributionUtilisateurBadge find(@PathParam("id") Long id) {
+        return this.attributionUtilisateurBadgeSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

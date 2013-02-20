@@ -4,9 +4,6 @@
  */
 package serviceWebREST;
 
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,13 +15,11 @@ import javax.ws.rs.Produces;
 import metier.MetierFactory;
 import metier.UtilisateurService;
 import metier.entitys.Administrateur;
-import metier.entitys.Utilisateur;
 
 /**
  *
  * @author damien
  */
-//@javax.ejb.Stateless
 @Path("administrateur")
 public class AdministrateurFacadeREST  {
 
@@ -50,12 +45,12 @@ public class AdministrateurFacadeREST  {
     
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Administrateur find(@PathParam("id") Long id) {
-//
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Administrateur find(@PathParam("id") Long id) {
+        return (Administrateur) this.utilisateurSrv.getById(id);
+    }
 //
 //    @GET
 //    @Override

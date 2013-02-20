@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,7 +17,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import metier.EvenementService;
 import metier.MetierFactory;
-import metier.entitys.Evenement;
 import metier.entitys.Photo;
 
 /**
@@ -62,12 +59,12 @@ public class PhotoFacadeREST {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public Photo find(@PathParam("id") Long id) {
-//        return this.evenementSrv.;
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public Photo find(@PathParam("id") Long id) {
+        return (Photo) this.evenementSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})

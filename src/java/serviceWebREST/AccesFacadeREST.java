@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -66,8 +64,7 @@ public class AccesFacadeREST {
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
     public Acces find(@PathParam("id") Long id) {
-//        this.evenementSrv.getById(id);
-        return null;
+     return (Acces) this.evenementSrv.getById(id);
     }
     
     @GET

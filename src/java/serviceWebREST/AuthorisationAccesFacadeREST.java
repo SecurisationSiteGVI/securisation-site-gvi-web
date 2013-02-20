@@ -59,12 +59,12 @@ public class AuthorisationAccesFacadeREST {
         }
     }
 
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/xml", "application/json"})
-//    public AuthorisationAcces find(@PathParam("id") Long id) {
-//        return super.find(id);
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/xml", "application/json"})
+    public AuthorisationAcces find(@PathParam("id") Long id) {
+        return this.authorisationAccesSrv.getById(id);
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})
