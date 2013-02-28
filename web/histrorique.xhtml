@@ -16,11 +16,27 @@
                     <h:dataTable value="#{historiqueManagedBean.evenements}" class="table table-hover" var="item">
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateEvt.toLocaleString()}">
+                                
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value=" "/>
                             </f:facet>
                             <h:outputText value="#{item.toString()}">
                                 
                             </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:commandLink action="#{historiqueManagedBean.more()}" value="En voir plus">
+                                <f:setPropertyActionListener value="#{item}" target="#{historiqueManagedBean.objectSelected}"/>
+                            </h:commandLink>
                         </h:column>
                     </h:dataTable>
                 </h:form>
