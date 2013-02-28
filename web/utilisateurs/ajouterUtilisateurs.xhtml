@@ -7,14 +7,19 @@
     <ui:composition template="./layoutUtilisateur.xml">        
         <ui:define name="contentUtilisateur">
             <f:view>
-                <h:form> <div class="span4">
+                <h:form> 
+                    <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
+                        <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
+                        <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
+                        <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message><br/>
+                    <div class="span4">
 
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Nom :" for="nom" />
                             <h:inputText id="nom"  value="#{addUtilisateurManagedBean.utilisateur.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
                             <h:outputLabel value="Prenom :" for="prenom" />
                             <h:inputText id="prenom" value="#{addUtilisateurManagedBean.utilisateur.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
-                            <h:outputLabel value="Sexe :" for="sexe" />
+                            <h:outputLabel value="Sexe :"  />
                             <h:selectOneRadio value="#{addUtilisateurManagedBean.utilisateur.homme}">
                                 <f:selectItem itemValue="true" itemLabel="Homme" />
                                 <f:selectItem itemValue="false" itemLabel="Femme" />
@@ -47,10 +52,7 @@
                         </h:panelGrid>
                     </div>
                     <div class="span4">
-                        <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
-                        <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
-                        <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
-                        <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message>
+                        
                         <h:panelGrid columns="2">
                             <h:outputText value="login :"/>
                             <h:inputText value="#{addUtilisateurManagedBean.login}"/>
