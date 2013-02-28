@@ -24,23 +24,24 @@ public class CSSActive {
     private String gererBadges = " ";
     private String listeBadges = " ";
     private String ajouterBadge = " ";
-    private String atributionBadge =" ";
-    private String gererSecteur=" ";
+    private String atributionBadge = " ";
+    private String gererSecteur = " ";
     private String gererSecteur2 = " ";
-    private String modificationUtilisateur=" ";
-    private String attributionSecteur=" ";
-    private String gererAppareil=" ";
-    private String gererLecteurBadge=" ";
-    private String video=" ";
-    private String gererCamera=" ";
-    private String gererDetecteurIntrusion =" ";
-    private String gererPosition=" ";
-    private String visionageCamera=" ";
+    private String modificationUtilisateur = " ";
+    private String attributionSecteur = " ";
+    private String gererAppareil = " ";
+    private String gererLecteurBadge = " ";
+    private String video = " ";
+    private String gererCamera = " ";
+    private String gererDetecteurIntrusion = " ";
+    private String gererPosition = " ";
+    private String visionageCamera = " ";
     private String gererNumeroPredefini = " ";
     private String numeroPredefiniGmail = " ";
     private String gererNumeros = " ";
-    private String gererAuthorisationAcces=" ";
-    private String authorisationAcces=" ";
+    private String gererAuthorisationAcces = " ";
+    private String authorisationAcces = " ";
+
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -82,7 +83,8 @@ public class CSSActive {
         if ("secteur/attributionSecteur.xhtml".equals(url)) {
             this.attributionSecteur = "active";
             this.gererSecteur = "active";
-        }if ("appareils/gererLecteurBadge.xhtml".equals(url)) {
+        }
+        if ("appareils/gererLecteurBadge.xhtml".equals(url)) {
             this.gererAppareil = "active";
             this.gererLecteurBadge = "active";
         }
@@ -98,21 +100,24 @@ public class CSSActive {
             this.gererAppareil = "active";
             this.gererPosition = "active";
         }
-         if ("video/visionageCamera.xhtml".equals(url)) {
+        if ("video/visionageCamera.xhtml".equals(url)) {
             this.video = "active";
             this.visionageCamera = "active";
         }
-         if ("numeroPredefini/numeroPredefiniGmail.xhtml".equals(url)) {
+        if ("numeroPredefini/numeroPredefiniGmail.xhtml".equals(url)) {
             this.gererNumeroPredefini = "active";
             this.numeroPredefiniGmail = "active";
         }
-         if ("numeroPredefini/gererNumeros.xhtml".equals(url)) {
+        if ("numeroPredefini/gererNumeros.xhtml".equals(url)) {
             this.gererNumeroPredefini = "active";
             this.gererNumeros = "active";
         }
-         if ("authorisationAcces/authorisationAcces.xhtml".equals(url)) {
+        if ("authorisationAcces/authorisationAcces.xhtml".equals(url)) {
             this.gererAuthorisationAcces = "active";
             this.authorisationAcces = "active";
+        }
+        if ("historique/acces.xhtml".equals(url) || "historique/intrusion.xhtml".equals(url) || "historique/photo.xhtml".equals(url)) {
+            this.histrorique = "active";
         }
     }
 
@@ -204,8 +209,6 @@ public class CSSActive {
         this.atributionBadge = atributionBadge;
     }
 
-  
-
     public String getAjouterSecteur() {
         return gererSecteur;
     }
@@ -229,8 +232,6 @@ public class CSSActive {
     public void setModificationUtilisateur(String modificationUtilisateur) {
         this.modificationUtilisateur = modificationUtilisateur;
     }
-
-    
 
     public String getGererAppareil() {
         return gererAppareil;
