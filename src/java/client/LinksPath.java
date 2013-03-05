@@ -15,7 +15,7 @@ import org.netbeans.rest.application.config.ApplicationConfig;
 public class LinksPath {
 
     private static String protocol = "http://";
-    private static String host = "localhost:8080";
+    private static String host = "localhost:8084";
     private static String applicationName = "securisation-site-gvi-web";
     private static String repertoire = "css";
     private static String path = LinksPath.protocol + LinksPath.host + "/" + LinksPath.applicationName + "/" + LinksPath.repertoire;
