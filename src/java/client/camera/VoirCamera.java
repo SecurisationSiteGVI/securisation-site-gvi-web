@@ -27,13 +27,7 @@ public class VoirCamera {
     private Camera selectedCamera;
     
     public VoirCamera() {
-        try {
-            if(!MetierFactory.getCameraService().getAll().isEmpty()){
-                this.selectedCamera = MetierFactory.getCameraService().getAll().get(0);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(VoirCamera.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
   

@@ -15,7 +15,7 @@
         <converter-id>CameraConverter</converter-id>
         <converter-class>client.converters.CameraConverter</converter-class>
     </converter>
-     <converter>
+    <converter>
         <converter-id>SecteurConverter</converter-id>
         <converter-class>client.converters.SecteurConverter</converter-class>
     </converter>
@@ -24,8 +24,8 @@
         <converter-class>client.converters.DetecteurIntrusionConverter</converter-class>
     </converter>
     <converter>
-  <converter-for-class>java.lang.Enum</converter-for-class>
-  <converter-class>javax.faces.convert.EnumConverter</converter-class>
-</converter>
+        <converter-for-class>java.lang.Enum</converter-for-class>
+        <converter-class>javax.faces.convert.EnumConverter</converter-class>
+    </converter>
 </faces-config>
 
