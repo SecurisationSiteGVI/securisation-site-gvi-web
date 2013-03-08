@@ -29,16 +29,16 @@ public class HistoriqueManagedBean {
 
     private List<Evenement> evenements;
     private EvenementService evenementSrv = MetierFactory.getEvenementService();
-    private int index;
-    private int nbResult = 10;
     private Object objectSelected;
     private Acces accesView;
     private Intrusion intrusionView;
     private Photo photoView;
+    private int index;
+    private int nbLinge = 10;
 
     public HistoriqueManagedBean() {
         this.index = 0;
-        this.evenements = evenementSrv.getAll(this.index, this.nbResult);
+        this.evenements = evenementSrv.getByMostRecent(this.index, this.nbLinge);
     }
 
     public void more() {
@@ -65,7 +65,19 @@ public class HistoriqueManagedBean {
         }
     }
 
+    public void pageSuivant() {
+        this.index = this.index + nbLinge;
+    }
+
+    public void pagePrécédente() {
+        if (this.index <= nbLinge - 1) {
+            BoiteAOutils.addMessage("Impossible d'éffectuer", "Vous éte déjà sur la premiere page", "errorPageutili");
+        } else {
+            this.index = this.index - nbLinge;
+        }
+    }
     public List<Evenement> getEvenements() {
+        this.evenements = this.evenementSrv.getByMostRecent(this.index, this.nbLinge);
         return evenements;
     }
 
@@ -81,6 +93,12 @@ public class HistoriqueManagedBean {
         this.objectSelected = objectSelected;
     }
 
+    public int getPage() {
+        int page = index / nbLinge;
+        page = page+1;
+        return page;
+
+    }
     public void retour() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getPathLinkStatic() + "/histrorique.jsf");
