@@ -5,16 +5,19 @@
 package client.appareils;
 
 import client.BoiteAOutils;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 import metier.CameraService;
 import metier.MetierFactory;
 import metier.PositionService;
 import metier.entitys.Camera;
 import metier.entitys.Position;
+import metier.entitys.TypeCamera;
 
 /**
  *
@@ -27,6 +30,7 @@ public class CameraManagedBean {
     private CameraService cameraSrv = MetierFactory.getCameraService();
     private Camera camera = new Camera();
     private Camera cameraSelected;
+    private String[] typeCamera ;
     public CameraManagedBean() {
     }
     public void addCamera(){
@@ -84,5 +88,24 @@ public class CameraManagedBean {
 
     public void setCameraSelected(Camera cameraSelected) {
         this.cameraSelected = cameraSelected;
+    }
+
+    /**
+     * @return the typeCamera
+     */
+    public String[] getTypeCamera() {
+        TypeCamera[] types = TypeCamera.values();
+        int lenght = types.length;
+        String[] str = new String[lenght];
+        for(int i=0; i<lenght;i++){
+            str[i] = types[i].toString();
+        }return str;
+    }
+
+    /**
+     * @param typeCamera the typeCamera to set
+     */
+    public void setTypeCamera(String[] typeCamera) {
+        this.typeCamera = typeCamera;
     }
 }
