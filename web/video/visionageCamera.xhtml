@@ -51,8 +51,16 @@
                         <td><a onclick="eteindreLED()(); return false;"><img src="#{linkPath.pathLink}/img/camera/LED2.png"/></a> </td>
                     </tr> 
                 </table>
+                
+                                
+                <h:form>
+                    <h:commandLink action="#{visionageCameraHEDEN.photo()}" value="photo"/>
+                </h:form>
+                
+                <div id="msg" style="visibility: hidden">Photo en cours</div>
                 <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
                 <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
+
             </div>
             <script>
                 #{visionageCameraHEDEN.ipCurentCamera}
