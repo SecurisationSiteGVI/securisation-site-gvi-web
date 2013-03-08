@@ -23,5 +23,9 @@
         <converter-id>DetecteurIntrusionConverter</converter-id>
         <converter-class>client.converters.DetecteurIntrusionConverter</converter-class>
     </converter>
+    <converter>
+  <converter-for-class>java.lang.Enum</converter-for-class>
+  <converter-class>javax.faces.convert.EnumConverter</converter-class>
+</converter>
 </faces-config>
 
