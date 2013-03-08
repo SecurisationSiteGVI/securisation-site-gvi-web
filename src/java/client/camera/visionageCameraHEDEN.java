@@ -7,6 +7,7 @@ package client.camera;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -89,11 +90,18 @@ public class visionageCameraHEDEN {
         bos.close();
         is.close();
         //response.getWriter().print("ok");
+        FileInputStream fis = new FileInputStream("/home/blondellemarvin/Bureau/photo.jpg");
+        int size = fis.available();
+        buff = new byte[size];
+        fis.read(buff);
         
         Photo photo = new Photo();
+        photo.setCamera(selectedCamera);
         photo.setDateEvt(new Date());
         photo.setImage(buff);
-
+        
+        
+        
         EvenementService es= MetierFactory.getEvenementService();
         try {
             es.add(photo);
