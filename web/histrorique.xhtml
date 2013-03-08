@@ -13,7 +13,7 @@
             <f:view>
                 <h:form>
                     <legend><h:outputText value="Historique récent"/></legend>
-                    <h:dataTable value="#{historiqueManagedBean.evenements}" class="table table-hover" var="item">
+                    <h:dataTable id="tableHistorique" value="#{historiqueManagedBean.evenements}" class="table table-hover" var="item">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Date"/>
@@ -32,13 +32,17 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value=" "/>
+                                <h:outputText value="Page #{historiqueManagedBean.page}"/>
                             </f:facet>
                             <h:commandLink action="#{historiqueManagedBean.more()}" value="En voir plus">
                                 <f:setPropertyActionListener value="#{item}" target="#{historiqueManagedBean.objectSelected}"/>
                             </h:commandLink>
                         </h:column>
                     </h:dataTable>
+                    <ul class="pager">
+                        <li><h:commandLink value="Précedent" action="#{historiqueManagedBean.pagePrécédente()}"><f:ajax  render="tableHistorique"/></h:commandLink></li>
+                        <li><h:commandLink value="Suivant" action="#{historiqueManagedBean.pageSuivant()}"><f:ajax render="tableHistorique"  /></h:commandLink></li>
+                    </ul>
                 </h:form>
             </f:view>
         </ui:define>
