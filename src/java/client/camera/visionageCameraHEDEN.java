@@ -82,7 +82,7 @@ public class visionageCameraHEDEN {
             fos.write(buff, 0, n);
  
             total += n;
-            
+               
         }
         System.out.println("IMG : " + total);
         fos.close();
