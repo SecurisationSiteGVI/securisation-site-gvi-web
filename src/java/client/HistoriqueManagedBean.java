@@ -4,6 +4,13 @@
  */
 package client;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.renderable.RenderableImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -11,6 +18,7 @@ import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import metier.EvenementService;
 import metier.MetierFactory;
@@ -35,7 +43,7 @@ public class HistoriqueManagedBean {
     private Photo photoView;
     private int index;
     private int nbLinge = 10;
-
+    private String pathImage=new String();
     public HistoriqueManagedBean() {
         this.index = 0;
         this.evenements = evenementSrv.getByMostRecent(this.index, this.nbLinge);
@@ -76,6 +84,7 @@ public class HistoriqueManagedBean {
             this.index = this.index - nbLinge;
         }
     }
+
     public List<Evenement> getEvenements() {
         this.evenements = this.evenementSrv.getByMostRecent(this.index, this.nbLinge);
         return evenements;
@@ -95,10 +104,11 @@ public class HistoriqueManagedBean {
 
     public int getPage() {
         int page = index / nbLinge;
-        page = page+1;
+        page = page + 1;
         return page;
 
     }
+
     public void retour() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getPathLinkStatic() + "/histrorique.jsf");
@@ -120,6 +130,7 @@ public class HistoriqueManagedBean {
     public void setAccesView(Acces accesView) {
         this.accesView = accesView;
     }
+    BufferedImage image;
 
     public Intrusion getIntrusionView() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -127,6 +138,7 @@ public class HistoriqueManagedBean {
         if (session.getAttribute("historique") != null) {
             s = (Intrusion) session.getAttribute("historique");
             this.intrusionView = s;
+
         }
         return intrusionView;
     }
@@ -135,17 +147,50 @@ public class HistoriqueManagedBean {
         this.intrusionView = intrusionView;
     }
 
-    public Photo getPhotoView() {
+    public Photo getPhotoView() throws IOException {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Photo s = null;
         if (session.getAttribute("historique") != null) {
+
+
             s = (Photo) session.getAttribute("historique");
             this.photoView = s;
+            byte[] bytes = this.photoView.getImage();
+            try {
+                // On sauve l'image histoire de rire un peu :
+
+                File f = new File("/var/www/html/img.jpg");
+                FileOutputStream fos = new FileOutputStream(f);
+                this.setPathImage(f.getAbsolutePath());
+                System.out.println(f.getAbsolutePath());
+                fos.write(bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
         return photoView;
     }
 
     public void setPhotoView(Photo photoView) {
         this.photoView = photoView;
+    }
+
+    /**
+     * @return the pathImage
+     */
+    public String getPathImage() {
+        System.out.println("IMAAAGGEEEE ! "+this.pathImage);
+        this.pathImage= this.pathImage.substring(14);
+        String re= "http://localhost/"+this.pathImage;
+        return re;
+    }
+
+    /**
+     * @param pathImage the pathImage to set
+     */
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
     }
 }
