@@ -37,6 +37,7 @@ import physique.io.CameraDriver;
 public class visionageCameraHEDEN {
     private String queryCurrent;
     private Camera selectedCamera;
+    private String ip;
     
     public visionageCameraHEDEN() {
     }
@@ -59,14 +60,14 @@ public class visionageCameraHEDEN {
     }
 
         public void photo() throws FileNotFoundException, IOException{
-        
-        
+
+        this.ip = this.selectedCamera.getIp();
         
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         FileOutputStream fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
         
         DefaultHttpClient client2 = new DefaultHttpClient();
-        HttpGet request2 = new HttpGet("http://172.16.79.214/snapshot.jpg?user=admin&pwd=marvin");
+        HttpGet request2 = new HttpGet("http://"+this.ip+"/snapshot.jpg?user=admin&pwd=marvin");
         HttpResponse response2 = client2.execute(request2);
 
         BufferedInputStream is = new BufferedInputStream(response2.getEntity().getContent());
