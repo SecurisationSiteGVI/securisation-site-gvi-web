@@ -7,19 +7,20 @@
     <ui:composition template="./layoutVideo.xml">        
         <ui:define name="contentVideo"> 
             <div class="span4">
-                <h:graphicImage id="vi" value="#{visionageCameraHEDEN.queryCurrent}"></h:graphicImage>
+                <h:graphicImage id="vi" value="#{visionageCamera.queryCurrent}"></h:graphicImage>
             </div>
             <div class="span4">
                 <h:form>
-                    <h:selectOneMenu value="#{visionageCameraHEDEN.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCameraHEDEN.cameraSelected}" onchange="submit()" >
+                    <h:selectOneMenu value="#{visionageCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCamera.cameraSelected}" onchange="submit()" >
                         
                     <f:selectItems  value="#{cameraManagedBean.cameras}" />
+                    
                 </h:selectOneMenu>  &nbsp;
-                
+ 
                 </h:form> 
                 
                 <script type="text/javascript">
-                    var ip ="#{visionageCameraHEDEN.selectedCamera.ip}";
+                    var ip ="#{visionageCamera.selectedCamera.ip}";
                 </script>
                 
                 <table border="0">
@@ -55,7 +56,7 @@
                 
                                 
                 <h:form>
-                    <h:commandLink action="#{visionageCameraHEDEN.photo()}" value="photo"/>
+                    <h:commandLink action="#{visionageCamera.photo()}" value="photo"/>
                 </h:form>
                 
                 <div id="msg" style="visibility: hidden">Photo en cours</div>
@@ -64,7 +65,7 @@
 
             </div>
             <script>
-                #{visionageCameraHEDEN.ipCurentCamera}
+                #{visionageCamera.ipCurentCamera}
             </script>
         </ui:define>
     </ui:composition>
