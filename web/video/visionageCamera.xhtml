@@ -12,19 +12,25 @@
             <div class="span4">
                 <h:form>
                     <h:selectOneMenu value="#{visionageCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCamera.cameraSelected}" onchange="submit()" >
-                        
-                    <f:selectItems  value="#{cameraManagedBean.cameras}" />
-                    
-                </h:selectOneMenu>  &nbsp;
- 
+
+                        <f:selectItems  value="#{cameraManagedBean.cameras}" />
+
+                    </h:selectOneMenu>  &nbsp;
+
                 </h:form> 
-                
+
                 <script type="text/javascript">
                     var ip ="#{visionageCamera.selectedCamera.ip}";
+                    var typeCamera="#{visionageCamera.selectedCamera.type}"
                 </script>
                 
+                <h:form>
+                    <h:commandLink action="#{visionageCamera.photo()}" value="Photo"/> 
+                </h:form>
+
                 <table border="0">
-                   <tr>
+
+                    <tr>
                         <td></td>
                         <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
                         <td></td>
@@ -33,7 +39,7 @@
                     </tr>
                     <tr>
                         <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
-                        <td><a onclick="photo(); return false;"><img src="#{linkPath.pathLink}/img/camera/photo.png"/></a> </td>
+                        <td></td>
                         <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
                     </tr>
                     <tr>
@@ -47,18 +53,11 @@
                         <td><a onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
                     </tr> 
 
-                    <tr>
-                        <td></td>
-                        <td><a onclick="allumeLED(); return false;"><img src="#{linkPath.pathLink}/img/camera/LED1.png" /></a></td>
-                        <td><a onclick="eteindreLED()(); return false;"><img src="#{linkPath.pathLink}/img/camera/LED2.png"/></a> </td>
-                    </tr> 
                 </table>
-                
-                                
-                <h:form>
-                    <h:commandLink action="#{visionageCamera.photo()}" value="photo"/>
-                </h:form>
-                
+
+
+
+
                 <div id="msg" style="visibility: hidden">Photo en cours</div>
                 <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
                 <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
