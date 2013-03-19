@@ -21,56 +21,125 @@ function haut()
     
     http = createRequestObject();
     
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
+    if(typeCamera == "HEDEN"){
+
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=0&onestep=1', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);  
+    } else if (typeCamera == "SONY"){
+        
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=0801', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+        
+        
+    }else {
+        alert("Camera non selectioner");
+    }
+
     
 }
 
 function bas()
 {
     http = createRequestObject();
-    
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=2&onestep=1', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
+    if(typeCamera == "HEDEN"){
+
+
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=2&onestep=1', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    }else if (typeCamera == "SONY"){
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=0201', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+        
+    }else {
+        alert("Camera non selectioné");
+    }
 }
 
 function gauche()
 {
     http = createRequestObject();
+    if(typeCamera == "HEDEN"){
+        
+
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=4&onestep=1', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    } else if(typeCamera == "SONY"){
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=0401', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+    }else {
+        alert("Camera non selectioné")
+    }
     
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=4&onestep=1', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
 }
 
 function droite()
 {
+   
     http = createRequestObject();
-    
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=6&onestep=1', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
+    if(typeCamera == "HEDEN"){
+ 
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=6&onestep=1', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    } else if(typeCamera == "SONY"){
+        
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=0601', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+    } else {
+        alert("Camera non selectioné");
+    }
 }
 
 function auto()
 {
     http = createRequestObject();
     
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
+    if(typeCamera == "HEDEN"){
+
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    } else if(typeCamera == "SONY"){
+        
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+    } else {
+        alert("Camera non selectioné");
+    }
 
 }
 
 function stop()
 {
     http = createRequestObject();
+    if(typeCamera == "HEDEN"){
+
     
-    http.open('POST', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
-    http.onreadystatechange = handleAJAXReturn;
-    http.send(null);
+        http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    } else if(typeCamera == "SONY"){
+        
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+        
+    } else {
+        alert("Camera non selectioné");
+    }
 
 }
 
