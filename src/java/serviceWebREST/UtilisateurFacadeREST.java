@@ -48,11 +48,11 @@ public class UtilisateurFacadeREST {
         this.utilisateurSrv.update(entity);
     }
 
-    @DELETE
+    @PUT
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
-        Utilisateur u = this.utilisateurSrv.getById(id);
         System.out.println(id + " delete");
+        Utilisateur u = this.utilisateurSrv.getById(id);
         this.utilisateurSrv.remove(u);
     }
 
