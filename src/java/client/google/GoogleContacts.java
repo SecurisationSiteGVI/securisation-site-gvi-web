@@ -17,6 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -26,7 +27,9 @@ public class GoogleContacts {
 
     public List<Contact> getGoogleContacts(String email, String password) throws AuthenticationException, MalformedURLException, IOException, ServiceException {
         List<Contact> contacts = new ArrayList<Contact>();
-        ContactsService myService = new ContactsService("securisation-site-gvi-web");
+        Random random = new Random();
+        
+        ContactsService myService = new ContactsService("securisation-site-gvi-web"+random.nextInt(1000000));
         myService.setUserCredentials(email, password);
         URL feedUrl = new URL("https://www.google.com/m8/feeds/contacts/default/full/");
         Query myQuery = new Query(feedUrl);
