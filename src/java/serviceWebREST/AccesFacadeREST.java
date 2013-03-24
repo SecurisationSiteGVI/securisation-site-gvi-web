@@ -23,7 +23,7 @@ import metier.entitys.Acces;
  *
  * @author damien
  */
-@Path("metier.entitys.acces")
+@Path("acces")
 public class AccesFacadeREST {
 
     private EvenementService evenementSrv = MetierFactory.getEvenementService();
