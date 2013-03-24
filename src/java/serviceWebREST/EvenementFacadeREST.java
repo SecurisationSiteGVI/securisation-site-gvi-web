@@ -86,7 +86,7 @@ public class EvenementFacadeREST {
     public List<Evenement> findRange(@PathParam("from") Integer from, @PathParam("nb") Integer nb) {
         List<Evenement> evenements = null;
         try {
-          evenements=  this.evenementSrv.getAll(from, nb);
+          evenements=  this.evenementSrv.getByMostRecent(from, nb);
         } catch (Exception ex) {
             Logger.getLogger(EvenementFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
