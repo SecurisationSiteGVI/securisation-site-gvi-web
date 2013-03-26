@@ -4,11 +4,7 @@ package client.camera;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -22,12 +18,11 @@ import metier.EvenementService;
 import metier.MetierFactory;
 import metier.entitys.Camera;
 import metier.entitys.Photo;
-import metier.entitys.TypeCamera;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import physique.io.CameraDriver;
+import physique.io.PhysiqueIOFactory;
+
+
+
 
 /**
  *
@@ -60,75 +55,19 @@ public class visionageCamera {
         session.setAttribute("camera", c.getIp());
     }
 
-    public void photo() throws FileNotFoundException, IOException {
-        if (this.selectedCamera != null) {
-            if (this.selectedCamera.getType() == TypeCamera.HEDEN) {
-                this.photoCameraHeden();
-            } else if (this.selectedCamera.getType() == TypeCamera.SONY) {
-                this.photoCameraSony();
-            }
-        } else {
-            throw new NullPointerException("La camera n'est pas séléctioné");
-        }
-    }
+    public void photo() throws FileNotFoundException, IOException, Exception {
+        CameraDriver cameraDrivers = PhysiqueIOFactory.getCameraDrivers(selectedCamera);
+        byte[] buff = cameraDrivers.prendrePhoto();
+        Photo photo = new Photo();
+        photo.setDateEvt(new Date());
+        photo.setImage(buff);
+        photo.setCamera(selectedCamera);
 
-    private void photoCameraHeden() {
-        FileOutputStream fos = null;
-        try {
-            this.ip = this.selectedCamera.getIp();
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
-            DefaultHttpClient client2 = new DefaultHttpClient();
-            HttpGet request2 = new HttpGet("http://" + this.ip + "/snapshot.jpg?user=admin&pwd=marvin");
-            HttpResponse response2 = client2.execute(request2);
-            BufferedInputStream is = new BufferedInputStream(response2.getEntity().getContent());
-            byte[] buff = new byte[10240];
-            int n;
-            int total = 0;
-            while ((n = is.read(buff)) != -1) {
-                if (n >= buff.length) {
-                    n = buff.length - 1;
-                }
+        EvenementService es = MetierFactory.getEvenementService();
 
-                bos.write(buff, 0, n);
-                fos.write(buff, 0, n);
+        es.add(photo);
+        System.out.println("envoye");
 
-                total += n;
-
-            }
-            System.out.println("IMG : " + total);
-            fos.close();
-            bos.close();
-            is.close();
-            //response.getWriter().print("ok");
-            FileInputStream fis = new FileInputStream("/home/blondellemarvin/Bureau/photo.jpg");
-            int size = fis.available();
-            buff = new byte[size];
-            fis.read(buff);
-            Photo photo = new Photo();
-            photo.setCamera(selectedCamera);
-            photo.setDateEvt(new Date());
-            photo.setImage(buff);
-            EvenementService es = MetierFactory.getEvenementService();
-            try {
-                es.add(photo);
-                System.out.println("envoye");
-            } catch (Exception ex) {
-                Logger.getLogger(Capture.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClientProtocolException ex) {
-            Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException ex) {
-                Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     private void photoCameraSony() {
@@ -138,6 +77,12 @@ public class visionageCamera {
         return getQueryCurrent();
     }
 
+    
+    
+    
+    
+    
+    
     /**
      * @param ipCurentCamera the ipCurentCamera to set
      */
