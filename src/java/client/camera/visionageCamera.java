@@ -63,10 +63,7 @@ public class visionageCamera {
         photo.setImage(buff);
         photo.setCamera(selectedCamera);
         
-        // com
         
-        
-
         EvenementService es = MetierFactory.getEvenementService();
 
         es.add(photo);
