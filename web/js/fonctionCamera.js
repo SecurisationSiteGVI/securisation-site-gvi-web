@@ -110,14 +110,17 @@ function auto()
         http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    } else if(typeCamera == "SONY"){
+//    } else if(typeCamera == "SONY"){
         
-        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
-        http.onreadystatechange = handleAJAXReturn;
-        http.send(null);
+//        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
+//        http.onreadystatechange = handleAJAXReturn;
+//        http.send(null);
+          
         
-    } else {
-        alert("Camera non selectioné");
+        
+    }
+    else {
+        alert("La fonction n'est pas disponible sur cette camera");
     }
 
 }
@@ -131,14 +134,14 @@ function stop()
         http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    } else if(typeCamera == "SONY"){
-        
-        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
-        http.onreadystatechange = handleAJAXReturn;
-        http.send(null);
-        
+//    } else if(typeCamera == "SONY"){
+//        
+//        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
+//        http.onreadystatechange = handleAJAXReturn;
+//        http.send(null);
+//        
     } else {
-        alert("Camera non selectioné");
+        alert("La fonction n'est pas disponible sur cette camera");
     }
 
 }
