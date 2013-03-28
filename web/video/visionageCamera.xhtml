@@ -7,7 +7,9 @@
     <ui:composition template="./layoutVideo.xml">        
         <ui:define name="contentVideo"> 
             <div class="span4">
-                <h:graphicImage id="vi" value="#{visionageCamera.queryCurrent}"></h:graphicImage>
+                <h:form>
+                    <h:graphicImage id="vi" value="#{visionageCamera.queryCurrent}"></h:graphicImage>
+                </h:form>
             </div>
             <div class="span4">
                 <h:form>
@@ -23,42 +25,41 @@
                     var ip ="#{visionageCamera.selectedCamera.ip}";
                     var typeCamera="#{visionageCamera.selectedCamera.type}"
                 </script>
-                
+
                 <h:form>
-                    <h:commandLink action="#{visionageCamera.photo()}" value="Photo"/> 
+                    <h:graphicImage >  <h:commandLink action="#{visionageCamera.photo()}" value="Photo"/> </h:graphicImage>
+                </h:form>
+                <h:form>
+                    <table border="0">
+
+                        <tr>
+                            <td></td>
+                            <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
+                            <td></td>
+                            <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/play.png" /></a></td>
+                            <td><a onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
+                        </tr> 
+
+                    </table>
+
                 </h:form>
 
-                <table border="0">
 
-                    <tr>
-                        <td></td>
-                        <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    <tr>
-                        <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
-                        <td></td>
-                        <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><a onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/play.png" /></a></td>
-                        <td><a onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
-                    </tr> 
-
-                </table>
-
-
-
-
-                <div id="msg" style="visibility: hidden">Photo en cours</div>
                 <h:message id="succesAddSecteur" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
                 <h:message id="errorAddSecteur" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message>
 
