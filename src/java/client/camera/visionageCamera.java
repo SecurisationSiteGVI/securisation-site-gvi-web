@@ -21,9 +21,6 @@ import metier.entitys.Photo;
 import physique.io.CameraDriver;
 import physique.io.PhysiqueIOFactory;
 
-
-
-
 /**
  *
  * @author marvin
@@ -62,8 +59,8 @@ public class visionageCamera {
         photo.setDateEvt(new Date());
         photo.setImage(buff);
         photo.setCamera(selectedCamera);
-        
-        
+
+
         EvenementService es = MetierFactory.getEvenementService();
 
         es.add(photo);
@@ -78,12 +75,6 @@ public class visionageCamera {
         return getQueryCurrent();
     }
 
-    
-    
-    
-    
-    
-    
     /**
      * @param ipCurentCamera the ipCurentCamera to set
      */
