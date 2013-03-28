@@ -15,7 +15,7 @@
                 <h:form>
                     <h:selectOneMenu value="#{visionageCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCamera.cameraSelected}" onchange="submit()" >
 
-                        <f:selectItems  value="#{cameraManagedBean.cameras}" />
+                        <f:selectItems value="#{cameraManagedBean.cameras}" />
 
                     </h:selectOneMenu>  &nbsp;
 
@@ -27,32 +27,35 @@
                 </script>
 
                 <h:form>
-                    <h:graphicImage >  <h:commandLink action="#{visionageCamera.photo()}" value="Photo"/> </h:graphicImage>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandLink title="Prendre une photo" action="#{visionageCamera.photo()}" value=""><h:graphicImage url="#{linkPath.pathLink}/img/camera/photo.png"/> </h:commandLink>
                 </h:form>
+
+
                 <h:form>
+
                     <table border="0">
 
                         <tr>
                             <td></td>
-                            <td> <a onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
+                            <td> <a title="Haut" onclick="haut(); return false;"><img src="#{linkPath.pathLink}/img/camera/haut.png"/></a></td>
                             <td></td>
                             <td></td>
 
                         </tr>
                         <tr>
-                            <td><a onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
+                            <td><a title="Gauche" onclick="gauche(); return false;"><img src="#{linkPath.pathLink}/img/camera/gauche1.png"/></a></td>
                             <td></td>
-                            <td><a onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
+                            <td><a title="Droite" onclick="droite(); return false;"><img src="#{linkPath.pathLink}/img/camera/droite.png"/></a></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><a onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
+                            <td><a title="Bas" onclick="bas(); return false;"><img src="#{linkPath.pathLink}/img/camera/bas.png" /></a></td>
                             <td></td>
                         </tr>
                         <tr>
+                            <td align="center"><a title="Rotation Horizontal" onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/play.png" /></a></td>
                             <td></td>
-                            <td><a onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/play.png" /></a></td>
-                            <td><a onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
+                            <td align="center"><a title="Stop" onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
                         </tr> 
 
                     </table>
