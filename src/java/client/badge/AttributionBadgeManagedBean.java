@@ -59,7 +59,7 @@ public class AttributionBadgeManagedBean {
 
     public List<Badge> getBadges() {
         if (this.getTextFilterNumero().length() >= 1) {
-            this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssignByNumero(Integer.parseInt(this.getTextFilterNumero()), this.indexBadge, nbResult);
+            this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssignByNumero(this.getTextFilterNumero(), this.indexBadge, nbResult);
         } else {
             this.badges = this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(this.indexBadge, this.nbResult);
         }       
