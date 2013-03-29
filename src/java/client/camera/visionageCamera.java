@@ -53,7 +53,7 @@ public class visionageCamera {
                 this.queryCurrent = query;
             }
         } catch (Exception ex) {
-            Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
+            BoiteAOutils.addMessage("Erreur", "Impossible de recuprer la liste des caméras.", "errorVisionageCamera");
         }
     }
 
