@@ -131,7 +131,7 @@ function zoom()
     if(typeCamera == "SONY"){
 
     
-        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,250,250', true); 
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,250,250', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
     } else {
