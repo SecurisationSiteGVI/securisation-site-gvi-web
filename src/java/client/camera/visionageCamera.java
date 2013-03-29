@@ -4,6 +4,7 @@ package client.camera;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+import client.BoiteAOutils;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
@@ -22,7 +23,7 @@ import physique.io.CameraDriver;
 import physique.io.PhysiqueIOFactory;
 
 /**
- *
+ *  
  * @author marvin
  */
 @ManagedBean
@@ -34,6 +35,26 @@ public class visionageCamera {
     private String ip;
 
     public visionageCamera() {
+        try {
+            if (!MetierFactory.getCameraService().getAll().isEmpty()) {
+                try {
+                    this.selectedCamera = MetierFactory.getCameraService().getAll().get(0);
+                } catch (Exception ex) {
+                    BoiteAOutils.addMessage("Erreur", "Impossible de recuprer la liste des caméras.", "errorVisionageCamera");
+                    Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                CameraDriver drv = physique.io.PhysiqueIOFactory.getCameraDrivers(this.selectedCamera);
+                String query = "";
+                try {
+                    query = drv.getVideo();
+                } catch (Exception ex) {
+                    Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.queryCurrent = query;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(visionageCamera.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void cameraSelected(ValueChangeEvent evt) {
@@ -64,7 +85,7 @@ public class visionageCamera {
         EvenementService es = MetierFactory.getEvenementService();
 
         es.add(photo);
-        System.out.println("envoye");
+        BoiteAOutils.addMessage("Succes", "Photo bien capturé.", "succesVisionageCamera");
 
     }
 
