@@ -25,13 +25,20 @@ import metier.entitys.TypeCamera;
  */
 @ManagedBean
 @RequestScoped
-public class CameraManagedBean {
+public final class CameraManagedBean {
 
     private CameraService cameraSrv = MetierFactory.getCameraService();
     private Camera camera = new Camera();
     private Camera cameraSelected;
     private String[] typeCamera ;
+    
     public CameraManagedBean() {
+//        List<Camera>  cameras = this.getCameras();
+//        if (cameras != null) {
+//            if (!cameras.isEmpty()) {
+//                this.camera = cameras.get(0);
+//            }
+//        }
     }
     public void addCamera(){
         try {
