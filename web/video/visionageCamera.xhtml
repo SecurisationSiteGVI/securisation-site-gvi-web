@@ -7,10 +7,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:composition template="./layoutVideo.xml">        
         <ui:define name="contentVideo"> 
-
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:message id="succesVisionageCamera" showSummary="true"  for="succesVisionageCamera" class="alert alert-success"></h:message>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:message id="errorVisionageCamera" showSummary="true"  for="errorVisionageCamera" class="alert alert-error"></h:message><br/><br/>
-            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:message id="errorVisionageCamera" showSummary="true"  for="errorVisionageCamera" class="alert alert-error"></h:message><br/><br/>     
             <div class="span4">
                 <h:form>
                     <h:graphicImage id="vi" value="#{visionageCamera.queryCurrent}"></h:graphicImage>
@@ -19,21 +17,15 @@
             <div class="span4">
                 <h:form>
                     <h:selectOneMenu value="#{visionageCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCamera.cameraSelected}" onchange="submit()" >
-
                         <f:selectItems value="#{cameraManagedBean.cameras}" />
-
                     </h:selectOneMenu>  &nbsp;
-
                 </h:form> 
-
                 <!--c:if test=#"{visionageCamera.selectedCamera == null}">
                     <p>Camera est null</p>                    
                     camera = #"{cameraManagewdBean.camera}"
                     $//{visionageCamera.setSelectedCamera(camera)}  mettre la camera dans setSelected
                 </c:if-->
-
                 <!--h:outputText value="{visionageCamera.selectedCamera.ip}"></h:outputText-->
-
                 <script type="text/javascript">
                     var ip ="#{visionageCamera.selectedCamera.ip}";                    
                     var typeCamera="#{visionageCamera.selectedCamera.type}"
@@ -65,14 +57,8 @@
                             <td></td>
                             <td align="center"><a title="Stop" onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
                         </tr> 
-
                     </table>
-
                 </h:form>
-
-
-
-
             </div>
             <script>
                 #{visionageCamera.ipCurentCamera}
