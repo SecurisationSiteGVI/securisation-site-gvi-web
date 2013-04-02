@@ -104,27 +104,36 @@ function droite()
 function auto()
 {
     http = createRequestObject();
+    alert("Test")
     
     if(typeCamera == "HEDEN"){
 
         http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=28', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    //    } else if(typeCamera == "SONY"){
+
+       
+       
         
-    //        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
-    //        http.onreadystatechange = handleAJAXReturn;
-    //        http.send(null);
-          
-        
-        
-    }
-    else {
-        alert("La fonction n'est pas disponible sur cette camera");
     }
 
 }
 
+function onload(){
+    if(typeCamera == "SONY"){
+//        document.getElementById('image3').style.visibility = "visible";
+//        document.getElementById('image4').style.visibility = "visible";
+        document.getElementById('image3').style.display = "block";
+        document.getElementById('image4').style.display = "block";
+        
+    } else if(typeCamera == "HEDEN"){
+        //document.getElementById('image2').style.visibility = "visible";
+        //document.getElementById('image1').style.visibility = "visible";
+        document.getElementById('image1').style.display = "block";
+        document.getElementById('image2').style.display = "block";
+        
+    }
+}
 function zoom()
 {
     http = createRequestObject();
@@ -134,11 +143,8 @@ function zoom()
         http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,250,250', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    } else {
-        alert("La fonction n'est pas disponible sur cette camera");
     }
-    
-}
+} 
 
 function dezoomer()
 {
@@ -149,8 +155,6 @@ function dezoomer()
         http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,650,650', true); 
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    } else {
-        alert("La fonction n'est pas disponible sur cette camera");
     }
 }
 
@@ -163,14 +167,6 @@ function stop()
         http.open('GET', 'http://'+ip+'/decoder_control.cgi?user=admin&pwd=marvin&command=29', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
-    //    } else if(typeCamera == "SONY"){
-    //        
-    //        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Relative=', true);
-    //        http.onreadystatechange = handleAJAXReturn;
-    //        http.send(null);
-    //        
-    } else {
-        alert("La fonction n'est pas disponible sur cette camera");
     }
 
 }
