@@ -20,16 +20,13 @@
                         <f:selectItems value="#{cameraManagedBean.cameras}" />
                     </h:selectOneMenu>  &nbsp;
                 </h:form> 
-                <!--c:if test=#"{visionageCamera.selectedCamera == null}">
-                    <p>Camera est null</p>                    
-                    camera = #"{cameraManagewdBean.camera}"
-                    $//{visionageCamera.setSelectedCamera(camera)}  mettre la camera dans setSelected
-                </c:if-->
-                <!--h:outputText value="{visionageCamera.selectedCamera.ip}"></h:outputText-->
+                <script type="text/javascript" src="#{linkPath.pathLink}/js/fonctionCamera.js"/>
                 <script type="text/javascript">
                     var ip ="#{visionageCamera.selectedCamera.ip}";                    
-                    var typeCamera="#{visionageCamera.selectedCamera.type}"
+                    var typeCamera="#{visionageCamera.selectedCamera.type}";
+                    
                 </script>
+
 
                 <h:form>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandLink title="Prendre une photo" action="#{visionageCamera.photo()}" value=""><h:graphicImage url="#{linkPath.pathLink}/img/camera/photo.png"/> </h:commandLink>
@@ -53,20 +50,24 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td align="center"><a title="Rotation Horizontal" onclick="auto(); return false;"><img src="#{linkPath.pathLink}/img/camera/play.png" /></a></td>
+                            <td align="center"><a title="Rotation Horizontal" onclick="auto(); return false;"><img id="image1" src="#{linkPath.pathLink}/img/camera/play.png" style="display: none"/></a></td>
                             <td></td>
-                            <td align="center"><a title="Stop" onclick="stop(); return false;"><img src="#{linkPath.pathLink}/img/camera/pause.png"/></a> </td>
+                            <td align="center"><a title="Stop" onclick="stop(); return false;"><img id="image2" src="#{linkPath.pathLink}/img/camera/pause.png" style="display: none"/></a> </td>
                         </tr> 
                         <tr>
-                            <td align="center"><a title="Zoom" onclick="zoom(); return false;"><img src="#{linkPath.pathLink}/img/camera/zoom.png"/></a></td>
+                            <td align="center"><a title="Zoom" onclick="zoom(); return false;"><img id="image3" src="#{linkPath.pathLink}/img/camera/zoom.png" style="display: none"/></a></td>
                             <td></td>
-                            <td align="center"><a title="Dézoomer" onclick="dezoomer(); return false;"><img src="#{linkPath.pathLink}/img/camera/dezoom.png"/></a></td>    
+                            <td align="center"><a title="Dézoomer" onclick="dezoomer(); return false;"><img id="image4" src="#{linkPath.pathLink}/img/camera/dezoom.png" style="display: none"/></a></td>    
                         </tr>
                     </table>
                 </h:form>
+
+                <script>
+                    onload();
+                </script>
             </div>
             <script>
-                #{visionageCamera.ipCurentCamera}
+                var test = #{visionageCamera.ipCurentCamera};
             </script>
         </ui:define>
     </ui:composition>
