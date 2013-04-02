@@ -12,7 +12,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.HttpSession;
-import metier.MetierFactory;
 import metier.entitys.Camera;
 import physique.io.CameraDriver;
 
