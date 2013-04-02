@@ -32,31 +32,7 @@ public class Capture extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-//
-//                      
-//            ByteOutputStream bos = new ByteOutputStream();
-//
-//           // FileOutputStream fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
-//            URL u = new URL("http://172.16.79.214/snapshot.jpg?user=admin&pwd=marvin");
-//            URLConnection connection = (URLConnection) u.openConnection();
-//
-//            InputStream is = connection.getInputStream();
-//            while (is.available() > 0) {
-//                byte b = (byte) is.read();
-//                bos.write(b);
-//              //  fos.write(b);
-//
-//            }
-//            is.close();
-//          //  fos.close();
-//            bos.close();
-//            byte[] bytes = bos.getBytes();
-//            
-//
-//
-//
-//        
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
