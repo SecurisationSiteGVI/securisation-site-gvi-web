@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutNumero.xml">        
+        <ui:define name="contentNumero">
+            <h:message id="succesNumerolist" showSummary="true"  for="succesNumerolist" class="alert alert-success"></h:message>
+            <h:message id="errorNumerolist" showSummary="true"  for="errorNumerolist" class="alert alert-error"></h:message><br/><br/>
+            <div class="span4">
+               <f:view>
+                    <h:form>
+                        <h:dataTable id="numeroPredefiniList" value="#{gererNumerosPredefinisManagedBean.numeros}" class="table tab-hover" var="item">
+                            
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Numéros"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=" "/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer" action="#{gererNumerosPredefinisManagedBean.supprimerUnNumero()}">
+                                    <f:setPropertyActionListener value="#{item.toString()}" target="#{gererNumerosPredefinisManagedBean.numeroASupprimer}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                        </h:form>
+                </f:view>
+            </div>
+            <div class="span4">
+                <p>Ajouter un numéro</p>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Numéro : "/>
+                        <h:inputText value="#{gererNumerosPredefinisManagedBean.numeroAAjouter}"/>
+                        <h:outputText value=" "/>
+                        <h:commandButton value="Ajouter" class="btn btn-primary" action="#{gererNumerosPredefinisManagedBean.ajouterUnNumero()}"/>
+                    </h:panelGrid>
+                </h:form>       
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

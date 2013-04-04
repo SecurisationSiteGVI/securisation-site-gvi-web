@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/client/js/1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="fr" lang="fr"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head> 
+        ${sessionTechnicien.technicienConnected()}
+        <link rel="SHORTCUT ICON" href="#{linkPath.pathLink}/img/cle.jpg"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStylebMin}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyle1Min}"/>
+        <link rel="stylesheet" href="#{linkPath.cssStyleb}"/>       
+        <link rel="stylesheet" href="#{linkPath.cssDocs}"/>      
+        <title>
+            <ui:insert name="title">Default title</ui:insert>
+        </title>
+    </h:head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse collapse">
+                        
+                        <ul class="nav pull-right" >
+                            <li >
+                                    <a>Connecté en tant que ${sessionTechnicien.technicienToString}</a>
+                            </li>
+                            <li >
+                                <h:form>
+                                    <h:commandLink value="Déconnexion" class="navbar-text pull-right" action="#{sessionTechnicien.disconnect}"/>
+                                </h:form>
+                            </li>
+                       </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div><br/><br/> <div class="container-fluid">
+        <div class="row">
+            
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li class="#{cSSActive.histrorique}"> <a href="#{linkPath.pathLink}/histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
+                        <li class="#{cSSActive.video}"><a href="#{linkPath.pathLink}/video/visionageCamera.jsf"><i class="icon-chevron-right"></i> Visionage des caméras</a></li>
+                        <li class="#{cSSActive.gererBadges}"><a href="#{linkPath.pathLink}/badge/listeBadges.jsf"><i class="icon-chevron-right"></i> Gérer les badges</a></li>
+                        <li class="#{cSSActive.utilisateur}"><a href="#{linkPath.pathLink}/utilisateurs/listeUtilisateur.jsf"><i class="icon-chevron-right"></i> Gérer les utilisateurs</a></li>
+                         <li class="#{cSSActive.gererSecteur}"><a href="#{linkPath.pathLink}/secteur/gererSecteur.jsf"><i class="icon-chevron-right"></i> Gérer les secteur</a></li>
+                         <li class="#{cSSActive.gererAppareil}"><a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf"><i class="icon-chevron-right"></i> Gérer les appareils</a></li>
+                         <li class="#{cSSActive.gererNumeroPredefini}"><a href="#{linkPath.pathLink}/numeroPredefini/numeroPredefiniGmail.jsf"><i class="icon-chevron-right"></i> Gérer les numéros prédéfinis</a></li>
+                         <li class="#{cSSActive.gererAuthorisationAcces}"><a href="#{linkPath.pathLink}/authorisationAcces/authorisationAcces.jsf"><i class="icon-chevron-right"></i> Gérer les authorisation d'acces</a></li>
+                    </ul>
+                </div>
+
+           
+                <div class="span9">
+                    <ui:insert name="content">Default title</ui:insert>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="#{linkPath.pathLink}/js/fonctionCamera.js"/>
+        <script type="text/javascript" src="#{linkPath.pathLink}/js/jquery.js"/> 
+        <script type="text/javascript" src="#{linkPath.pathLink}/js/modal.js"/>
+        <script type="text/javascript" src="#{linkPath.pathLink}/js/transition.js"/>
+    </body>
+</html>

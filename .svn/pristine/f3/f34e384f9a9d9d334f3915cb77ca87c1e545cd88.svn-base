@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="../layout.xml">       
+        <ui:define name="title">
+            Gerer les appareils
+        </ui:define>
+        <ui:define name="content">
+            <ul class="nav nav-tabs">
+                <li class="#{cSSActive.gererLecteurBadge}">
+                    <a href="#{linkPath.pathLink}/appareils/gererLecteurBadge.jsf">Gérer les bornes d'acces</a>
+                </li>
+                <li class="#{cSSActive.gererCamera}">
+                    <a href="#{linkPath.pathLink}/appareils/gererCamera.jsf">Gérer les caméras</a>
+                </li>
+                <li class="#{cSSActive.gererDetecteurIntrusion}">
+                    <a href="#{linkPath.pathLink}/appareils/gererDetecteurIntrusion.jsf" >Gérer les détecteurs intrusion</a>
+                </li>
+                <li class="#{cSSActive.gererPosition}">
+                    <a href="#{linkPath.pathLink}/appareils/gererPosition.jsf">Gérer les positions</a>
+                </li>
+            </ul>
+            <br/>
+            <ui:insert name="contentAppareil"> Default content</ui:insert>
+        </ui:define>
+    </ui:composition>
+</html>

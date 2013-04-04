@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutAuthorisationAcces.xml">        
+        <ui:define name="contentAuthorisationAcces"> 
+            <h:message id="succesAuthorisationAcces" showSummary="true"  for="succesAuthorisationAcces" class="alert alert-success"></h:message>
+            <h:message id="errorAuthorisationAcces" showSummary="true"  for="errorAuthorisationAcces" class="alert alert-error"></h:message><br/>
+            <div class="span3">
+                <f:view>
+                    <h:form>
+                        <h3><h:outputText value="Utilisateurs"/></h3>
+                        <h:dataTable id="attributionUtilisateur" class="table table-striped" value="#{authorisationAccesManagedBean.utilisateurs}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="page #{authorisationAccesManagedBean.page+1}"/>
+                                </f:facet>
+                                <h:commandLink value="Séléctionner" action="#{authorisationAccesManagedBean.selectionerUtilisateur()}" >
+                                    <f:setPropertyActionListener value="#{item}" target="#{authorisationAccesManagedBean.utilisateurSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                        <ul class="pager">
+                            <li><h:commandLink value="Précedent" action="#{authorisationAccesManagedBean.pagePrécédente()}"><f:ajax  render="attributionUtilisateur"/></h:commandLink></li>
+                            <li><h:commandLink value="Suivant" action="#{authorisationAccesManagedBean.pageSuivant()}"><f:ajax render="attributionUtilisateur"  /></h:commandLink></li>
+                        </ul>
+                    </h:form>
+                    <h:form>
+                        <p>Filtrer par nom :</p><br/>
+                        <h:inputText value="#{authorisationAccesManagedBean.textFilter}"/>
+                        <h:commandButton value="Filtrer" action="#{authorisationAccesManagedBean.filtrer()}"></h:commandButton>
+                    </h:form>  
+
+                </f:view>
+            </div>
+            <div class="span2">
+                <f:view>
+                    <h:form>
+                        <h3><h:outputText value="Liste des secteursr"/></h3>
+                        <h:dataTable value="#{authorisationAccesManagedBean.secteurWithUtilisateurSelected}" class="table table-striped" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.secteur.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=" "/>
+                                </f:facet>
+                                <h:commandLink value="#{(item.atribuer==true?'Interdir':'Authoriser')}" action="#{authorisationAccesManagedBean.selectionnerSecteur()}" >
+                                    <f:setPropertyActionListener value="#{item}" target="#{authorisationAccesManagedBean.secteurSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </div>
+
+
+            <div class="span3">
+                <f:view>
+                    <h:form>
+                        <h3><h:outputText value="Votre séléction"/></h3>
+                        <h:dataTable id="attributionUtilisateur" class="table table-striped" value="#{authorisationAccesManagedBean.objects}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                        <h:outputText value="Heure d'ouverture : "/>&nbsp;&nbsp;&nbsp;<h:inputText size="1" class="input-mini" value="#{authorisationAccesManagedBean.heureOuverture}"/>:<h:inputText class="input-mini" value="#{authorisationAccesManagedBean.minutesOuverture}"/><br/>
+                        <h:outputText value="Heure de fermeture : "/><h:inputText class="input-mini" value="#{authorisationAccesManagedBean.heureFermetre}"/>:<h:inputText class="input-mini" value="#{authorisationAccesManagedBean.minutesFermeture}"/>
+                        <h:commandButton value="Authoriser" class="btn btn-primary" action="#{authorisationAccesManagedBean.authoriser()}"/>
+                    </h:form>
+                </f:view>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

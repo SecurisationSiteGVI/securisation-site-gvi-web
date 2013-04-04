@@ -49,13 +49,12 @@ public class BadgeFacadeREST {
         }
     }
 
-    @DELETE
+    @PUT
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
-        Badge b = new Badge();
-        b.setId(id);
+        Badge b = this.badgeSrv.getById(id);
         try {
-            this.badgeSrv.add(b);
+            this.badgeSrv.remove(b);
         } catch (Exception ex) {
             Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -86,7 +85,7 @@ public class BadgeFacadeREST {
     public List<Badge> findRange(@PathParam("from") Integer from, @PathParam("nb") Integer nb) {
         List<Badge> badges =null;
         try {
-             this.badgeSrv.getAll(from, nb);
+             badges=this.badgeSrv.getAll(from, nb);
         } catch (Exception ex) {
             Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }return badges;

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutSecteur.xml">        
+        <ui:define name="contentSecteur">
+            <h:message id="succesAttributionSecteur" showSummary="true"  for="succesAttributionSecteur" class="alert alert-success"></h:message>
+            <h:message id="errorAttributionSecteur" showSummary="true"  for="errorAttributionSecteur" class="alert alert-error"></h:message><br/><br/>
+            <div class="span4">
+                <h:form>
+                    <h:selectOneMenu value="#{attributionSecteurManagedBean.secteurSelected}" converter="SecteurConverter" valueChangeListener="#{attributionSecteurManagedBean.setDynamicSecteurSelected}"
+                                     onchange="submit()">
+                        <f:selectItems value="#{attributionSecteurManagedBean.secteurs}"/>
+                    </h:selectOneMenu>
+
+                </h:form>
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{attributionSecteurManagedBean.appareilsBySecteur}" class="table tab-hover" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:outputText value="#{item.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer" action="#{attributionSecteurManagedBean.desattibuer()}" >
+                                    <f:setPropertyActionListener value="#{item}" target="#{attributionSecteurManagedBean.objetSelected}" />
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
+            </div>
+            <div class="span4">
+                <legend>Sélectionné votre borne d'accès</legend>
+                <h:form>
+                    <h:selectOneMenu converter="BorneAccesConverter" value="#{attributionSecteurManagedBean.borneAccesSelected}">
+                        <f:selectItems value="#{attributionSecteurManagedBean.borneAcceses}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Ajouter" action="#{attributionSecteurManagedBean.attribuerBorne()}" class="btn btn-primary" />
+                </h:form>
+                <br/>
+                <legend>Sélectionné votre caméra</legend>
+                <h:form>
+                    <h:selectOneMenu value="#{attributionSecteurManagedBean.cameraSelected}" converter="CameraConverter" >
+                        <f:selectItems value="#{attributionSecteurManagedBean.cameras}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Ajouter" class="btn btn-primary" action="#{attributionSecteurManagedBean.attribuerCamera()}"/>
+                </h:form>
+                <br/>
+                <legend>Sélectionné votre détecteur d'intrusion</legend>
+                <h:form>
+                    <h:selectOneMenu converter="DetecteurIntrusionConverter" value="#{attributionSecteurManagedBean.detecteurIntrusionSelected}">
+                        <f:selectItems value="#{attributionSecteurManagedBean.detecteurIntrusions}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Ajouter" class="btn btn-primary" action="#{attributionSecteurManagedBean.attribuerDetecteurIntrusion()}"/>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

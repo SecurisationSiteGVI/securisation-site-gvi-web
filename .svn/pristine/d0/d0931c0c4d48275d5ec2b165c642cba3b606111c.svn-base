@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutBadge.xml">        
+        <ui:define name="contentBadge">
+            <div class="span3">
+                <h:message id="succesRemoveBadge" showSummary="true" for="succesRemoveBadge" class="alert alert-success"></h:message>
+                <h:message id="errorRemoveBadge" showSummary="true" for="errorRemoveBadge" class="alert alert-error"></h:message>
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{listBadgesManagedBean.badges}" id="listeBadges" class="table tab-hover" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Numero"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numero}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Page #{listBadgesManagedBean.page+1}"/>
+                                </f:facet>
+                                <h:commandLink value="Supprimer" action="#{removeBadgeManagedBean.removeBadge()}">
+
+                                    <f:setPropertyActionListener value="#{item}" target="#{removeBadgeManagedBean.badge}"/>
+
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                        <ul class="pager">
+                            <li> <h:commandButton value="Rafaichir" class="btn btn-toolbar">
+                                    <f:ajax render="listeBadges"></f:ajax>
+                                </h:commandButton>
+                            </li>
+                            <li><h:commandLink value="Précedent" action="#{listBadgesManagedBean.pagePrecedente()}"><f:ajax  render="listeBadges"/></h:commandLink></li>
+                            <li><h:commandLink value="Suivant" action="#{listBadgesManagedBean.pageSuivante()}"><f:ajax render="listeBadges"  /></h:commandLink></li>
+                        </ul>  
+
+
+                    </h:form><p><small>Il y à actuellement ${listBadgesManagedBean.count} badges.</small></p>
+
+
+                </f:view>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
