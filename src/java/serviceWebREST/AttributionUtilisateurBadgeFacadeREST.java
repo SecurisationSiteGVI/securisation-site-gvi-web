@@ -67,6 +67,22 @@ public class AttributionUtilisateurBadgeFacadeREST  {
     public AttributionUtilisateurBadge find(@PathParam("id") Long id) {
         return this.attributionUtilisateurBadgeSrv.getById(id);
     }
+    
+    @POST
+    @Path("attribuer/{idUtilisateur}/{idBadge}")
+    @Produces({"application/xml", "application/json"})
+    public void attribuer(@PathParam("idUtilisateur") Long idUtilisateur,@PathParam("idBadge") Long idBadge) {
+        Utilisateur u = MetierFactory.getUtilisateurService().getById(idUtilisateur);
+        Badge b = MetierFactory.getBadgeService().getById(idBadge);
+        AttributionUtilisateurBadge aub = new AttributionUtilisateurBadge();
+        aub.setBadge(b);
+        aub.setUtilisateur(u);
+        try {
+            this.attributionUtilisateurBadgeSrv.add(aub);
+        } catch (Exception ex) {
+            Logger.getLogger(AttributionUtilisateurBadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})
