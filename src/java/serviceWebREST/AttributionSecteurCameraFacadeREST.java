@@ -16,7 +16,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import metier.AttributionSecteurCameraService;
+import metier.BorneAccesService;
+import metier.CameraService;
 import metier.MetierFactory;
+import metier.SecteurService;
 import metier.entitys.AttributionSecteurCamera;
 
 /**
@@ -28,6 +31,8 @@ import metier.entitys.AttributionSecteurCamera;
 public class AttributionSecteurCameraFacadeREST {
     
     private AttributionSecteurCameraService attributionSecteurCameraSrv = MetierFactory.getAttributionSecteurCameraService();
+    private CameraService cameraSrv = MetierFactory.getCameraService();
+    private SecteurService secteurSrv = MetierFactory.getSecteurService();
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(AttributionSecteurCamera entity) {
@@ -48,6 +53,16 @@ public class AttributionSecteurCameraFacadeREST {
         }
     }
 
+    @PUT
+    @Path("attribuer/{secteur}/{camera}")
+    public void attribuer(@PathParam("secteur") Long idSecteur, @PathParam("camera") Long idCamera) {
+        this.attributionSecteurCameraSrv.attribuerCamera(this.secteurSrv.getById(idSecteur), this.cameraSrv.getById(idCamera));
+    }
+    @PUT
+    @Path("desattribuer/{secteur}/{camera}")
+    public void desattribuer(@PathParam("secteur") Long idSecteur, @PathParam("camera") Long idBorne) {
+        this.attributionSecteurCameraSrv.desattribuerCamera(this.secteurSrv.getById(idSecteur), this.cameraSrv.getById(idBorne));
+    }
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
