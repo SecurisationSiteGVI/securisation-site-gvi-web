@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="../layout.xml">       
+        <ui:define name="title">
+            Gerer les utilisateurs
+        </ui:define>
+        <ui:define name="content">
+            <ul class="nav nav-tabs">
+                <li class="#{cSSActive.listeUtilisateur}">
+                    <a href="./listeUtilisateur.jsf">Liste des utilisateurs</a>
+                </li>
+                <li class="#{cSSActive.ajouterUtilisateurs}">
+                    <a href="./ajouterUtilisateurs.jsf">Ajouter des utilisateurs</a>
+                </li><br/>
+
+            </ul><br/>
+
+            <ui:insert name="contentUtilisateur"> Default content</ui:insert>
+        </ui:define>
+    </ui:composition>
+</html>

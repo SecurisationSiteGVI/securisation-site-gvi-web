@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutAppareil.xml">        
+        <ui:define name="contentAppareil">
+            <h:message id="succesDetecteurIntrusion" showSummary="true"  for="succesDetecteurIntrusion" class="alert alert-success"></h:message>
+            <h:message id="errorDetecteurIntrusion" showSummary="true"  for="errorDetecteurIntrusion" class="alert alert-error"></h:message><br/><br/>
+            <div class="span4">
+                <f:view>
+                    <h:form>
+                       
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Position : " for="position" />
+                            <h:selectOneMenu id="position" value="#{detecteurIntrusionManagedBean.detecteurIntrusion.position}" converter="PositionConverter" title="Position" required="true" requiredMessage="La position est requise.">
+                                
+                                <f:selectItems value="#{detecteurIntrusionManagedBean.positions}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Nom : " for="nom" />
+                            <h:inputText id="nom" value="#{detecteurIntrusionManagedBean.detecteurIntrusion.nom}" title="Nom" required="true" requiredMessage="Le nom est requis."/>
+                            <h:outputLabel value=" " />
+                            <h:commandButton value="Crée" action="#{detecteurIntrusionManagedBean.addDetecteurIntrusion()}" class="btn btn-primary"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+            </div>
+            <div class="span4">
+                <f:view>
+                    <h:form>
+                        
+                        <h:dataTable value="#{detecteurIntrusionManagedBean.detecteurIntrusions}" class="table tab-hover" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Position"/>
+                                </f:facet>
+                                <h:outputText value="#{item.position}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink action="#{detecteurIntrusionManagedBean.removeDetecteurIntrusion()}" value="Supprimer">
+                                    <f:setPropertyActionListener value="#{item}" target="#{detecteurIntrusionManagedBean.detecteurIntrusionSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

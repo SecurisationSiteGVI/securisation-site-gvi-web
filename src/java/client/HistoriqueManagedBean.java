@@ -5,11 +5,7 @@
 package client;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +14,6 @@ import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import metier.EvenementService;
 import metier.MetierFactory;
@@ -46,7 +41,7 @@ public class HistoriqueManagedBean {
     private String pathImage=new String();
     public HistoriqueManagedBean() {
         this.index = 0;
-        this.evenements = evenementSrv.getByMostRecent(this.index, this.nbLinge);
+//        this.evenements = evenementSrv.getByMostRecent(this.index, this.nbLinge);
     }
 
     public void more() {

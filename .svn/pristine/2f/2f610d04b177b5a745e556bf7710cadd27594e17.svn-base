@@ -1,0 +1,23 @@
+3e20675fc20f759ff07d7cc12b9d48ed2a5ddcc1 8f56924dc5dff2ecafd173a5a11480a7913db577 damien <damien@localhost> 1362730567 +0100	commit: add pagination for historique page
+8f56924dc5dff2ecafd173a5a11480a7913db577 4eb391474af7f404bf623703a5447c12e3101086 damien <damien@localhost> 1362730573 +0100	commit: add pagination for historique page
+4eb391474af7f404bf623703a5447c12e3101086 fdd94840cb56b3024ac133caf82f514b80667e76 damien <damien@localhost> 1362732199 +0100	commit: add enum type for camera
+fdd94840cb56b3024ac133caf82f514b80667e76 47cf7149c2b0b17181f5e3d806e76986895fee5f damien <damien@localhost> 1362732203 +0100	commit: add enum type for camera
+47cf7149c2b0b17181f5e3d806e76986895fee5f 5e565bddb11eabbff9d916a872f5549f488b667b damien <damien@localhost> 1362732209 +0100	commit: add enum type for camera
+5e565bddb11eabbff9d916a872f5549f488b667b 1b8ee432ff53f05b6e15a8d39545e25f6f1a7bc3 damien <damien@localhost> 1362732226 +0100	commit: add converter
+1b8ee432ff53f05b6e15a8d39545e25f6f1a7bc3 e8145c11ca47db6c2c1eb6059b9f12deda590f31 damien <damien@localhost> 1362734470 +0100	commit: add lib
+e8145c11ca47db6c2c1eb6059b9f12deda590f31 9b6bc339e72afff7d0eff52e73823b49744b1fad damien <damien@localhost.localdomain> 1363338735 +0100	merge branch 'master' of https://github.com/SecurisationSiteGVI/securisation-site-gvi-web.git: Fast-forward
+9b6bc339e72afff7d0eff52e73823b49744b1fad f19dcd49db202515ea6f590135d527e913534ee2 damien <damien@localhost.localdomain> 1363339036 +0100	merge branch 'master' of https://github.com/SecurisationSiteGVI/securisation-site-gvi-web.git: Fast-forward
+f19dcd49db202515ea6f590135d527e913534ee2 cd4c9b9a582abcd84d58ea05839e76cee50cec36 damien <damien@localhost.localdomain> 1363706914 +0100	merge branch 'master' of https://github.com/SecurisationSiteGVI/securisation-site-gvi-web.git: Fast-forward
+cd4c9b9a582abcd84d58ea05839e76cee50cec36 c5cfaad48d68301e91369dbf866c52d5f3d80ef3 damien <damien@localhost.localdomain> 1363886098 +0100	commit: update remove to a put method because the asynctsk dont use delete http method
+c5cfaad48d68301e91369dbf866c52d5f3d80ef3 583316d7a6aa360d52eebc42d13eb498becde441 damien <damien@localhost.localdomain> 1363886109 +0100	commit: update remove to a put method because the asynctsk dont use delete http method
+583316d7a6aa360d52eebc42d13eb498becde441 9424c6d02a12696a0f4f7f9f687092571c98276a damien <damien@localhost.localdomain> 1363886119 +0100	commit: properties
+9424c6d02a12696a0f4f7f9f687092571c98276a 34bf33603e4d6749505110ca026b201f9270ac6f damien <damien@localhost.localdomain> 1364137572 +0100	commit: Update the key of google for have a key always diferent
+34bf33603e4d6749505110ca026b201f9270ac6f 06e3c3ccf30d62b77ac40666d3a77cc5e5bc4012 damien <damien@localhost.localdomain> 1364137589 +0100	commit: update path
+06e3c3ccf30d62b77ac40666d3a77cc5e5bc4012 fc63ade4e623ab69553e80d836fb2830459f22e1 damien <damien@localhost.localdomain> 1364137600 +0100	commit: propertiers
+fc63ade4e623ab69553e80d836fb2830459f22e1 afa220f8d50a860b6fa34a2aa75490b7309eb711 damien <damien@localhost.localdomain> 1364137607 +0100	commit: propertiers
+afa220f8d50a860b6fa34a2aa75490b7309eb711 153d52452948ada6246929baa03b11e121264004 damien <damien@localhost.localdomain> 1364146336 +0100	commit: update to have the most recent list
+153d52452948ada6246929baa03b11e121264004 a94e263625a12992c2fafba3f3b5a1ade428ef16 damien <damien@localhost.localdomain> 1364301408 +0100	commit: start thread
+a94e263625a12992c2fafba3f3b5a1ade428ef16 29a1938d19677a5ceeff2de92841dac578252a95 damien <damien@localhost.localdomain> 1364301413 +0100	commit: start thread
+29a1938d19677a5ceeff2de92841dac578252a95 a74ed160504fbfcedfe686cd0b4aa4faafb6a569 damien <damien@localhost.localdomain> 1364308441 +0100	commit: fonction photo 
+a74ed160504fbfcedfe686cd0b4aa4faafb6a569 6e1df28045a3a40b2e47d5c83778944cbb15a73d damien <damien@localhost.localdomain> 1364309577 +0100	merge branch 'master' of https://github.com/SecurisationSiteGVI/securisation-site-gvi-web.git: Fast-forward
+6e1df28045a3a40b2e47d5c83778944cbb15a73d 590aa55698820dacf535a39bda276a4fc16403ef damien <damien@localhost.localdomain> 1364480705 +0100	merge branch 'master' of https://github.com/SecurisationSiteGVI/securisation-site-gvi-web.git: Fast-forward

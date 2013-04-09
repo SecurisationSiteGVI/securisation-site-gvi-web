@@ -7,8 +7,6 @@ package serviceWebREST;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,6 +18,7 @@ import javax.ws.rs.Produces;
 import metier.MetierFactory;
 import metier.SecteurService;
 import metier.entitys.Secteur;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -49,13 +48,12 @@ public class SecteurFacadeREST  {
         }
     }
 
-    @DELETE
+    @PUT
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
-        Secteur s = new Secteur();
-        s.setId(id);
+        Secteur u = this.secteurSrv.getById(id);
         try {
-            this.secteurSrv.remove(s);
+            this.secteurSrv.remove(u);
         } catch (Exception ex) {
             Logger.getLogger(SecteurFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,12 +78,12 @@ public class SecteurFacadeREST  {
         return secteurs;
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<Secteur> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return this.secteurSrv.getAll();
-//    }
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<Secteur> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.secteurSrv.getAll(from, to);
+    }
 
     @GET
     @Path("count")

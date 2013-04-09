@@ -16,18 +16,22 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import metier.AttributionSecteurDetecteurIntrusionService;
+import metier.DetecteurIntrusionService;
 import metier.MetierFactory;
+import metier.SecteurService;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
 
 /**
  *
  * @author damien
  */
-
 @Path("attributionsecteurdetecteurintrusion")
-public class AttributionSecteurDetecteurIntrusionFacadeREST  {
+public class AttributionSecteurDetecteurIntrusionFacadeREST {
 
+    private DetecteurIntrusionService cameraSrv = MetierFactory.getDetecteurIntrusionService();
+    private SecteurService secteurSrv = MetierFactory.getSecteurService();
     private AttributionSecteurDetecteurIntrusionService attributionSecteurDetecteurIntrusionSrv = MetierFactory.getAttributionSecteurDetecteurIntrusionService();
+
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(AttributionSecteurDetecteurIntrusion entity) {
@@ -36,7 +40,7 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST  {
         } catch (Exception ex) {
             Logger.getLogger(AttributionSecteurDetecteurIntrusionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @PUT
@@ -47,6 +51,16 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST  {
         } catch (Exception ex) {
             Logger.getLogger(AttributionSecteurDetecteurIntrusionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    @PUT
+    @Path("attribuer/{secteur}/{detecteur}")
+    public void attribuer(@PathParam("secteur") Long idSecteur, @PathParam("detecteur") Long idDetecteur) {
+        this.attributionSecteurDetecteurIntrusionSrv.attribuerDetecteurIntrusion(this.secteurSrv.getById(idSecteur), this.cameraSrv.getById(idDetecteur));
+    }
+    @PUT
+    @Path("desattribuer/{secteur}/{detecteur}")
+    public void desattribuer(@PathParam("secteur") Long idSecteur, @PathParam("detecteur") Long idDetecteur) {
+        this.attributionSecteurDetecteurIntrusionSrv.desattribuerDetecteurIntrusion(this.secteurSrv.getById(idSecteur), this.cameraSrv.getById(idDetecteur));
     }
 
     @DELETE
@@ -73,10 +87,11 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST  {
     public List<AttributionSecteurDetecteurIntrusion> findAll() {
         List<AttributionSecteurDetecteurIntrusion> detecteurIntrusions = null;
         try {
-            detecteurIntrusions= this.attributionSecteurDetecteurIntrusionSrv.getAll();
+            detecteurIntrusions = this.attributionSecteurDetecteurIntrusionSrv.getAll();
         } catch (Exception ex) {
             Logger.getLogger(AttributionSecteurDetecteurIntrusionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
-        }return detecteurIntrusions;
+        }
+        return detecteurIntrusions;
     }
 
 //    @GET
@@ -85,14 +100,10 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST  {
 //    public List<AttributionSecteurDetecteurIntrusion> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
 //        return super.findRange(new int[]{from, to});
 //    }
-
     @GET
     @Path("count")
     @Produces("text/plain")
     public String countREST() {
         return String.valueOf(this.attributionSecteurDetecteurIntrusionSrv.count());
     }
-
-    
-    
 }

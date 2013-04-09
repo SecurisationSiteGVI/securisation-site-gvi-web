@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="../layout.xml">       
+        <ui:define name="title">
+            Evenement d'acces
+        </ui:define>
+        <ui:define name="content">
+            <legend><h:outputText value="Historique récent"/></legend>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:outputText value="Date : "/>
+                    <h:outputText  value="#{historiqueManagedBean.accesView.dateEvt.toLocaleString()}"/>
+                    <h:outputText value="Utilisateur : "/>
+                    <h:outputText  value="#{historiqueManagedBean.accesView.utilisateur.toString()}"/>
+                    <h:outputText value="Passage : "/>
+                    <h:outputText value="#{(historiqueManagedBean.accesView.passage==true?'authorisé':'refusé')}"/>
+                    <h:outputText value="Borne d'acces : "/>
+                    <h:outputText value="#{historiqueManagedBean.accesView.borneAcces.toString()}"/>
+                    <h:outputText value=" "/>
+                    <h:commandButton class="btn btn-primary" value="Retour" action="#{historiqueManagedBean.retour()}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>

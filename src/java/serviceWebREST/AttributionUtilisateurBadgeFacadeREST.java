@@ -18,6 +18,8 @@ import javax.ws.rs.Produces;
 import metier.AttributionUtilisateurBadgeService;
 import metier.MetierFactory;
 import metier.entitys.AttributionUtilisateurBadge;
+import metier.entitys.Badge;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -65,6 +67,22 @@ public class AttributionUtilisateurBadgeFacadeREST  {
     public AttributionUtilisateurBadge find(@PathParam("id") Long id) {
         return this.attributionUtilisateurBadgeSrv.getById(id);
     }
+    
+    @POST
+    @Path("attribuer/{idUtilisateur}/{idBadge}")
+    @Produces({"application/xml", "application/json"})
+    public void attribuer(@PathParam("idUtilisateur") Long idUtilisateur,@PathParam("idBadge") Long idBadge) {
+        Utilisateur u = MetierFactory.getUtilisateurService().getById(idUtilisateur);
+        Badge b = MetierFactory.getBadgeService().getById(idBadge);
+        AttributionUtilisateurBadge aub = new AttributionUtilisateurBadge();
+        aub.setBadge(b);
+        aub.setUtilisateur(u);
+        try {
+            this.attributionUtilisateurBadgeSrv.add(aub);
+        } catch (Exception ex) {
+            Logger.getLogger(AttributionUtilisateurBadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})
@@ -76,6 +94,31 @@ public class AttributionUtilisateurBadgeFacadeREST  {
             Logger.getLogger(AttributionUtilisateurBadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
         return attributionUtilisateurBadges;
+    }
+    @GET
+    @Path("getBadgesNotAssign/{debut}/{nbResult}")
+    @Produces({"application/xml", "application/json"})
+    public List<Badge> getBadgesNotAssign(@PathParam("debut") Integer debut,@PathParam("nbResult") Integer nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(debut, nbResult);
+    }
+    @GET
+    @Path("getBadgesNotAssignByNumero/{numero}/{debut}/{nbResult}")
+    @Produces({"application/xml", "application/json"})
+    public List<Badge> getBadgesNotAssignByNumero(@PathParam("numero") String numero,@PathParam("debut") Integer debut,@PathParam("nbResult") Integer nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getBadgesNotAssignByNumero(numero, debut, nbResult);
+    }   
+    
+    @GET
+    @Path("getUtilisateurNotAssign/{debut}/{nbResult}")
+    @Produces({"application/xml", "application/json"})
+    public List<Utilisateur> getUtilisateurNotAssign(@PathParam("debut") Integer debut,@PathParam("nbResult") Integer nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(debut, nbResult);
+    }
+    @GET
+    @Path("getUtilisateurNotAssignByNom/{numero}/{debut}/{nbResult}")
+    @Produces({"application/xml", "application/json"})
+    public List<Utilisateur> getUtilisateurNotAssignByNom(@PathParam("numero") String nom,@PathParam("debut") Integer debut,@PathParam("nbResult") Integer nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(nom, debut, nbResult);
     }
 
     @GET

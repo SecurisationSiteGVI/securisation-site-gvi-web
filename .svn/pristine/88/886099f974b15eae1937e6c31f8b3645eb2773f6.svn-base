@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutNumero.xml">        
+        <ui:define name="contentNumero">
+            <h:message id="succesNumero" showSummary="true"  for="succesNumero" class="alert alert-success"></h:message>
+            <h:message id="errorNumero" showSummary="true"  for="errorNumero" class="alert alert-error"></h:message><br/><br/>
+            <div class="span4">
+                <f:view><p>Séléctionner les numéros via votre adresse gmail.</p>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Email : "/>
+                            <h:inputText value="#{numeroPredefiniManagedBean.email}"/>
+                            <h:outputText value="Password :"/>
+                            <h:inputSecret value="#{numeroPredefiniManagedBean.password}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton value="Lister" class="btn btn-primary" action="#{numeroPredefiniManagedBean.listerContacts}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+            </div>
+            <div class="span4">
+
+                <f:view>
+                    <h:form>
+                        <h:dataTable id="numeroPredefiniList" value="#{numeroPredefiniManagedBean.contactsPagination}" class="table tab-hover" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="numero"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tel}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value=" "/>
+                                </f:facet>
+                                <h:commandLink value="Ajouter" action="#{numeroPredefiniManagedBean.ajouterUnNumeroGmail()}">
+                                    <f:setPropertyActionListener value="#{item}" target="#{numeroPredefiniManagedBean.numeroSelected}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                        <ul class="pager">
+                            <li><h:commandLink value="Précedent" action="#{numeroPredefiniManagedBean.pagePrécédente()}"><f:ajax  render="numeroPredefiniList"/></h:commandLink></li>
+                            <li><h:commandLink value="Suivant" action="#{numeroPredefiniManagedBean.pageSuivant()}"><f:ajax render="numeroPredefiniList"  /></h:commandLink></li>
+                    </ul>
+                    </h:form>
+                </f:view>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
