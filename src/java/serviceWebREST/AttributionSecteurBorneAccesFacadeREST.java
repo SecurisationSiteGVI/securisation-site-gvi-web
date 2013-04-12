@@ -65,10 +65,10 @@ public class AttributionSecteurBorneAccesFacadeREST {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{idSecteur}")
     @Produces({"application/xml", "application/json"})
-    public AttributionSecteurBorneAcces find(@PathParam("id") Long id) {
-        return this.attributionSecteurBorneAccesSrv.getById(id);
+    public AttributionSecteurBorneAcces find(@PathParam("idSecteur") Long idSecteur) {
+        return this.attributionSecteurBorneAccesSrv.getBySecteur(this.secteurSrv.getById(idSecteur));
     }
 
     @GET

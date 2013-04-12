@@ -78,12 +78,12 @@ public class BorneAccesFacadeREST{
         return acceses;
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<BorneAcces> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return this;
-//    }
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<BorneAcces> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.borneAccesSrv.getAll(from, to);
+    }
 
     @GET
     @Path("count")

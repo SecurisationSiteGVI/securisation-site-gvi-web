@@ -76,10 +76,10 @@ public class AttributionSecteurDetecteurIntrusionFacadeREST {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{idDetecteur}")
     @Produces({"application/xml", "application/json"})
-    public AttributionSecteurDetecteurIntrusion find(@PathParam("id") Long id) {
-        return this.attributionSecteurDetecteurIntrusionSrv.getById(id);
+    public AttributionSecteurDetecteurIntrusion find(@PathParam("idDetecteur") Long id) {
+        return this.attributionSecteurDetecteurIntrusionSrv.getBySecteur(this.secteurSrv.getById(id));
     }
 
     @GET

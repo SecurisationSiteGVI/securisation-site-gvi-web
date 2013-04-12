@@ -76,10 +76,10 @@ public class AttributionSecteurCameraFacadeREST {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{idCamera}")
     @Produces({"application/xml", "application/json"})
-    public AttributionSecteurCamera find(@PathParam("id") Long id) {
-       return this.attributionSecteurCameraSrv.getById(id);
+    public AttributionSecteurCamera find(@PathParam("idCamera") Long id) {
+       return this.attributionSecteurCameraSrv.getBySecteur(this.secteurSrv.getById(id));
     }
 
     @GET
