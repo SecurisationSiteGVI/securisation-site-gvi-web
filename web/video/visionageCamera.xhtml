@@ -26,7 +26,7 @@
                             </h:form> 
                         </td>
                         <td>
-                            
+
                         </td>
                     </tr>
                 </table>
@@ -66,9 +66,9 @@
                             <td align="center"><a title="Stop" onclick="stop(); return false;"><img id="image2" src="#{linkPath.pathLink}/img/camera/pause.png" style="display: none"/></a> </td>
                         </tr> 
                         <tr>
-                            <td align="center"><a title="Zoom" onmousedown="zoom(); return false;" onmouseup="stop(); return false;"><img id="image3" src="#{linkPath.pathLink}/img/camera/zoom.png" style="display: none"/></a></td>
+                            <td align="center"><a title="Zoom" onmousedown="zoom(); return false;" onmouseup="stopZoom(); return false;"><img id="image3" src="#{linkPath.pathLink}/img/camera/zoom.png" style="display: none"/></a></td>
                             <td></td>
-                            <td align="center"><a title="Dézoomer" onmousedown="dezoomer(); return false;" onmouseup="stop(); return false;"><img id="image4" src="#{linkPath.pathLink}/img/camera/dezoom.png" style="display: none"/></a></td>    
+                            <td align="center"><a title="Dézoomer" onmousedown="dezoomer(); return false;" onmouseup="stopZoom(); return false;"><img id="image4" src="#{linkPath.pathLink}/img/camera/dezoom.png" style="display: none"/></a></td>    
                         </tr>
                     </table>
                 </h:form>

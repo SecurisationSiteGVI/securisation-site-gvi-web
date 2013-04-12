@@ -37,7 +37,6 @@ function haut()
     }else {
         alert("Camera non selectioner");
     }
-
     
 }
 
@@ -103,7 +102,6 @@ function droite()
 function auto()
 {
     http = createRequestObject();
-    alert("Test")
     
     if(typeCamera == "HEDEN"){
 
@@ -139,7 +137,7 @@ function zoom()
     if(typeCamera == "SONY"){
 
     
-        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,250,250', true);
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Move=tele,8', true);
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
     }
@@ -151,7 +149,19 @@ function dezoomer()
     if(typeCamera == "SONY"){
 
     
-        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?AreaZoom=0,0,650,650', true); 
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Move=wide,8', true); 
+        http.onreadystatechange = handleAJAXReturn;
+        http.send(null);
+    }
+}
+
+function stopZoom(){
+    
+    http = createRequestObject();
+    if(typeCamera == "SONY"){
+
+    
+        http.open('GET', 'http://'+ip+'/command/ptzf.cgi?Move=stop,zoom', true); 
         http.onreadystatechange = handleAJAXReturn;
         http.send(null);
     }
