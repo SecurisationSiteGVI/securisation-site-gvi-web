@@ -78,12 +78,12 @@ public class CameraFacadeREST  {
         return cameras;
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<Camera> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return this.cameraSrv.;
-//    }
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<Camera> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.cameraSrv.getAll(from, to);
+    }
 
     @GET
     @Path("count")

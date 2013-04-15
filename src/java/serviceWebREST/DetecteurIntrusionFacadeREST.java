@@ -77,12 +77,12 @@ public class DetecteurIntrusionFacadeREST  {
         }return detecteurIntrusions;
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<DetecteurIntrusion> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return this.detecteurIntrusionSrv.get;
-//    }
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<DetecteurIntrusion> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.detecteurIntrusionSrv.getAll(from, to);
+    }
 
     @GET
     @Path("count")
