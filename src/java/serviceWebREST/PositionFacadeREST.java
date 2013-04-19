@@ -26,7 +26,7 @@ import metier.entitys.Position;
  * @author damien
  */
 
-@Path("metier.entitys.position")
+@Path("position")
 public class PositionFacadeREST {
     private PositionService positionSrv = MetierFactory.getPositionService();
     @POST
@@ -50,15 +50,14 @@ public class PositionFacadeREST {
         }
     }
 
-    @DELETE
+    @PUT
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
-        Position p = new Position();
-        p.setId(id);
+        Position u = this.positionSrv.getById(id);
         try {
-            this.positionSrv.remove(p);
+            this.positionSrv.remove(u);
         } catch (Exception ex) {
-            Logger.getLogger(PositionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecteurFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -80,13 +79,13 @@ public class PositionFacadeREST {
         }
         return positions;
     }
-//
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<Position> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
+
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<Position> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.positionSrv.getAll(from, to);
+    }
 
     @GET
     @Path("count")

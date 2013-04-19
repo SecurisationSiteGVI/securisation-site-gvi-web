@@ -20,7 +20,7 @@ import javax.faces.bean.ManagedBean;
 public class LinksPath {
 
     private static String protocol = "http://";
-    private static String host = /*"localhost:8084"*/getIps().get(1)+":8084";
+    private static String host = "localhost:8084"/*getIps().get(1)+":8084"*/;
     private static String applicationName = "securisation-site-gvi-web";
     private static String repertoire = "css";
     private static String path = LinksPath.protocol + LinksPath.host + "/" + LinksPath.applicationName + "/" + LinksPath.repertoire;
