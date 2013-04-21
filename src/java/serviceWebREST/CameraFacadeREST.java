@@ -18,6 +18,8 @@ import javax.ws.rs.Produces;
 import metier.CameraService;
 import metier.MetierFactory;
 import metier.entitys.Camera;
+import metier.entitys.DetecteurIntrusion;
+import metier.entitys.TypeCamera;
 
 /**
  *
@@ -28,15 +30,35 @@ import metier.entitys.Camera;
 public class CameraFacadeREST  {
     private CameraService cameraSrv = MetierFactory.getCameraService();
     @POST
+    @Path("{idPosition}/{nom}/{ip}/{type}")
     @Consumes({"application/xml", "application/json"})
-    public void create(Camera entity) {
+    public void create(@PathParam("idPosition") Long idPosition,@PathParam("nom") String nom,@PathParam("ip")String ip,@PathParam("type")String type  ) {
+        Camera camera = new Camera();
+        if(type.equals(TypeCamera.HEDEN)){
+             camera.setType(TypeCamera.HEDEN);
+        }else{
+            camera.setType(TypeCamera.SONY);
+        }camera.setIp(ip);
+        camera.setNom(nom);
+        camera.setPosition(MetierFactory.getPositionService().getById(idPosition));
         try {
-            this.cameraSrv.add(entity);
+            this.cameraSrv.add(camera);
         } catch (Exception ex) {
             Logger.getLogger(CameraFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    
+    @PUT
+    @Path("{id}")
+    public void removePUT(@PathParam("id") Long id) {
+        Camera b = this.cameraSrv.getById(id);
+        try {
+            this.cameraSrv.remove(b);
+        } catch (Exception ex) {
+            Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @PUT
     @Consumes({"application/xml", "application/json"})
     public void edit(Camera entity) {

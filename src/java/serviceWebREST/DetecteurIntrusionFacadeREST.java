@@ -17,7 +17,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import metier.DetecteurIntrusionService;
 import metier.MetierFactory;
+import metier.entitys.Badge;
 import metier.entitys.DetecteurIntrusion;
+import metier.entitys.Position;
 
 /**
  *
@@ -27,10 +29,16 @@ import metier.entitys.DetecteurIntrusion;
 public class DetecteurIntrusionFacadeREST  {
     private DetecteurIntrusionService detecteurIntrusionSrv = MetierFactory.getDetecteurIntrusionService();
     @POST
+    @Path("{position}/{nom}")
     @Consumes({"application/xml", "application/json"})
-    public void create(DetecteurIntrusion entity) {
+    public void create(@PathParam("position") Long idPosition,@PathParam("nom")String nom) {
+        Position position = MetierFactory.getPositionService().getById(idPosition);
+        DetecteurIntrusion detecteurIntrusion = new DetecteurIntrusion();
+        detecteurIntrusion.setNom(nom);
+        detecteurIntrusion.setPosition(position);
         try {
-            this.detecteurIntrusionSrv.add(entity);
+            
+            this.detecteurIntrusionSrv.add(detecteurIntrusion);
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,6 +55,16 @@ public class DetecteurIntrusionFacadeREST  {
         }
     }
 
+    @PUT
+    @Path("{id}")
+    public void removePUT(@PathParam("id") Long id) {
+        DetecteurIntrusion b = this.detecteurIntrusionSrv.getById(id);
+        try {
+            this.detecteurIntrusionSrv.remove(b);
+        } catch (Exception ex) {
+            Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
