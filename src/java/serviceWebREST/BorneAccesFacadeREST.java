@@ -37,6 +37,20 @@ public class BorneAccesFacadeREST{
         }
     }
 
+    @POST
+    @Path("{idPosition}/{nom}/{entrer}")
+    @Consumes({"application/xml", "application/json"})
+    public void createPost(@PathParam("idPosition") Long idPosition,@PathParam("nom") String nom,@PathParam("entrer")Boolean entrer) {
+        BorneAcces borneAcces = new BorneAcces();
+        borneAcces.setEntrer(entrer);
+        borneAcces.setNom(nom);
+        borneAcces.setPosition(MetierFactory.getPositionService().getById(idPosition));
+        try {
+            this.borneAccesSrv.add(borneAcces);
+        } catch (Exception ex) {
+            Logger.getLogger(CameraFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @PUT
     @Consumes({"application/xml", "application/json"})
     public void edit(BorneAcces entity) {
@@ -44,6 +58,16 @@ public class BorneAccesFacadeREST{
             this.borneAccesSrv.update(entity);
         } catch (Exception ex) {
             Logger.getLogger(BorneAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @PUT
+    @Path("{id}")
+    public void removePUT(@PathParam("id") Long id) {
+        BorneAcces b = this.borneAccesSrv.getById(id);
+        try {
+            this.borneAccesSrv.remove(b);
+        } catch (Exception ex) {
+            Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

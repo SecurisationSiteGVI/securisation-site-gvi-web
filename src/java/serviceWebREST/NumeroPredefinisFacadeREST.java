@@ -36,6 +36,26 @@ public class NumeroPredefinisFacadeREST {
             Logger.getLogger(NumeroPredefinisFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    @POST
+    @Path("add/{numero}")
+    @Consumes({"application/xml", "application/json"})
+    public void addNum(@PathParam("numero")String numero) {
+        try {
+            this.numeroPredefinis.ajouterUnNumero(numero);
+        } catch (Exception ex) {
+            Logger.getLogger(NumeroPredefinisFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @POST
+    @Path("remove/{numero}")
+    @Consumes({"application/xml", "application/json"})
+    public void removeNum(@PathParam("numero")String numero) {
+        try {
+            this.numeroPredefinis.supprimerUnNumero(numero);
+        } catch (Exception ex) {
+            Logger.getLogger(NumeroPredefinisFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @PUT
     @Consumes({"application/xml", "application/json"})
@@ -59,6 +79,16 @@ public class NumeroPredefinisFacadeREST {
         }
        
     }
+    @PUT
+    @Path("{id}")
+    public void removePUT(@PathParam("id") Long id) {
+        NumeroPredefinis b = this.numeroPredefinis.getById(id);
+        try {
+            this.numeroPredefinis.remove(b);
+        } catch (Exception ex) {
+            Logger.getLogger(BadgeFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @GET
     @Path("{id}")
@@ -78,12 +108,12 @@ public class NumeroPredefinisFacadeREST {
         }return numeroPredefinises;
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({"application/xml", "application/json"})
-//    public List<NumeroPredefinis> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
+    @GET
+    @Path("{from}/{to}")
+    @Produces({"application/xml", "application/json"})
+    public List<NumeroPredefinis> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+        return this.numeroPredefinis.getAll(from, to);
+    }
 
     @GET
     @Path("count")
