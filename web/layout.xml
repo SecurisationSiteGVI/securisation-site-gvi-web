@@ -39,7 +39,6 @@
             </div>
         </div><br/><br/> <div class="container-fluid">
         <div class="row">
-            
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li class="#{cSSActive.histrorique}"> <a href="#{linkPath.pathLink}/histrorique.jsf"><i class="icon-chevron-right"></i> Voir historique</a></li>
@@ -52,8 +51,6 @@
                          <li class="#{cSSActive.gererAuthorisationAcces}"><a href="#{linkPath.pathLink}/authorisationAcces/authorisationAcces.jsf"><i class="icon-chevron-right"></i> Gérer les authorisation d'acces</a></li>
                     </ul>
                 </div>
-
-           
                 <div class="span9">
                     <ui:insert name="content">Default title</ui:insert>
                 </div>

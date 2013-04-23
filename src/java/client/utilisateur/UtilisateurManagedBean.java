@@ -20,7 +20,7 @@ import metier.entitys.Utilisateur;
  * @author damien
  */
 @ManagedBean(name = "utilisateurManagedBean")
-@ViewScoped//@ApplicationScoped
+@ViewScoped
 public class UtilisateurManagedBean {
 
     private Utilisateur utilisateur = new Utilisateur();

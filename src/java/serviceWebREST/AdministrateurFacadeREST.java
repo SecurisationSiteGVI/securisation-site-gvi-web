@@ -24,6 +24,8 @@ import metier.entitys.Administrateur;
 public class AdministrateurFacadeREST  {
 
     private UtilisateurService utilisateurSrv = MetierFactory.getUtilisateurService();
+   
+   
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(Administrateur entity) {

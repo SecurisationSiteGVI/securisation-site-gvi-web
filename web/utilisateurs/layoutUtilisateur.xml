@@ -16,7 +16,6 @@
                 </li><br/>
 
             </ul><br/>
-
             <ui:insert name="contentUtilisateur"> Default content</ui:insert>
         </ui:define>
     </ui:composition>
