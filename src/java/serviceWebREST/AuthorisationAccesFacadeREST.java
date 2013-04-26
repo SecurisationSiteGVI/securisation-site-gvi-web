@@ -23,15 +23,38 @@ import metier.entitys.AuthorisationAcces;
  *
  * @author damien
  */
-
 @Path("authorisationacces")
 public class AuthorisationAccesFacadeREST {
+
     private AuthorisationAccesService authorisationAccesSrv = MetierFactory.getAuthorisationAccesService();
+
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(AuthorisationAcces entity) {
         try {
             this.authorisationAccesSrv.add(entity);
+        } catch (Exception ex) {
+            Logger.getLogger(AuthorisationAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @POST
+    @Path("atacher/{idUtilisateur}/{idSecteur}")
+    @Consumes({"application/xml", "application/json"})
+    public void atacher(@PathParam("idUtilisateur") Long idUtilisateur, @PathParam("idSecteur") Long idSecteur) {
+        try {
+            this.authorisationAccesSrv.atacherSecteurFromUtilisateur(MetierFactory.getSecteurService().getById(idSecteur), MetierFactory.getUtilisateurService().getById(idUtilisateur));
+        } catch (Exception ex) {
+            Logger.getLogger(AuthorisationAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @POST
+    @Path("detacher/{idUtilisateur}/{idSecteur}")
+    @Consumes({"application/xml", "application/json"})
+    public void detacher(@PathParam("idUtilisateur") Long idUtilisateur, @PathParam("idSecteur") Long idSecteur) {
+        try {
+            this.authorisationAccesSrv.detacherSecteurFromUtilisateur(MetierFactory.getSecteurService().getById(idSecteur), MetierFactory.getUtilisateurService().getById(idUtilisateur));
         } catch (Exception ex) {
             Logger.getLogger(AuthorisationAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,11 +90,24 @@ public class AuthorisationAccesFacadeREST {
     }
 
     @GET
+    @Path("byUtilisateur/{id}")
+    @Produces({"application/xml", "application/json"})
+    public AuthorisationAcces findByUtilisateur(@PathParam("id") Long id) {
+        AuthorisationAcces byUtilisateur = null;
+        try {
+            byUtilisateur = this.authorisationAccesSrv.getByUtilisateur(MetierFactory.getUtilisateurService().getById(id));
+        } catch (Exception ex) {
+            Logger.getLogger(AuthorisationAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return byUtilisateur;
+    }
+
+    @GET
     @Produces({"application/xml", "application/json"})
     public List<AuthorisationAcces> findAll() {
         List<AuthorisationAcces> aas = null;
         try {
-            aas= this.authorisationAccesSrv.getAll();
+            aas = this.authorisationAccesSrv.getAll();
         } catch (Exception ex) {
             Logger.getLogger(AuthorisationAccesFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,7 +120,6 @@ public class AuthorisationAccesFacadeREST {
 //    public List<AuthorisationAcces> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
 //        return this.authorisationAccesSrv.get;
 //    }
-
     @GET
     @Path("count")
     @Produces("text/plain")

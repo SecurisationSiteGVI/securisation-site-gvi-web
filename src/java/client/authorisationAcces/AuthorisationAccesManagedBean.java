@@ -19,7 +19,6 @@ import metier.UtilisateurService;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Secteur;
 import metier.entitys.Utilisateur;
-import physique.data.AuthorisationAccesServiceORM;
 
 /**
  *
@@ -88,7 +87,6 @@ public class AuthorisationAccesManagedBean {
                     a.setSecteur(authorisationAcces.getSecteurs().get(i));
                     secteurIsAttribuers.add(a);
                 }
-
                 if (authorisationAcces.getHeureFermeture() != null) {
                     this.setHeureFermetre(String.valueOf(authorisationAcces.getHeureFermeture().getHours()));
                     this.setMinutesFermeture(String.valueOf(authorisationAcces.getHeureFermeture().getMinutes()));
@@ -104,11 +102,7 @@ public class AuthorisationAccesManagedBean {
                     this.setMinutesOuverture(String.valueOf(0));
                 }
             }
-
-
         }
-
-
         return secteurIsAttribuers;
     }
 

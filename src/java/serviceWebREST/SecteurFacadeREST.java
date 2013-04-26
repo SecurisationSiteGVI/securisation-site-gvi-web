@@ -67,7 +67,7 @@ public class SecteurFacadeREST  {
     }
 
     @GET
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json", "application/json"})
     public List<Secteur> findAll() {
         List<Secteur> secteurs =null;
         try {
