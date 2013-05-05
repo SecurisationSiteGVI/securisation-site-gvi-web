@@ -9,7 +9,7 @@
         <ui:define name="content">
             <ul class="nav nav-tabs">
                 <li class="#{cSSActive.authorisationAcces}">
-                    <a href="#{linkPath.pathLink}/badge/listeBadges.jsf">Authoriser l'acces</a>
+                    <a href="#{linkPath.pathLink}/authorisationAcces/authorisationAcces.jsf">Authoriser l'acces</a>
                 </li>
                 <br/>
             </ul><br/>
