@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="./layoutAppareil.xml">        
+        <ui:define name="contentAppareil">
+            <h:message id="succesLecteurBadge" showSummary="true" for="succesLecteurBadge" class="alert alert-success"></h:message>
+            <h:message id="errorLecteurBadge" showSummary="true"  for="errorLecteurBadge" class="alert alert-error"></h:message><br/><br/>
+            <div class="span4">
+                <f:view>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Position : " for="position" />
+                            <h:selectOneMenu id="position" value="#{lecteurBadgeManagedBean.borneAccesSelected.position}" title="Position" required="true" converter="PositionConverter" requiredMessage="La position est requise.">
+                                <f:selectItems value="#{lecteurBadgeManagedBean.positions}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Nom : " for="nom" />
+                            <h:inputText id="nom" value="#{lecteurBadgeManagedBean.borneAccesSelected.nom}" title="Nom" />
+                            <h:outputLabel value=""  />
+                            <h:selectOneRadio value="#{lecteurBadgeManagedBean.borneAccesSelected.entrer}">
+                                <f:selectItem itemValue="true" itemLabel="Entré" />
+                                <f:selectItem itemValue="false" itemLabel="Sortie" />
+                            </h:selectOneRadio>
+                             <h:outputLabel value=" "  />
+                             <h:commandButton class="btn btn-primary" action="#{lecteurBadgeManagedBean.modifier()}" value="Modifier" />
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

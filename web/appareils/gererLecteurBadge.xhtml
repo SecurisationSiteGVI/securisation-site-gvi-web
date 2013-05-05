@@ -62,6 +62,14 @@
                                     <f:setPropertyActionListener value="#{item}" target="#{lecteurBadgeManagedBean.borneAccesSelected}"/>
                                 </h:commandLink>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink value="Modifier" action="./modifierBorne.jsf">
+                                    <f:setPropertyActionListener value="#{item}" target="#{lecteurBadgeManagedBean.borneAccesSelected}"/>
+                                </h:commandLink>
+                            </h:column>
                         </h:dataTable>
                     </h:form>
                 </f:view>

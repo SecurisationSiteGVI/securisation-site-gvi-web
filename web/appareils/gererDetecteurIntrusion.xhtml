@@ -51,6 +51,14 @@
                                     <f:setPropertyActionListener value="#{item}" target="#{detecteurIntrusionManagedBean.detecteurIntrusionSelected}"/>
                                 </h:commandLink>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink action="./modifierDetecteurIntrusion.jsf" value="Modifier">
+                                    <f:setPropertyActionListener value="#{item}" target="#{detecteurIntrusionManagedBean.detecteurIntrusionSelected}"/>
+                                </h:commandLink>
+                            </h:column>
                         </h:dataTable>
                     </h:form>
                 </f:view>

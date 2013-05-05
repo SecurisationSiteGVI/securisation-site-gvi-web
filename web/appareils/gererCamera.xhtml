@@ -12,9 +12,7 @@
             <div class="span4">
                 <f:view>
                     <h:form>
-
                         <h:panelGrid columns="2">
-
                             <h:outputLabel value="Position : " for="position" />
                             <h:selectOneMenu id="position" value="#{cameraManagedBean.camera.position}" converter="PositionConverter" title="Position" required="true" requiredMessage="La position est requise.">
                                 <f:selectItems value="#{cameraManagedBean.positions}"/>
@@ -26,26 +24,34 @@
                             <h:outputLabel value="type : " for="type" />
                             <h:selectOneMenu id="typecamera" value="#{cameraManagedBean.camera.type}" >
                                 <f:selectItems value="#{cameraManagedBean.typeCamera}"/>
-                            </h:selectOneMenu>
-                          
+                            </h:selectOneMenu>                          
                             <h:outputLabel value=" " />
                             <h:commandButton value="Crée" action="#{cameraManagedBean.addCamera()}" class="btn btn-primary"/>
                         </h:panelGrid>
                     </h:form>
                 </f:view>
-
-
             </div>
             <div class="span4">
                 <f:view>
                     <h:form>
-                    
                         <h:dataTable value="#{cameraManagedBean.cameras}" class="table tab-hover" var="item">
                              <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Position"/>
                                 </f:facet>
                                 <h:outputText value="#{item.position}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ip"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ip}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Type"/>
+                                </f:facet>
+                                <h:outputText value="#{item.type}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -61,10 +67,17 @@
                                     <f:setPropertyActionListener value="#{item}" target="#{cameraManagedBean.cameraSelected}"/>
                                 </h:commandLink>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:commandLink action="./modifierCamera.jsf" value="Modifer">
+                                    <f:setPropertyActionListener value="#{item}" target="#{cameraManagedBean.cameraSelected}"/>
+                                </h:commandLink>
+                            </h:column>
                         </h:dataTable>
                     </h:form>
                 </f:view>
-
             </div>
         </ui:define>
     </ui:composition>
