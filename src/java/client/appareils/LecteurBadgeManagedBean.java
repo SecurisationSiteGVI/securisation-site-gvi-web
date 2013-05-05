@@ -8,8 +8,10 @@ import client.BoiteAOutils;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import metier.BorneAccesService;
 import metier.MetierFactory;
 import metier.PositionService;
@@ -21,14 +23,23 @@ import metier.entitys.Position;
  * @author damien
  */
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public class LecteurBadgeManagedBean {
      
     private BorneAccesService borneAccesSrv = MetierFactory.getBorneAccesService();
     private BorneAcces borneAcces = new BorneAcces();
     private BorneAcces borneAccesSelected;
-    
+  
     public LecteurBadgeManagedBean() {
+    }
+    public void modifier(){
+        try {
+            this.borneAccesSrv.update(this.borneAccesSelected);
+             BoiteAOutils.addMessage("Succes", " lecteur de badge bien modifié.", "succesLecteurBadge");
+        } catch (Exception ex) {
+            BoiteAOutils.addMessage("Erreur", " impossible de modifier la borne.", "errorLecteurBadge");
+            Logger.getLogger(LecteurBadgeManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void addLecteurBadge(){
         try {

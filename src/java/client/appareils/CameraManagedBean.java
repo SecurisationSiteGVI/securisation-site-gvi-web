@@ -9,9 +9,11 @@ import client.BoiteAOutils;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
+import javax.ws.rs.ApplicationPath;
 import metier.CameraService;
 import metier.MetierFactory;
 import metier.PositionService;
@@ -24,7 +26,7 @@ import metier.entitys.TypeCamera;
  * @author damien
  */
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public final class CameraManagedBean {
 
     private CameraService cameraSrv = MetierFactory.getCameraService();
@@ -39,6 +41,15 @@ public final class CameraManagedBean {
 //                this.camera = cameras.get(0);
 //            }
 //        }
+    }
+    public void modifier(){
+        try {
+            this.cameraSrv.update(cameraSelected);
+            BoiteAOutils.addMessage("Succes", "Caméra bien modifié.", "succesCamera");
+        } catch (Exception ex) {
+            BoiteAOutils.addMessage("Erreur", " impossible de modifié la caméra.", "errorCamera");
+            Logger.getLogger(CameraManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void addCamera(){
         try {

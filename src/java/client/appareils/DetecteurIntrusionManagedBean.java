@@ -8,8 +8,10 @@ import client.BoiteAOutils;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.ws.rs.ApplicationPath;
 import metier.DetecteurIntrusionService;
 import metier.MetierFactory;
 import metier.PositionService;
@@ -21,13 +23,22 @@ import metier.entitys.Position;
  * @author damien
  */
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public class DetecteurIntrusionManagedBean {
 
     private DetecteurIntrusionService detecteurIntrusionSrv= MetierFactory.getDetecteurIntrusionService();
     private DetecteurIntrusion detecteurIntrusion = new DetecteurIntrusion();
     private DetecteurIntrusion detecteurIntrusionSelected;
     public DetecteurIntrusionManagedBean() {
+    }
+    public void modifier(){
+        try {
+            this.detecteurIntrusionSrv.update(detecteurIntrusionSelected);
+            BoiteAOutils.addMessage("Succes", " le détecteur d'intrusion à bien été modifié.", "succesDetecteurIntrusion");
+        } catch (Exception ex) {
+            BoiteAOutils.addMessage("Erreur", " impossible de modifier un détécteur intrusion", "errorDetecteurIntrusion");
+            Logger.getLogger(DetecteurIntrusionManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void addDetecteurIntrusion(){
         try {
