@@ -41,7 +41,7 @@ public class CSSActive {
     private String gererNumeros = " ";
     private String gererAuthorisationAcces = " ";
     private String authorisationAcces = " ";
-
+    private String ajouterTechnicien =" ";
     public CSSActive() {
         FacesContext context = FacesContext.getCurrentInstance();
         this.url = context.getViewRoot().getViewId();
@@ -55,6 +55,9 @@ public class CSSActive {
         if ("utilisateurs/ajouterUtilisateurs.xhtml".equals(url)) {
             this.utilisateur = "active";
             this.ajouterUtilisateurs = "active";
+        }if ("utilisateurs/ajoutertechnicien.xhtml".equals(url)) {
+            this.utilisateur = "active";
+            this.ajouterTechnicien = "active";
         }
         if ("utilisateurs/listeUtilisateur.xhtml".equals(url)) {
             this.utilisateur = "active";
@@ -349,5 +352,19 @@ public class CSSActive {
 
     public void setAuthorisationAcces(String authorisationAcces) {
         this.authorisationAcces = authorisationAcces;
+    }
+
+    /**
+     * @return the ajouterTechnicien
+     */
+    public String getAjouterTechnicien() {
+        return ajouterTechnicien;
+    }
+
+    /**
+     * @param ajouterTechnicien the ajouterTechnicien to set
+     */
+    public void setAjouterTechnicien(String ajouterTechnicien) {
+        this.ajouterTechnicien = ajouterTechnicien;
     }
 }

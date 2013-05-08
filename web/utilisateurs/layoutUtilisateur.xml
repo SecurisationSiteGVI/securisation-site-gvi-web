@@ -9,12 +9,14 @@
         <ui:define name="content">
             <ul class="nav nav-tabs">
                 <li class="#{cSSActive.listeUtilisateur}">
-                    <a href="./listeUtilisateur.jsf">Liste des utilisateurs</a>
+                    <a href="#{linkPath.pathLink}/utilisateurs/listeUtilisateur.jsf">Liste des utilisateurs</a>
                 </li>
                 <li class="#{cSSActive.ajouterUtilisateurs}">
-                    <a href="./ajouterUtilisateurs.jsf">Ajouter des utilisateurs</a>
+                    <a href="#{linkPath.pathLink}/utilisateurs/ajouterUtilisateurs.jsf">Ajouter des utilisateurs</a>
+                </li>
+                <li class="#{cSSActive.ajouterTechnicien}">
+                    <a href="#{linkPath.pathLink}/utilisateurs/ajoutertechnicien.jsf">Ajouter des techniciens</a>
                 </li><br/>
-
             </ul><br/>
             <ui:insert name="contentUtilisateur"> Default content</ui:insert>
         </ui:define>

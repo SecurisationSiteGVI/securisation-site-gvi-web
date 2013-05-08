@@ -5,10 +5,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="./layoutUtilisateur.xml">        
-        <ui:define name="contentUtilisateur"><h:message id="succesUTILI" showSummary="true"  for="succesUTILI" class="alert alert-success"></h:message>
-            <h:message id="errorUTILI" showSummary="true"  for="errorUTILI" class="alert alert-error"></h:message><br/><br/><br/>
-            <f:view>
-                <h:form>   
+        <ui:define name="contentUtilisateur">
+            <f:view>${sessionTechnicien.administrateurConnected()}
+                <h:form> 
+                    <h:message id="sucssesUser" showSummary="true" for="sucssesUser" class="alert alert-success"></h:message>
+                        <h:message id="errorUser"  showSummary="true" for="errorUser" class="alert alert-error"></h:message>
+                        <h:message id="errorEmail" showSummary="true"  for="email" class="alert alert-error"></h:message>
+                        <h:message id="errorphone" showSummary="true"  for="telephoneFixe" class="alert alert-error"></h:message><br/>
                     <div class="span4">
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Nom :" for="nom" />
@@ -43,8 +46,15 @@
                                 <f:convertNumber for="telephoneFixe"  pattern="##########"/>  
                                 <!-- <f:validator validatorId="phoneNumberValidator" />-->
                             </h:inputText>
+                             <h:outputText value="login :"/>
+                            <h:inputText value="#{addUtilisateurManagedBean.login}"/>
+                            <h:outputText value="password :"/>
+                            <h:inputText value="#{addUtilisateurManagedBean.password}"/>
+                            <h:outputText value="confirmation :"/>
+                            <h:inputText value="#{addUtilisateurManagedBean.password2}"/>
                             <h:outputText value=" "/>
-                            <h:commandButton value="Crée" action="#{addUtilisateurManagedBean.add()}" class="btn btn-primary"/>
+                            <h:commandButton value="Ajouter technicien" action="#{addUtilisateurManagedBean.addTechnicien()}" class="btn btn-primary"/>
+                            
                         </h:panelGrid>
                     </div>
                 </h:form>

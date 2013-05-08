@@ -13,7 +13,9 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import metier.MetierFactory;
 import metier.UtilisateurService;
+import metier.entitys.Administrateur;
 import metier.entitys.Technicien;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -55,12 +57,34 @@ public class SessionTechnicien {
 
     }
 
+    public void administrateurConnected() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        Technicien technicien = null;
+        if (session.getAttribute("technicien") != null) {
+            technicien = (Technicien) session.getAttribute("technicien");
+            if(technicien instanceof Administrateur){
+                
+            }else{
+                try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getAdministrateurNonConnecte());
+            } catch (IOException ex) {
+                Logger.getLogger(SessionTechnicien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        } else {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(LinksPath.getAdministrateurNonConnecte());
+            } catch (IOException ex) {
+                Logger.getLogger(SessionTechnicien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
     public Technicien getTechnicien() {
         return technicien;
     }
 
     public String getTechnicienToString() {
-
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Technicien technicien = null;
         if (session.getAttribute("technicien") != null) {
@@ -88,7 +112,6 @@ public class SessionTechnicien {
     }
 
     public String getLogin() {
-        this.login = "damienChes";
         return login;
     }
 
@@ -97,7 +120,6 @@ public class SessionTechnicien {
     }
 
     public String getPassword() {
-        this.password = "damien";
         return password;
     }
 

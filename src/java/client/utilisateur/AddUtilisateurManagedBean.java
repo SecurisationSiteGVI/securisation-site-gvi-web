@@ -29,10 +29,10 @@ public class AddUtilisateurManagedBean {
     public void add(){
         try {
             utilisateurSrv.add(getUtilisateur());
-            BoiteAOutils.addMessage("Ajout effectué", "l'utilisateur est bien ajouté", "sucssesUser");
+            BoiteAOutils.addMessage("Ajout effectué", "l'utilisateur est bien ajouté", "succesUTILI");
             this.setUtilisateur(null);
         } catch (Exception ex) {
-            BoiteAOutils.addMessage("Problème lors de l'ajout", "l'utilisateur n'a pas été ajouté", "errorUser");
+            BoiteAOutils.addMessage("Problème lors de l'ajout", "l'utilisateur n'a pas été ajouté", "errorUTILI");
             System.out.println(ex);
         }
     }

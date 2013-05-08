@@ -35,6 +35,11 @@ public class LinksPath {
         return error;
     }
 
+    public static String getAdministrateurNonConnecte() {
+        String error = LinksPath.pathLink + "/errorPages/administrateurNonConnect.jsf";
+        return error;
+    }
+
     public static List<String> getIps() {
         List<String> ips = new ArrayList<String>();
         try {
