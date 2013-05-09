@@ -47,11 +47,11 @@
                                 <!-- <f:validator validatorId="phoneNumberValidator" />-->
                             </h:inputText>
                              <h:outputText value="login :"/>
-                            <h:inputText value="#{addUtilisateurManagedBean.login}"/>
+                             <h:inputText id="log" value="#{addUtilisateurManagedBean.login}"/>
                             <h:outputText value="password :"/>
-                            <h:inputText value="#{addUtilisateurManagedBean.password}"/>
+                            <h:inputSecret id="pas1" value="#{addUtilisateurManagedBean.password}"/>
                             <h:outputText value="confirmation :"/>
-                            <h:inputText value="#{addUtilisateurManagedBean.password2}"/>
+                            <h:inputSecret id="pas2"  value="#{addUtilisateurManagedBean.password2}" />
                             <h:outputText value=" "/>
                             <h:commandButton value="Ajouter technicien" action="#{addUtilisateurManagedBean.addTechnicien()}" class="btn btn-primary"/>
                             
