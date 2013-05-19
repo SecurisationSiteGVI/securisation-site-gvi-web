@@ -4,6 +4,7 @@
  */
 package client.utilisateur;
 
+import client.BoiteAOutils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -51,6 +52,13 @@ public class ModificationUtilisateurManagedBean {
     public void updateUtilisateur() {
         this.utilisateurSrv.update(utilisateur);
 
+    }
+    public String removeUtilisateur() {
+        if (utilisateur != null) {
+            this.utilisateurSrv.remove(utilisateur);
+        } else {
+            BoiteAOutils.addMessage("Erreur", " impossible de recuperer l'id ");
+        }return "listeUtilisateur.jsf";
     }
 
     public AttributionUtilisateurBadge getAttributionUtilisateurBadge() {

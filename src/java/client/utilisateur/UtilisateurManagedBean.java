@@ -36,12 +36,10 @@ public class UtilisateurManagedBean {
 
     public void removeUtilisateur() {
         if (getIdUtilisateur() != null) {
-
             this.utilisateurSrv.remove(getIdUtilisateur());
         } else {
             BoiteAOutils.addMessage("Erreur", " impossible de recuperer l'id ");
         }
-
     }
 
     public void filtrer() {
