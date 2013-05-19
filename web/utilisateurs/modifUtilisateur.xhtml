@@ -42,7 +42,8 @@
                             <h:inputText id="telephoneFixe" value="#{modificationUtilisateurManagedBean.utilisateur.telephoneFixe}" title="TelephoneFixe" >
                                 <f:convertNumber for="telephoneFixe"  pattern="##########"/>  
                             </h:inputText>
-                            <h:outputText value=" "/>
+                             <h:commandButton value="Supprimer l'utilisateur" class="btn btn-danger" action="#{modificationUtilisateurManagedBean.removeUtilisateur()}">
+                             </h:commandButton>
                             <h:commandButton value="Modifier" action="#{modificationUtilisateurManagedBean.updateUtilisateur()}" class="btn btn-primary"/>
                         </h:panelGrid>
                     </div>

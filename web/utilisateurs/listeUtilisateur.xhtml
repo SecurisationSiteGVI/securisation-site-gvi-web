@@ -26,82 +26,9 @@
                             <f:facet name="header">
                                 <h:outputText value="Page #{utilisateurManagedBean.page+1}"/>
                             </f:facet>
-                            <a  data-toggle="modal" href="##{item.hashCode()}" >Plus</a> <div class="modal hide fade" id="#{item.hashCode()}">
-                                <div class="modal-header">
-                                    <a class="close" data-dismiss="modal">×</a>
-                                    <h3>Détails de l'utilisateur.</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table table-striped">
-
-                                        <tr>
-                                            <td>Nom :</td>
-                                            <td>#{item.nom}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prénom :</td>
-                                            <td>#{item.prenom}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Date de naissance :</td>
-                                            <td>#{item.dateDeNaissance.toLocaleString()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email :</td>
-                                            <td>#{item.email}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sexe :</td>
-                                            <td>#{(item.homme==true?'homme':'femme')}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Téléphone fixe :</td>
-                                            <td>#{item.telephoneFixe}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Téléphone portable :</td>
-                                            <td>#{item.telephonePortable}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Adresse :</td>
-                                            <td>#{item.adresse}</td>
-                                        </tr> 
-                                        <tr>
-                                            <td>Code postale :</td>
-                                            <td>#{item.codePostale}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ville :</td>
-                                            <td>#{item.ville}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-                                            </td>
-                                            <td>
-                                                <h:commandButton value="Supprimer l'utilisateur" class="btn btn-danger" action="#{utilisateurManagedBean.removeUtilisateur()}">
-                                                    <f:setPropertyActionListener value="#{item}" target="#{utilisateurManagedBean.idUtilisateur}"/>
-                                                </h:commandButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-                                            </td>
-                                            <td>
-                                                <h:commandButton value="Modifier l'utilisateur" class="btn btn-info" action="#{utilisateurManagedBean.modifier()}">
-                                                    <f:setPropertyActionListener value="#{item}" target="#{utilisateurManagedBean.utilisateurUpdate}"/>
-                                                </h:commandButton>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <a data-dismiss="modal" class="btn btn-primary">Fermer</a>
-                                </div>
-                            </div>
+                            <h:commandLink value="Plus" action="#{utilisateurManagedBean.modifier()}">
+                                      <f:setPropertyActionListener value="#{item}" target="#{utilisateurManagedBean.utilisateurUpdate}"/>
+                            </h:commandLink>
                         </h:column>
 
                     </h:dataTable>
