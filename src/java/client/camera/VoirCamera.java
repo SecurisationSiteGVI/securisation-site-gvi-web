@@ -12,8 +12,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.HttpSession;
+import metier.CameraService;
 import metier.entitys.Camera;
-import physique.io.CameraDriver;
 
 /**
  *
@@ -33,11 +33,12 @@ public class VoirCamera {
     public void cameraSelected(ValueChangeEvent evt){
         System.out.println("Caméra changed");
         Camera c = (Camera) evt.getNewValue();
-        CameraDriver drv = physique.io.PhysiqueIOFactory.getCameraDrivers(c);
+        CameraService cameraService = metier.MetierFactory.getCameraService();
         
         String query = "";
         try {
-            query = drv.getVideo();
+            
+            query = cameraService.getVideo(c);
         } catch (Exception ex) {
             Logger.getLogger(VoirCamera.class.getName()).log(Level.SEVERE, null, ex);
         }
