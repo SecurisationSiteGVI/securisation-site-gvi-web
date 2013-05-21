@@ -49,16 +49,18 @@ public class ModificationUtilisateurManagedBean {
         this.utilisateur = utilisateur;
     }
 
-    public void updateUtilisateur() {
+    public String updateUtilisateur() {
         this.utilisateurSrv.update(utilisateur);
-
+        return "listeUtilisateur.jsf";
     }
+
     public String removeUtilisateur() {
         if (utilisateur != null) {
             this.utilisateurSrv.remove(utilisateur);
         } else {
             BoiteAOutils.addMessage("Erreur", " impossible de recuperer l'id ");
-        }return "listeUtilisateur.jsf";
+        }
+        return "listeUtilisateur.jsf";
     }
 
     public AttributionUtilisateurBadge getAttributionUtilisateurBadge() {
