@@ -11,7 +11,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:message id="errorVisionageCamera" showSummary="true"  for="errorVisionageCamera" class="alert alert-error"></h:message><br/><br/>     
             <div class="span4">
                 <h:form>
-                    <h:graphicImage id="vi" value="#{visionageCamera.queryCurrent}"></h:graphicImage>
+                    <h:graphicImage id="vi" value="#{visionageCameraBean.queryCurrent}"></h:graphicImage>
                 </h:form>
             </div>
             <div class="span4">
@@ -20,7 +20,7 @@
                     <tr>
                         <td>
                             <h:form>
-                                <h:selectOneMenu value="#{visionageCamera.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCamera.cameraSelected}" onchange="submit()" >
+                                <h:selectOneMenu value="#{visionageCameraBean.selectedCamera}" converter="CameraConverter" valueChangeListener="#{visionageCameraBean.cameraSelected}" onchange="submit()" >
                                     <f:selectItems value="#{cameraManagedBean.cameras}" />
                                 </h:selectOneMenu>  &nbsp;
                             </h:form> 
@@ -33,14 +33,14 @@
 
                 <script type="text/javascript" src="#{linkPath.pathLink}/js/fonctionCamera.js"/>
                 <script type="text/javascript">
-                    var ip ="#{visionageCamera.selectedCamera.ip}";                    
-                    var typeCamera="#{visionageCamera.selectedCamera.type}";
+                    var ip ="#{visionageCameraBean.selectedCamera.ip}";                    
+                    var typeCamera="#{visionageCameraBean.selectedCamera.type}";
                     
                 </script>
 
 
                 <h:form>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandLink title="Prendre une photo" action="#{visionageCamera.photo()}" value=""><h:graphicImage url="#{linkPath.pathLink}/img/camera/photo.png"/> </h:commandLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:commandLink title="Prendre une photo" action="#{visionageCameraBean.photo()}" value=""><h:graphicImage url="#{linkPath.pathLink}/img/camera/photo.png"/> </h:commandLink>
                 </h:form>
                 <h:form>
                     <table border="0">
@@ -78,7 +78,7 @@
                 </script>
             </div>
             <script>
-                var test = #{visionageCamera.ipCurentCamera};
+                var test = #{visionageCameraBean.ipCurentCamera};
             </script>
         </ui:define>
     </ui:composition>
