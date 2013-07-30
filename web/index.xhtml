@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <head>
         <link rel="SHORTCUT ICON" href="#{linkPath.pathLink}/img/cle.jpg"/>
         <link rel="stylesheet" href="#{linkPath.cssStyle}"/>
@@ -57,12 +58,10 @@
                 <table>
                     <h:messages id="log" class="alert alert-error"></h:messages>
                     <tr>
-                        <td><h3><h:outputText value="Login:"/></h3></td>
-                        <td><h:inputText id="placeholder" value="#{sessionTechnicien.login}" class="input-block-level" /></td>
+                        <td><input placeholder="Login" jsf:value="#{sessionTechnicien.login}" type="text" class="input-xlarge"></input></td>
                     </tr>
                     <tr>
-                        <td><h3><h:outputText value="Password:"/></h3></td>
-                        <td><h:inputSecret value="#{sessionTechnicien.password}" class="input-block-level"  /></td>
+                        <td><input jsf:value="#{sessionTechnicien.password}" type="password" class="input-xlarge" placeholder="Password"/></td>
                     </tr>
                 </table>
                 <h:commandButton action="#{sessionTechnicien.testDeConnexion()}" class="btn btn-large btn-primary" value="Connexion"/>

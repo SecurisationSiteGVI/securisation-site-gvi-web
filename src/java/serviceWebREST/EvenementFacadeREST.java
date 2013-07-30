@@ -82,7 +82,7 @@ public class EvenementFacadeREST {
 
     @GET
     @Path("{from}/{nb}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json", "application/json"})
     public List<Evenement> findRange(@PathParam("from") Integer from, @PathParam("nb") Integer nb) {
         List<Evenement> evenements = null;
         try {

@@ -73,14 +73,14 @@ public class UtilisateurFacadeREST {
     }
 
     @GET
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json", "application/json"})
     public List<Utilisateur> findAll() {
         return this.utilisateurSrv.getAll();
     }
 
     @GET
     @Path("{from}/{nb}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json", "application/json"})
     public List<Utilisateur> findRange(@PathParam("from") Integer from, @PathParam("nb") Integer nb) {
         return this.utilisateurSrv.getAllByRange(from, nb);
     }
